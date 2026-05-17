@@ -138,8 +138,8 @@ export default function PhysiciansPage() {
             ))}
           </div>
 
-          <div className="mt-12 grid gap-8 lg:grid-cols-[1fr_1.2fr] lg:gap-12">
-            <div className="rounded-2xl border border-grey-200 bg-grey-50 p-7 sm:p-9">
+          <div className="mt-12 grid gap-8 lg:grid-cols-[1fr_1.2fr] lg:items-start lg:gap-12">
+            <aside className="rounded-2xl border border-grey-200 bg-grey-50 p-7 sm:p-9 lg:sticky lg:top-24">
               <h3 className="font-display text-xl text-primary-dark">
                 What to include with your referral
               </h3>
@@ -167,7 +167,7 @@ export default function PhysiciansPage() {
                 Prefer to talk to a person?
                 <ArrowRight className="h-4 w-4" aria-hidden />
               </Link>
-            </div>
+            </aside>
 
             <div>
               <SectionHeading
