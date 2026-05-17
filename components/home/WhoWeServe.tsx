@@ -28,16 +28,12 @@ export function WhoWeServe() {
           <div className="grid gap-6 sm:grid-cols-2">
             <article className="flex flex-col rounded-2xl border border-grey-200 bg-white p-7 shadow-sm">
               <p className="eyebrow text-primary">Specialties served</p>
-              <ul className="mt-5 flex-1 space-y-2">
+              <ul className="mt-5 flex flex-1 flex-wrap content-start gap-2">
                 {SPECIALTIES.map((s) => (
                   <li
                     key={s.slug}
-                    className="flex items-center gap-2 text-sm text-grey-700 sm:text-base"
+                    className="rounded-full border border-primary/15 bg-primary/5 px-3 py-1.5 text-xs font-medium text-primary-dark sm:text-sm"
                   >
-                    <span
-                      aria-hidden
-                      className="h-1.5 w-1.5 rounded-full bg-primary"
-                    />
                     {s.name}
                   </li>
                 ))}
@@ -53,9 +49,14 @@ export function WhoWeServe() {
 
             <article className="flex flex-col rounded-2xl border border-grey-200 bg-white p-7 shadow-sm">
               <p className="eyebrow text-primary">Featured therapies</p>
-              <ul className="mt-5 grid flex-1 grid-cols-2 gap-x-3 gap-y-2 text-sm text-grey-700">
+              <ul className="mt-5 flex flex-1 flex-wrap content-start gap-2">
                 {FEATURED.map((name) => (
-                  <li key={name}>{name}</li>
+                  <li
+                    key={name}
+                    className="rounded-full border border-primary/15 bg-primary/5 px-3 py-1.5 text-xs font-medium text-primary-dark sm:text-sm"
+                  >
+                    {name}
+                  </li>
                 ))}
               </ul>
               <Link

@@ -51,13 +51,13 @@ export function MobileMenu({
       role="dialog"
       aria-modal="true"
     >
-      <div className="flex items-center justify-between border-b border-grey-200 px-6 py-4">
-        <Logo />
+      <div className="flex items-center justify-between border-b border-white/10 bg-primary-dark px-6 py-4">
+        <Logo variant="light" />
         <button
           type="button"
           onClick={onClose}
           aria-label="Close menu"
-          className="rounded-full p-2 text-primary-dark transition-colors hover:bg-primary/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+          className="rounded-full p-2 text-ice transition-colors hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-coral"
         >
           <X className="h-6 w-6" />
         </button>

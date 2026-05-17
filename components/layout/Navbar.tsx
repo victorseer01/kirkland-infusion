@@ -31,14 +31,12 @@ export function Navbar() {
     <>
       <header
         className={cn(
-          "sticky top-0 z-40 w-full transition-all",
-          scrolled
-            ? "bg-white/95 shadow-sm backdrop-blur-md"
-            : "bg-white",
+          "sticky top-0 z-40 w-full border-b border-white/10 bg-primary-dark transition-all",
+          scrolled && "shadow-lg backdrop-blur-md",
         )}
       >
         <div className="container-prose flex h-16 items-center justify-between gap-4 lg:h-20">
-          <Logo />
+          <Logo variant="light" />
 
           <div className="flex items-center gap-3 lg:gap-6">
             <nav className="hidden lg:block" aria-label="Primary">
@@ -63,8 +61,8 @@ export function Navbar() {
                         className={cn(
                           "rounded-full px-3 py-2 text-sm font-medium transition-colors",
                           active
-                            ? "text-primary-dark"
-                            : "text-grey-700 hover:text-primary-dark",
+                            ? "text-white"
+                            : "text-ice/85 hover:text-white",
                         )}
                       >
                         {link.label}
@@ -86,7 +84,7 @@ export function Navbar() {
                 type="button"
                 onClick={() => setOpen(true)}
                 aria-label="Open menu"
-                className="inline-flex items-center justify-center rounded-full p-2 text-primary-dark hover:bg-primary/5 lg:hidden"
+                className="inline-flex items-center justify-center rounded-full p-2 text-ice hover:bg-white/10 lg:hidden"
               >
                 <Menu className="h-6 w-6" />
               </button>

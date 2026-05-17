@@ -73,9 +73,7 @@ export function NavDropdown({
         onClick={() => setOpen((v) => !v)}
         className={cn(
           "inline-flex items-center gap-1 rounded-full px-3 py-2 text-sm font-medium transition-colors",
-          active
-            ? "text-primary-dark"
-            : "text-grey-700 hover:text-primary-dark",
+          active ? "text-white" : "text-ice/85 hover:text-white",
         )}
       >
         {label}
