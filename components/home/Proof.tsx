@@ -102,7 +102,7 @@ export function Proof() {
                 className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-grey-50 to-transparent sm:w-24"
               />
 
-              <ul className="flex w-max animate-scroll-x items-center gap-3 group-hover:[animation-play-state:paused] motion-reduce:animate-none sm:gap-5">
+              <ul className="flex w-max animate-scroll-x items-center gap-1 group-hover:[animation-play-state:paused] motion-reduce:animate-none sm:gap-2">
                 {[...awards, ...awards].map((award, i) => (
                   <li
                     key={`${award.src}-${i}`}
