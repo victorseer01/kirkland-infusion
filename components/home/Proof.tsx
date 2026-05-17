@@ -13,8 +13,8 @@ export function Proof() {
   const awards = getAwards();
 
   return (
-    <section className="bg-grey-50 section-y">
-      <div className="container-prose">
+    <section className="bg-grey-50">
+      <div className="container-prose section-y">
         <div className="grid items-center gap-10 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
           <div>
             <p className="eyebrow text-primary">Affiliated with</p>
@@ -49,20 +49,38 @@ export function Proof() {
             alt="Evergreen Rheumatology clinical team"
           />
         </div>
+      </div>
 
-        <blockquote className="relative mt-12 overflow-hidden rounded-2xl border border-grey-200 bg-white p-7 shadow-sm sm:p-10">
-          <span
-            aria-hidden
-            className="absolute left-0 top-0 h-full w-1.5 bg-coral"
-          />
-          <p className="text-balance text-lg leading-relaxed text-primary-dark sm:text-xl">
+      <div className="relative isolate overflow-hidden bg-primary-dark text-ice">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 opacity-[0.18]"
+          style={{
+            backgroundImage:
+              "radial-gradient(closest-side at 18% 0%, rgba(255,255,255,0.25), transparent 60%), radial-gradient(closest-side at 82% 100%, rgba(74,155,140,0.45), transparent 65%)",
+          }}
+        />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 opacity-[0.07]"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle, rgba(255,255,255,0.9) 1px, transparent 1px)",
+            backgroundSize: "22px 22px",
+          }}
+        />
+        <blockquote className="container-prose relative py-16 text-center sm:py-24">
+          <p className="eyebrow text-coral">Our standard</p>
+          <p className="mx-auto mt-5 max-w-4xl text-balance font-display text-2xl leading-snug text-white sm:text-3xl lg:text-4xl">
             A licensed provider is present in the suite for{" "}
-            <span className="font-semibold">every infusion</span> — not nearby, not on call, but in the room.
+            <span className="text-coral">every infusion</span> — not nearby, not on call, but in the room.
           </p>
         </blockquote>
+      </div>
 
+      <div className="container-prose section-y">
         {awards.length > 0 && (
-          <div className="mt-12">
+          <div>
             <p className="eyebrow text-primary">Recognition</p>
             <h3 className="mt-3 text-balance font-display text-2xl text-primary-dark sm:text-3xl">
               Two decades of physician recognition
