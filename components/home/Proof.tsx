@@ -71,24 +71,39 @@ export function Proof() {
               Awards earned by our affiliated physicians at Evergreen Rheumatology and Overlake Arthritis over twenty years of caring for Pacific Northwest patients.
             </p>
 
-            <ul className="mt-8 grid grid-cols-3 gap-3 sm:grid-cols-4 sm:gap-4 lg:grid-cols-5">
-              {awards.map((award) => (
-                <li
-                  key={award.src}
-                  className="group flex aspect-square items-center justify-center rounded-2xl border border-grey-200 bg-white p-4 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md"
-                >
-                  <div className="relative h-full w-full">
-                    <Image
-                      src={award.src}
-                      alt={award.alt}
-                      fill
-                      sizes="(min-width: 1024px) 20vw, (min-width: 640px) 25vw, 33vw"
-                      className="object-contain opacity-80 transition-opacity duration-300 group-hover:opacity-100"
-                    />
-                  </div>
-                </li>
-              ))}
-            </ul>
+            <div
+              className="group relative mt-8 overflow-hidden"
+              aria-label="Awards and recognition"
+            >
+              <div
+                aria-hidden
+                className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-grey-50 to-transparent sm:w-24"
+              />
+              <div
+                aria-hidden
+                className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-grey-50 to-transparent sm:w-24"
+              />
+
+              <ul className="flex w-max animate-scroll-x items-center gap-4 group-hover:[animation-play-state:paused] motion-reduce:animate-none sm:gap-6">
+                {[...awards, ...awards].map((award, i) => (
+                  <li
+                    key={`${award.src}-${i}`}
+                    aria-hidden={i >= awards.length}
+                    className="flex h-28 w-40 shrink-0 items-center justify-center rounded-2xl border border-grey-200 bg-white p-3 shadow-sm sm:h-32 sm:w-48 sm:p-4"
+                  >
+                    <div className="relative h-full w-full">
+                      <Image
+                        src={award.src}
+                        alt={i < awards.length ? award.alt : ""}
+                        fill
+                        sizes="192px"
+                        className="object-contain opacity-85 transition-opacity hover:opacity-100"
+                      />
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         )}
       </div>
