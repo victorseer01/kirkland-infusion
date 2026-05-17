@@ -25,7 +25,7 @@ export function WhoWeServe() {
             className="lg:h-full"
           />
 
-          <div className="grid gap-6 sm:grid-cols-2">
+          <div className="grid gap-6">
             <article className="flex flex-col rounded-2xl border border-grey-200 bg-white p-7 shadow-sm">
               <p className="eyebrow text-primary">Specialties served</p>
               <ul className="mt-5 flex flex-1 flex-wrap content-start gap-2">

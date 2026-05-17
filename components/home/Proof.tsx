@@ -102,22 +102,20 @@ export function Proof() {
                 className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-grey-50 to-transparent sm:w-24"
               />
 
-              <ul className="flex w-max animate-scroll-x items-center gap-4 group-hover:[animation-play-state:paused] motion-reduce:animate-none sm:gap-6">
+              <ul className="flex w-max animate-scroll-x items-center gap-3 group-hover:[animation-play-state:paused] motion-reduce:animate-none sm:gap-5">
                 {[...awards, ...awards].map((award, i) => (
                   <li
                     key={`${award.src}-${i}`}
                     aria-hidden={i >= awards.length}
-                    className="flex h-28 w-40 shrink-0 items-center justify-center rounded-2xl border border-grey-200 bg-white p-3 shadow-sm sm:h-32 sm:w-48 sm:p-4"
+                    className="relative h-24 w-36 shrink-0 sm:h-28 sm:w-44"
                   >
-                    <div className="relative h-full w-full">
-                      <Image
-                        src={award.src}
-                        alt={i < awards.length ? award.alt : ""}
-                        fill
-                        sizes="192px"
-                        className="object-contain opacity-85 transition-opacity hover:opacity-100"
-                      />
-                    </div>
+                    <Image
+                      src={award.src}
+                      alt={i < awards.length ? award.alt : ""}
+                      fill
+                      sizes="176px"
+                      className="object-contain opacity-80 transition-opacity hover:opacity-100"
+                    />
                   </li>
                 ))}
               </ul>

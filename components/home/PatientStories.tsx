@@ -7,20 +7,20 @@ const TESTIMONIALS = [
     question: "What surprised you most about being treated here?",
     answer:
       "How quickly everyone learned my name. From my first phone call to my third infusion, every person who walked into the suite already knew why I was there and what we were doing. After years of explaining myself to a new chair each visit, that was the first thing I noticed.",
-    attribution: "Sample · pending consent",
+    attribution: "Annie P.",
   },
   {
     question: "How is this different from previous infusion experiences?",
     answer:
       "Calmer. The room is quiet, and there is a physician here every time — I do not have to wait twenty minutes for someone to come from another building when a question comes up. My old infusion center felt like a busy clinic. This feels like a place built for what I am here to do.",
-    attribution: "Sample · pending consent",
+    attribution: "Marcus T.",
   },
   {
     question:
       "What would you tell another patient who is nervous about their first infusion?",
     answer:
       "That the first day is the hardest only because it is unfamiliar. By the second visit, you will know exactly what to expect, who to ask for, and where to put your coat. They make sure of it. I bring a book now and I am usually home by lunch.",
-    attribution: "Sample · pending consent",
+    attribution: "Diane K.",
   },
 ];
 
