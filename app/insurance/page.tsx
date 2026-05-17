@@ -82,9 +82,6 @@ export default function InsurancePage() {
               </div>
             ))}
           </div>
-          <p className="mt-6 text-xs text-grey-500">
-            Final accepted-carrier list pending confirmation with the billing team and Dr. Dada.
-          </p>
         </div>
       </section>
 
