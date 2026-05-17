@@ -6,6 +6,11 @@ node_modules
 # next
 .next
 out
+next-env.d.ts.bak
+
+# typescript
+*.tsbuildinfo
+tsconfig.tsbuildinfo
 
 # production
 build
