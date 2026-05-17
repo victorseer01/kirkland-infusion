@@ -33,7 +33,7 @@ export function PatientStories() {
           title="Where serious medicine meets gentle hands"
         />
 
-        <div className="mt-12 grid gap-10 lg:grid-cols-[1.1fr_1fr] lg:items-center lg:gap-16">
+        <div className="mt-8 grid gap-10 lg:grid-cols-[1.1fr_1fr] lg:items-center lg:gap-16">
           <div className="space-y-5 text-base leading-relaxed text-grey-700 sm:text-lg">
             <p>
               Many of our patients arrive nervous. Some have had difficult experiences in larger hospital infusion suites — long waits, rotating staff, the feeling of being a name on a chart rather than a person. We built Kirkland Specialty Infusion Center as the antidote to that experience.
@@ -74,7 +74,7 @@ export function PatientStories() {
           </div>
         </div>
 
-        <div className="mt-16">
+        <div className="mt-10">
           <p className="eyebrow text-coral">What patients say</p>
           <h3 className="mt-3 text-balance font-display text-2xl text-primary-dark sm:text-3xl">
             Honest stories, gathered with consent
