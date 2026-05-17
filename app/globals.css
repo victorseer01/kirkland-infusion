@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-primary: #1a6f73;
+    --color-primary-light: #4a9b8c;
+    --color-primary-dark: #0f3d47;
+    --color-accent: #4a9b8c;
+    --color-coral: #e07a3d;
+    --color-navy: #0f3d47;
+    --color-ice: #e6f0ef;
+  }
+
+  body {
+    @apply bg-white text-grey-700 antialiased;
+    font-feature-settings: "ss01", "cv11";
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display;
+    color: inherit;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-coral ring-offset-2;
+  }
+}
+
+@layer components {
+  .container-prose {
+    @apply mx-auto w-full max-w-7xl px-6 lg:px-8;
+  }
+
+  .container-narrow {
+    @apply mx-auto w-full max-w-4xl px-6 lg:px-8;
+  }
+
+  .section-y {
+    @apply py-14 sm:py-20;
+  }
+
+  .section-y-lg {
+    @apply py-16 sm:py-24;
+  }
+
+  .eyebrow {
+    @apply font-sans text-xs font-semibold uppercase tracking-[0.18em];
+  }
+
+  .btn-coral {
+    @apply inline-flex items-center justify-center rounded-full bg-coral px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-coral-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-coral focus-visible:ring-offset-2;
+  }
+
+  .btn-outline-light {
+    @apply inline-flex items-center justify-center rounded-full border border-white/40 bg-white/0 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary-dark;
+  }
+
+  .btn-outline-dark {
+    @apply inline-flex items-center justify-center rounded-full border border-primary/30 bg-white px-6 py-3 text-sm font-semibold text-primary-dark transition-colors hover:bg-primary/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2;
+  }
+
+  .card-soft {
+    @apply rounded-2xl border border-grey-200 bg-white p-6 shadow-sm sm:p-8;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+}
