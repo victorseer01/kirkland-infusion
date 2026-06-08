@@ -9,10 +9,10 @@ export function BottomCta() {
         <div>
           <p className="eyebrow text-coral">Ready when you are</p>
           <h2 className="mt-3 text-balance text-3xl text-white sm:text-4xl">
-            Ready to refer? Ready to be seen? We are ready for you.
+            Ready to be seen? Ready to refer? We are ready for you.
           </h2>
           <p className="mt-5 max-w-2xl text-pretty text-base text-ice/90 sm:text-lg">
-            Call us, fax a referral, or send a message and we will respond the same business day.
+            Call us with a question, send a message, or — if you are a physician — fax a referral. We respond the same business day.
           </p>
         </div>
         <div className="space-y-3">

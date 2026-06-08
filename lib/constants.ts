@@ -43,8 +43,8 @@ export const NAV_LINKS: NavLink[] = [
     children: [
       {
         href: "/specialties",
-        label: "Specialties",
-        description: "Eight specialties, one suite",
+        label: "Specialties & Conditions",
+        description: "Multiple specialties, one suite",
       },
       {
         href: "/medications",
@@ -99,11 +99,25 @@ export const THREE_PILLARS = [
   },
 ] as const;
 
+// Conditions are named individually (not lumped under umbrella terms such as
+// "inflammatory arthritis") so a patient can find their specific diagnosis by
+// name. Therapies are grouped under the specialty that uses them; biologics that
+// span specialties are listed under each relevant one.
 export const SPECIALTIES = [
   {
     slug: "rheumatology",
     name: "Rheumatology",
-    body: "Biologic and non-biologic infusions for rheumatoid arthritis, psoriatic arthritis, axial spondyloarthritis, lupus, vasculitis, gout, and other systemic inflammatory diseases.",
+    body: "Biologic and non-biologic infusions for systemic inflammatory and autoimmune disease, administered under physician supervision.",
+    conditions: [
+      "Rheumatoid arthritis",
+      "Psoriatic arthritis",
+      "Ankylosing spondylitis / axial spondyloarthritis",
+      "Lupus (systemic lupus erythematosus)",
+      "Vasculitis",
+      "Gout",
+      "Polymyalgia rheumatica",
+      "Giant cell arteritis",
+    ],
     therapies: [
       "Actemra",
       "Benlysta",
@@ -121,43 +135,70 @@ export const SPECIALTIES = [
   {
     slug: "gastroenterology",
     name: "Gastroenterology",
-    body: "Biologic infusions for Crohn's disease, ulcerative colitis, and other inflammatory bowel disease.",
+    body: "Biologic infusions for inflammatory bowel disease.",
+    conditions: ["Crohn's disease", "Ulcerative colitis"],
     therapies: ["Remicade", "Stelara", "Simponi Aria"],
   },
   {
     slug: "oncology-hematology",
     name: "Oncology / Hematology",
-    body: "Selected supportive care and immunologic infusions including Rituxan for hematologic indications, IVIG (Octagam) for hematologic and immune conditions, and iron infusions for chemotherapy-related and chronic anemia.",
+    body: "Selected supportive-care and immunologic infusions, plus iron for chemotherapy-related and chronic anemia.",
+    conditions: [
+      "Non-Hodgkin lymphoma",
+      "Chronic lymphocytic leukemia",
+      "Immune thrombocytopenia",
+      "Chemotherapy-related and chronic anemia",
+    ],
     therapies: ["Rituxan", "Octagam (IVIG)", "Iron (Venofer)"],
   },
   {
     slug: "dermatology",
     name: "Dermatology",
-    body: "Biologic infusions for severe psoriasis, hidradenitis suppurativa, and other immune-mediated skin disease.",
+    body: "Biologic infusions for immune-mediated skin disease.",
+    conditions: [
+      "Severe plaque psoriasis",
+      "Psoriatic disease",
+      "Hidradenitis suppurativa",
+    ],
     therapies: ["Cosentyx", "Ilumya", "Remicade", "Stelara"],
   },
   {
     slug: "neurology",
-    name: "Neurology",
-    body: "Therapies for multiple sclerosis, neuromyelitis optica spectrum disorder, myasthenia gravis, chronic inflammatory demyelinating polyneuropathy (CIDP), and other neuroinflammatory and neuromuscular conditions.",
+    name: "Neurology / MS",
+    body: "Therapies for neuroinflammatory and neuromuscular conditions.",
+    conditions: [
+      "Multiple sclerosis",
+      "Neuromyelitis optica spectrum disorder",
+      "Myasthenia gravis",
+      "Chronic inflammatory demyelinating polyneuropathy (CIDP)",
+    ],
     therapies: ["Ocrevus", "Uplizna", "Vyvgart", "Octagam (IVIG)"],
   },
   {
     slug: "osteoporosis-bone-health",
     name: "Osteoporosis & Bone Health",
-    body: "Anabolic and antiresorptive bone-building infusions for patients with severe osteoporosis or fracture history. DEXA coordination available.",
+    body: "Anabolic and antiresorptive bone-building infusions, with DEXA coordination.",
+    conditions: [
+      "Severe osteoporosis",
+      "High fracture risk / prior fragility fracture",
+    ],
     therapies: ["Evenity"],
   },
   {
     slug: "allergy-immunology",
     name: "Allergy & Immunology",
-    body: "IVIG (Octagam) for primary and secondary immunodeficiency, and biologic therapies for severe allergic and immunologic disease.",
+    body: "IVIG and biologic therapies for immunodeficiency and immunologic disease.",
+    conditions: [
+      "Primary immunodeficiency",
+      "Secondary immunodeficiency",
+    ],
     therapies: ["Octagam (IVIG)"],
   },
   {
     slug: "endocrinology",
     name: "Endocrinology",
-    body: "Specialty infusions including Tepezza for thyroid eye disease, with full prior authorization and financial advocacy support.",
+    body: "Specialty infusions with full prior authorization and financial advocacy support.",
+    conditions: ["Thyroid eye disease (Graves' ophthalmopathy)"],
     therapies: ["Tepezza"],
   },
 ] as const;
@@ -320,6 +361,78 @@ export const SIX_STEP_PROCESS = [
     number: "06",
     title: "Follow-Up & Compliance",
     body: "We schedule future infusions and send reminders to support adherence and treatment continuity, with a clinical note returned to your office after every visit.",
+  },
+] as const;
+
+// The patient journey is presented as three named stages, not a single
+// timeline. The Pre-Infusion stage begins when the referral is received (not at
+// "recognize symptoms" — that is the referring physician's domain), and the
+// nurse-practitioner visit is sequenced AFTER prior authorization is confirmed.
+export const PATIENT_JOURNEY = [
+  {
+    stage: "01",
+    name: "Pre-Infusion",
+    lede: "Your journey with us begins the moment your physician's referral arrives — not before. From there, we do the work so your first infusion is already paid for, scheduled, and safe by the time you sit down.",
+    points: [
+      {
+        title: "We receive and acknowledge your referral",
+        body: "When your referring physician sends us your referral, we confirm receipt and review the documents they send — your diagnosis, the medication ordered, and your recent records.",
+      },
+      {
+        title: "We investigate your benefits and start prior authorization",
+        body: "Our team begins your insurance benefits investigation and starts the prior authorization right away. You will not need to call your insurance company yourself.",
+      },
+      {
+        title: "We call you and book your intake assessment",
+        body: "We call you to introduce ourselves, answer your first questions, and schedule your intake. You will always know what happens next.",
+      },
+      {
+        title: "We sign you up for financial assistance",
+        body: "Co-pay assistance cards, foundation grants, and manufacturer sponsorship are part of this stage — surfaced as a benefit you receive, not an afterthought. Many of our patients pay little or nothing out of pocket.",
+      },
+      {
+        title: "Your nurse-practitioner pre-infusion visit — after coverage is confirmed",
+        body: "Once prior authorization is confirmed, so we know your medicine will be paid for, you meet with our nurse practitioner. This visit confirms you are clinically ready with no risk of a reaction, and re-confirms what your referring physician explained in case anything slipped your mind between visits.",
+      },
+    ],
+  },
+  {
+    stage: "02",
+    name: "Infusion Day",
+    lede: "On the day itself, your only job is to be comfortable. Here is what to expect so nothing is a surprise.",
+    points: [
+      {
+        title: "What to bring, and to drink plenty of water",
+        body: "Bring your insurance card, a photo ID, and a list of your current medications. Drink plenty of water beforehand — well-hydrated veins make starting your IV easier. Eat a normal meal unless told otherwise.",
+      },
+      {
+        title: "A calm, private setting",
+        body: "Our suite is calm and unhurried — patients read, work on a device, watch something, or simply rest in a comfortable chair. This is not a clinical-cold room, and you will not be one of a crowd.",
+      },
+      {
+        title: "Who you will see, and how long it takes",
+        body: "A licensed nurse starts your IV and stays with you, and a provider is always on site throughout. Most infusions take between thirty minutes and a few hours; we tell you exactly how long to plan for when we schedule you.",
+      },
+    ],
+  },
+  {
+    stage: "03",
+    name: "Post-Infusion Follow-Up",
+    lede: "Your care does not end when the IV comes out. We stay with you after you go home, and we keep the cycle running smoothly to the next visit.",
+    points: [
+      {
+        title: "A free nurse check-in by phone",
+        body: "On the day of, or the day after, your infusion, one of our nurses calls you — free of charge — to check on how you are feeling. If anything is off, we want to hear about it early.",
+      },
+      {
+        title: "We close the loop with your physician",
+        body: "We send a note to your referring physician confirming you received your medication, how you tolerated it, and when you are scheduled next. Your whole care team stays informed.",
+      },
+      {
+        title: "A managed, repeating cycle",
+        body: "Your follow-up flows straight back into preparing for your next infusion — coverage re-checked, appointment booked, reminders sent. This is an ongoing, managed cycle, not a one-off, so you are never left wondering what comes next.",
+      },
+    ],
   },
 ] as const;
 

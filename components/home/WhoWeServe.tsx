@@ -73,14 +73,17 @@ export function WhoWeServe() {
         <div className="mt-10 flex flex-col items-start justify-between gap-4 rounded-2xl border border-grey-200 bg-white p-7 shadow-sm sm:flex-row sm:items-center sm:p-8">
           <div>
             <p className="font-display text-lg text-primary-dark sm:text-xl">
-              One referral. Zero hassle. Your patient is in expert hands.
+              Were you told you have a condition, or prescribed a medicine?
             </p>
             <p className="mt-1 text-sm text-grey-700">
-              Send the referral — we handle prior auth, financial advocacy, labs, scheduling, and follow-up.
+              Find your condition and your therapy by name — and see exactly what to expect at every stage.{" "}
+              <Link href="/physicians#refer" className="font-semibold text-primary-dark hover:text-coral">
+                Referring physicians, start here.
+              </Link>
             </p>
           </div>
-          <Link href="/physicians#refer" className="btn-coral shrink-0">
-            Send a Referral
+          <Link href="/specialties" className="btn-coral shrink-0">
+            Find your condition
             <ArrowRight className="h-4 w-4" aria-hidden />
           </Link>
         </div>

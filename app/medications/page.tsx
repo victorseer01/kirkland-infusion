@@ -1,13 +1,13 @@
 import { buildMetadata } from "@/lib/metadata";
 import { PageHero } from "@/components/shared/PageHero";
 import { SectionHeading } from "@/components/shared/SectionHeading";
-import { MEDICATIONS, CASH_PAY_SERVICES, SITE } from "@/lib/constants";
+import { MEDICATIONS, CASH_PAY_SERVICES, SPECIALTIES, SITE } from "@/lib/constants";
 import { Info } from "lucide-react";
 
 export const metadata = buildMetadata({
   title: "Medications & Therapies",
   description:
-    "Our specialty infusion formulary covers the most commonly prescribed biologic, biosimilar, and immunologic therapies — plus cash-pay wellness services.",
+    "Find your therapy under the specialty that uses it — rheumatology, neurology/MS, gastroenterology, dermatology, oncology/hematology, osteoporosis, allergy and immunology, and endocrinology — plus our full A–Z formulary and cash-pay wellness services.",
   path: "/medications",
 });
 
@@ -16,16 +16,46 @@ export default function MedicationsPage() {
     <>
       <PageHero
         eyebrow="Medications & therapies"
-        title="Our specialty formulary and cash-pay services"
-        description="All infusions are administered under physician supervision, with full pre-infusion safety review and post-infusion communication back to the referring office."
+        title="Do we have your medicine? Find it under your specialty"
+        description="Therapies are grouped under the specialty that uses them, so you can quickly find the one your physician prescribed. Some biologics treat conditions across more than one specialty, so you will see them listed under each. All infusions are administered under physician supervision."
       />
 
       <section className="section-y-lg bg-white">
         <div className="container-prose">
           <SectionHeading
-            eyebrow="Specialty infusion drugs"
-            title="A comprehensive specialty formulary"
-            description="The most commonly prescribed biologic, biosimilar, and immunologic therapies — each administered by licensed clinical staff with a supervising physician present in the suite."
+            eyebrow="Therapies by specialty"
+            title="Find your therapy under the specialty that uses it"
+            description="A patient referred by their neurologist sees MS and neurology therapies here; a patient referred by their oncologist sees oncology therapies. Biologics that span specialties appear under each relevant one."
+          />
+
+          <div className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-grey-200 bg-grey-200 md:grid-cols-2">
+            {SPECIALTIES.map((s) => (
+              <article key={s.slug} className="bg-white p-7 sm:p-8">
+                <h3 className="font-display text-xl text-primary-dark">
+                  {s.name}
+                </h3>
+                <ul className="mt-4 flex flex-wrap gap-2">
+                  {s.therapies.map((t) => (
+                    <li
+                      key={t}
+                      className="rounded-full border border-primary/15 bg-primary/5 px-3 py-1.5 text-xs font-medium text-primary-dark sm:text-sm"
+                    >
+                      {t}
+                    </li>
+                  ))}
+                </ul>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section-y bg-grey-50">
+        <div className="container-prose">
+          <SectionHeading
+            eyebrow="Complete formulary (A–Z)"
+            title="Every therapy we administer, with its indication"
+            description="The full list of biologic, biosimilar, and immunologic therapies — each administered by licensed clinical staff with a supervising provider present in the suite."
           />
 
           <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -53,7 +83,7 @@ export default function MedicationsPage() {
         </div>
       </section>
 
-      <section className="section-y bg-grey-50">
+      <section className="section-y bg-white">
         <div className="container-prose">
           <SectionHeading
             eyebrow="Cash-pay wellness"

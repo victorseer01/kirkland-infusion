@@ -35,7 +35,7 @@ export function Navbar() {
           scrolled && "shadow-lg backdrop-blur-md",
         )}
       >
-        <div className="container-prose flex h-16 items-center justify-between gap-4 lg:h-20">
+        <div className="container-prose flex h-20 items-center justify-between gap-4 lg:h-28">
           <Logo variant="light" />
 
           <div className="flex items-center gap-3 lg:gap-6">

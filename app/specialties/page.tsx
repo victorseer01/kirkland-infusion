@@ -6,9 +6,9 @@ import { SPECIALTIES, SITE } from "@/lib/constants";
 import { Phone, ArrowRight } from "lucide-react";
 
 export const metadata = buildMetadata({
-  title: "Specialties Served",
+  title: "Specialties & Conditions",
   description:
-    "Our formulary and clinical expertise span eight medical specialties. Rheumatology, gastroenterology, oncology/hematology, dermatology, neurology, osteoporosis, allergy and immunology, endocrinology.",
+    "A multi-specialty infusion center. Find your condition by name and the therapy your physician prescribed — across rheumatology, neurology/MS, gastroenterology, dermatology, oncology/hematology, osteoporosis, allergy and immunology, and endocrinology.",
   path: "/specialties",
 });
 
@@ -16,9 +16,9 @@ export default function SpecialtiesPage() {
   return (
     <>
       <PageHero
-        eyebrow="Specialties served"
-        title="A specialty infusion center, in the truest sense of the word"
-        description="Whether your patient needs a biologic for rheumatoid arthritis, an investigational therapy for thyroid eye disease, an IVIG infusion for an immunodeficiency, or a bone-building agent for severe osteoporosis, we are equipped, trained, and ready."
+        eyebrow="Specialties & conditions"
+        title="Find your condition by name, and the therapy you were prescribed"
+        description="We are a multi-specialty infusion center. Whether you were told you have rheumatoid arthritis, Crohn's disease, multiple sclerosis, severe osteoporosis, thyroid eye disease, or another condition below, you can see here exactly which specialty cares for it and which therapies we offer."
       />
 
       <section className="section-y-lg bg-white">
@@ -29,12 +29,27 @@ export default function SpecialtiesPage() {
                 <h2 className="font-display text-2xl text-primary-dark">
                   {s.name}
                 </h2>
-                <p className="mt-3 flex-1 text-sm leading-relaxed text-grey-700 sm:text-base">
+                <p className="mt-3 text-sm leading-relaxed text-grey-700 sm:text-base">
                   {s.body}
                 </p>
                 <div className="mt-5">
                   <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-primary">
-                    Featured therapies
+                    Conditions we treat
+                  </p>
+                  <ul className="mt-3 flex flex-1 flex-wrap content-start gap-2">
+                    {s.conditions.map((c) => (
+                      <li
+                        key={c}
+                        className="rounded-full border border-primary/15 bg-primary/5 px-3 py-1.5 text-xs font-medium text-primary-dark"
+                      >
+                        {c}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="mt-5 border-t border-grey-200 pt-5">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-primary">
+                    Therapies we offer
                   </p>
                   <p className="mt-2 text-sm text-grey-700">
                     {s.therapies.join(" · ")}

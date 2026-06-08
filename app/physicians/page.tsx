@@ -56,17 +56,62 @@ const INCLUDE_ITEMS = [
   "Preferred contact information for clinical communication",
 ];
 
+const WHITE_GLOVE = [
+  {
+    title: "We perform the prior authorization on your behalf",
+    body: "Documentation, peer-to-peer reviews, and appeals are handled by our team — not by your office. We do not schedule the patient until coverage is confirmed.",
+  },
+  {
+    title: "Your patient gets a nurse-practitioner pre-infusion visit",
+    body: "Any remaining questions about side effects or what to expect are answered at that visit — so your office is not called to re-explain what you already discussed.",
+  },
+  {
+    title: "Expert infusion nurses",
+    body: "Experienced clinical staff who do this every day, in a calm, private setting built for long-term infusion care.",
+  },
+  {
+    title: "A provider is always on site",
+    body: "A nurse practitioner or physician is present in the suite for every infusion — not necessarily a rheumatologist, but always a provider. Your patient is never in a chair without clinical oversight.",
+  },
+];
+
 export default function PhysiciansPage() {
   return (
     <>
       <StickyCallBar variant="refer" />
       <PageHero
         eyebrow="For referring physicians"
-        title="One referral. Zero hassle. Your patient is in expert hands."
-        description="You spend your time making clinical decisions. We spend ours making sure those decisions translate into infusions that actually happen — on time, on schedule, with full insurance coverage, and with the clinical communication you need."
+        title="A white-glove consult service for your referred patients"
+        description="You spend your time making clinical decisions. We spend ours making sure those decisions translate into infusions that actually happen — on time, with full insurance coverage, and with the clinical communication you need. We take the administrative burden off your office and keep you informed at every stage."
       />
 
       <section className="section-y-lg bg-white">
+        <div className="container-prose">
+          <SectionHeading
+            eyebrow="The white-glove promise"
+            title="What we do for your office, on every referral"
+            description="One referral from you sets all of this in motion. You send the referral; we do the rest."
+          />
+
+          <div className="mt-12 grid gap-4 sm:grid-cols-2">
+            {WHITE_GLOVE.map((item) => (
+              <article
+                key={item.title}
+                className="rounded-2xl border border-grey-200 bg-white p-7 shadow-sm"
+              >
+                <h3 className="font-display text-lg text-primary-dark">
+                  {item.title}
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-grey-700 sm:text-base">
+                  {item.body}
+                </p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section-y bg-grey-50">
         <div className="container-prose">
           <SectionHeading
             eyebrow="Why refer to us"
@@ -89,7 +134,7 @@ export default function PhysiciansPage() {
         </div>
       </section>
 
-      <section className="bg-grey-50 pb-14 pt-14 sm:pt-20" id="process">
+      <section className="bg-white pb-14 pt-14 sm:pt-20" id="process">
         <div className="container-prose">
           <SectionHeading
             eyebrow="Our six-step process"
@@ -109,7 +154,7 @@ export default function PhysiciansPage() {
         </div>
       </section>
 
-      <section className="section-y bg-white">
+      <section className="section-y bg-grey-50">
         <div className="container-prose">
           <SectionHeading
             eyebrow="How to refer a patient"

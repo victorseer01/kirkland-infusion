@@ -12,20 +12,26 @@ export function Hero() {
         <div className="mx-auto max-w-3xl text-center">
           <p className="eyebrow text-coral">Kirkland, Washington</p>
           <h1 className="mt-4 text-balance text-[1.75rem] leading-tight text-white sm:text-5xl lg:text-6xl">
-            The infusion partner your patients deserve
+            A warmer, calmer kind of specialty infusion care
           </h1>
           <p className="mx-auto mt-5 max-w-2xl text-pretty text-base text-ice/90 sm:text-lg">
-            Physician-supervised infusions. Financial advocacy for every patient. Seamless communication back to your referring office. Welcome to a different kind of infusion experience in Kirkland, Washington.
+            If your doctor has referred you for an infusion, you are in caring, capable hands. Physician-supervised infusions, financial advocacy so cost is rarely the barrier, and a free nurse check-in after you go home — with seamless communication back to your physician&apos;s office.
           </p>
           <div className="mt-8 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
-            <Link href="/physicians#refer" className="btn-coral">
-              Refer a Patient
+            <Link href="/patients" className="btn-coral">
+              See what to expect
               <ArrowRight className="h-4 w-4" aria-hidden />
             </Link>
             <a href={`tel:${SITE.phoneTel}`} className="btn-outline-light">
               Book an appointment
             </a>
           </div>
+          <p className="mt-6 text-sm text-ice/85">
+            Are you a referring physician?{" "}
+            <Link href="/physicians#refer" className="font-semibold text-white underline-offset-4 hover:text-coral hover:underline">
+              Refer a patient
+            </Link>
+          </p>
           <p className="mt-10 text-sm font-semibold uppercase tracking-[0.18em] text-ice/85">
             {SITE.tagline}
           </p>
@@ -35,7 +41,7 @@ export function Hero() {
       <div className="relative border-t border-white/10 bg-primary-dark/70 backdrop-blur-sm">
         <div className="container-prose flex flex-col items-start gap-2 py-5 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-sm text-ice/80">
-            One referral. Zero hassle. Your patient is in expert hands.
+            Specialty infusions with a provider always on site — and someone in your corner from referral to recovery.
           </p>
           <a
             href={`tel:${SITE.phoneTel}`}
