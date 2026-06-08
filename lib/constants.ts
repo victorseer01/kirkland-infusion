@@ -37,9 +37,9 @@ export type NavLink = {
 };
 
 export const NAV_LINKS: NavLink[] = [
-  { href: "/about", label: "About" },
+  { href: "/about", label: "ABOUT US" },
   {
-    label: "Services",
+    label: "SERVICES",
     children: [
       {
         href: "/specialties",
@@ -54,7 +54,7 @@ export const NAV_LINKS: NavLink[] = [
     ],
   },
   {
-    label: "For Patients",
+    label: "FOR PATIENTS",
     children: [
       {
         href: "/patients",
@@ -73,8 +73,8 @@ export const NAV_LINKS: NavLink[] = [
       },
     ],
   },
-  { href: "/physicians", label: "For Physicians" },
-  { href: "/contact", label: "Contact" },
+  { href: "/physicians", label: "FOR PHYSICIANS" },
+  { href: "/contact", label: "CONTACT" },
 ];
 
 export const ALL_ROUTES: string[] = [

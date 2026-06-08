@@ -3,12 +3,20 @@ import { MapPin, Phone, Printer, Mail, Clock } from "lucide-react";
 import { NAV_LINKS, SITE } from "@/lib/constants";
 import { Logo } from "./Logo";
 
+// The main nav labels are styled ALL CAPS; the footer uses standard case.
+// Convert only fully-uppercase labels so mixed-case ones (e.g. "FAQs") are
+// left intact.
+const toStandardCase = (label: string) =>
+  label === label.toUpperCase()
+    ? label.toLowerCase().replace(/\b\w/g, (c) => c.toUpperCase())
+    : label;
+
 const FOOTER_LINKS: { href: string; label: string }[] = [
   { href: "/", label: "Home" },
   ...NAV_LINKS.flatMap((link) =>
     link.href
-      ? [{ href: link.href, label: link.label }]
-      : link.children?.map((c) => ({ href: c.href, label: c.label })) ?? [],
+      ? [{ href: link.href, label: toStandardCase(link.label) }]
+      : link.children?.map((c) => ({ href: c.href, label: toStandardCase(c.label) })) ?? [],
   ),
 ];
 
