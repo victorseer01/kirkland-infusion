@@ -1,8 +1,9 @@
+import Link from "next/link";
 import { buildMetadata } from "@/lib/metadata";
 import { PageHero } from "@/components/shared/PageHero";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { SITE } from "@/lib/constants";
-import { UserRound } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 export const metadata = buildMetadata({
   title: "About Us",
@@ -32,15 +33,6 @@ const DIFFERENCES = [
     title: "We Keep Patients on Schedule",
     body: "We book the next infusion before the patient leaves the chair. We send reminders. We re-verify insurance well in advance. We anticipate prior authorization renewals before they expire. Adherence is the single biggest determinant of long-term outcomes in chronic immunologic and inflammatory disease — and we treat it that way.",
   },
-];
-
-const TEAM_PLACEHOLDERS = [
-  { role: "Lead Physician" },
-  { role: "Supervising Physician" },
-  { role: "Nurse Manager" },
-  { role: "Clinical Pharmacist" },
-  { role: "Financial Counselor" },
-  { role: "Patient Intake Coordinator" },
 ];
 
 export default function AboutPage() {
@@ -95,29 +87,17 @@ export default function AboutPage() {
       </section>
 
       <section className="section-y bg-white">
-        <div className="container-prose">
+        <div className="container-prose grid items-center gap-8 lg:grid-cols-[1.4fr_1fr]">
           <SectionHeading
             eyebrow="Our team"
-            title="Experienced infusion nurses, supervised by board-certified physicians"
-            description="Detailed bios for each physician and clinical leader will live on this page with professional photographs. The placeholders below show the roles we expect to publish."
+            title="Experienced infusion nurses, supervised by physicians"
+            description="A licensed provider is present in the suite for every infusion. Meet the providers and infusion nurses who will care for you — the same faces you will see visit after visit."
           />
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {TEAM_PLACEHOLDERS.map((member, i) => (
-              <article
-                key={i}
-                className="card-soft flex flex-col items-start"
-              >
-                <span className="flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 text-primary">
-                  <UserRound className="h-6 w-6" aria-hidden />
-                </span>
-                <h3 className="mt-5 font-display text-lg text-primary-dark">
-                  {member.role}
-                </h3>
-                <p className="mt-2 text-sm text-grey-500">
-                  Bio and photograph pending — to be supplied by Dr. Dada and the SGSL ops team.
-                </p>
-              </article>
-            ))}
+          <div>
+            <Link href="/team" className="btn-coral">
+              Meet our team
+              <ArrowRight className="h-4 w-4" aria-hidden />
+            </Link>
           </div>
         </div>
       </section>

@@ -37,7 +37,21 @@ export type NavLink = {
 };
 
 export const NAV_LINKS: NavLink[] = [
-  { href: "/about", label: "ABOUT US" },
+  {
+    label: "ABOUT US",
+    children: [
+      {
+        href: "/about",
+        label: "About Us",
+        description: "Our story and standards",
+      },
+      {
+        href: "/team",
+        label: "Our Team",
+        description: "Meet your care team",
+      },
+    ],
+  },
   {
     label: "SERVICES",
     children: [
@@ -436,68 +450,234 @@ export const PATIENT_JOURNEY = [
   },
 ] as const;
 
-export const FAQS = [
+// FAQ content is client-approved copy (KSI FAQS.md), grouped into categories.
+// Each answer is an intro paragraph (use \n\n for multiple), with optional
+// bullet points and an optional closing note.
+export type FaqItem = {
+  q: string;
+  a: string;
+  bullets?: readonly string[];
+  note?: string;
+};
+
+export type FaqCategory = {
+  name: string;
+  blurb?: string;
+  intro?: string;
+  items: readonly FaqItem[];
+};
+
+export const FAQ_CATEGORIES: readonly FaqCategory[] = [
   {
-    q: "What is an infusion?",
-    a: "An infusion is the administration of a medication directly into your bloodstream through a small intravenous line (IV) placed in your arm. Many specialty medications — particularly biologic therapies for autoimmune and inflammatory disease, certain cancer therapies, immune globulin, bone-building agents, and others — work best or only when given by infusion.",
+    name: "General",
+    blurb: "About Kirkland Specialty Infusion Center",
+    items: [
+      {
+        q: "What is Kirkland Specialty Infusion Center?",
+        a: "We are a physician-led, outpatient specialty infusion suite located in Kirkland, Washington, affiliated with Evergreen Rheumatology — one of the Pacific Northwest's most respected rheumatology practices, with more than 20 years of specialty care.\n\nA licensed provider is present in the suite for every infusion — not nearby, not on call, but in the room.",
+      },
+      {
+        q: "What is infusion therapy?",
+        a: "Infusion therapy delivers medication directly into your bloodstream through an intravenous (IV) line. It is used when a medication cannot be taken by mouth effectively, works better when delivered by IV, or needs to be given with close clinical monitoring for your safety.",
+      },
+      {
+        q: "Why would my doctor refer me for infusion therapy?",
+        a: "Your physician may refer you for infusion therapy when:",
+        bullets: [
+          "Your condition requires a biologic or specialty medication only available by IV",
+          "Oral medications have not provided enough relief",
+          "The medication requires monitoring during administration",
+          "Faster or more reliable absorption is needed for your treatment to work",
+        ],
+        note: "Your doctor chose this because it is the right treatment for you — and we will make the experience as smooth as possible.",
+      },
+      {
+        q: "What conditions and specialties does KSIC serve?",
+        a: "We welcome referrals from a wide range of specialties, including:",
+        bullets: [
+          "Rheumatology (RA, psoriatic arthritis, lupus, gout, ankylosing spondylitis)",
+          "Gastroenterology (Crohn's disease, ulcerative colitis)",
+          "Dermatology",
+          "Neurology & MS",
+          "Osteoporosis & Metabolic Bone Disease",
+          "Allergy & Immunology (IVIG)",
+          "Endocrinology",
+        ],
+      },
+      {
+        q: "What medications does KSIC offer?",
+        a: "Our formulary includes more than 19 therapies. Some examples: Actemra, Benlysta, Cimzia, Cosentyx, Evenity, Ilaris, Ilumya, Krystexxa, Octagam (IVIG), Orencia, Pemgarda, Prolia, Remicade, Rituxan, Simponi Aria, Stelara, Tepezza, and others. Your physician will prescribe the right therapy for your diagnosis.",
+      },
+      {
+        q: "How is Kirkland Specialty Infusion Center different from a hospital infusion suite?",
+        a: "Several meaningful ways:",
+        bullets: [
+          "A physician is in the suite during every infusion — this is not the industry standard, it is ours",
+          "Our suite is calm and private — not a busy hospital floor with rotating staff",
+          "You will see the same faces visit after visit — staff who know your name, your treatment, and the small details that make your visit easier",
+          "Our financial advocacy team pursues every available assistance program so cost is rarely the barrier",
+          "We send a full clinical note back to your referring physician after every infusion",
+        ],
+      },
+    ],
   },
   {
-    q: "Is the infusion supervised by a doctor?",
-    a: "Yes. Every infusion administered at our center is supervised in real time by a physician or licensed provider who is physically present in the building. This is not the standard at most outpatient infusion centers, and it is one of the reasons referring physicians send their patients to us.",
+    name: "Billing & Insurance",
+    blurb: "Cost should not stand between you and treatment",
+    intro:
+      "Our financial advocacy program exists because we have watched too many patients delay or decline treatment out of fear of the bill. We will not let that happen if there is any way to prevent it.",
+    items: [
+      {
+        q: "Does KSIC accept my insurance?",
+        a: "We accept most major commercial insurance plans, Medicare, and many Medicare Advantage plans, including Premera Blue Cross, Regence BlueShield, Aetna, Cigna, UnitedHealthcare, Kaiser Permanente PPO, and Tricare, among others.\n\nCall us with your insurance card in hand and we will give you a clear answer for your specific plan and medication before you commit to anything.",
+      },
+      {
+        q: "Will my insurance cover my infusion therapy?",
+        a: "Most specialty infusion medications are covered by commercial insurance and Medicare. Our team handles the prior authorization process for you — including any appeals, peer-to-peer reviews, and supporting documentation. You should not need to call your insurance company yourself.",
+      },
+      {
+        q: "What if I cannot afford the copay or out-of-pocket costs?",
+        a: "This is exactly what our financial advocacy team is here for. Before your first infusion, we will:",
+        bullets: [
+          "Estimate your out-of-pocket costs in writing",
+          "Apply for manufacturer copay assistance programs",
+          "Apply for patient assistance programs (PAPs) when applicable",
+          "Identify and apply for foundation grants from organizations like the HealthWell Foundation, Patient Advocate Foundation, and Good Days",
+        ],
+        note: "Many of our patients pay little or nothing out of pocket. Before you decline a treatment for financial reasons, please let us run the numbers.",
+      },
+      {
+        q: "Do I need a referral to be seen?",
+        a: "Yes. Specialty infusion medications require a physician's prescription and referral. If your doctor has already referred you, our team will contact you within one to two business days of receiving that referral. If you believe you need infusion therapy but have not yet spoken to your doctor, please start there.",
+      },
+      {
+        q: "What if my bill looks wrong?",
+        a: "Call us immediately at (425) 453-0766 ext. 105. We will review the charges with you and contact your insurance company on your behalf if needed. You will not have to navigate a billing dispute alone.",
+      },
+    ],
   },
   {
-    q: "How long will my infusion take?",
-    a: "It depends on the medication. Some infusions take thirty to sixty minutes. Others take three to four hours. We will tell you exactly how long to plan for when we schedule your appointment, and we will not surprise you.",
+    name: "Getting Scheduled",
+    blurb: "From referral to your first appointment",
+    items: [
+      {
+        q: "What happens after my doctor sends a referral?",
+        a: "Once we receive your referral, a member of our team will call you within one to two business days. We will introduce ourselves, confirm your insurance, answer your initial questions, and schedule your first infusion at a time that works for you. We also handle prior authorization and work with your physician to confirm any required labs or screening before your first visit.",
+      },
+      {
+        q: "How long will it take to get scheduled?",
+        a: "Scheduling timelines depend on insurance prior authorization, which varies by plan and medication. Our team manages this process for you and works to get you scheduled as quickly as approvals allow. We will keep you informed throughout.",
+      },
+      {
+        q: "How often will I need to come in?",
+        a: "It depends on your medication. Some infusions are given every few weeks, others every few months. Your physician will outline the schedule, and our team will coordinate every appointment from there.",
+      },
+    ],
   },
   {
-    q: "Will it hurt?",
-    a: "You will feel a small pinch when the IV is started, similar to a routine blood draw. After the IV is in, the infusion itself is not painful. Most patients read, work on a laptop, watch a show, or sleep through their infusion.",
+    name: "Before Your Visit",
+    blurb: "How to prepare for your infusion",
+    items: [
+      {
+        q: "How do I prepare for my infusion?",
+        a: "For most infusions, the preparation is simple:",
+        bullets: [
+          "Eat a normal meal beforehand — unless your physician has told you otherwise",
+          "Continue your regular medications unless specifically told to hold one",
+          "Drink water and stay well hydrated",
+          "Wear comfortable, loose clothing with easy access to one arm",
+          "Bring something to keep you occupied — a book, tablet, headphones, or a show",
+          "Bring your insurance card, a photo ID, and a list of current medications and supplements",
+        ],
+        note: "Arrive about 15 minutes before your scheduled time. Your care team will give you any medication-specific instructions before your appointment.",
+      },
+      {
+        q: "What is a loading dose?",
+        a: "Some medications start with a loading phase — a higher or more frequent initial dose to help the medication reach a therapeutic level in your body more quickly. After the loading period, you transition to a regular maintenance schedule. Your care team will explain what to expect for your specific therapy.",
+      },
+    ],
   },
   {
-    q: "Is there parking?",
-    a: "Yes. Free parking is available on-site at 12911 120th Avenue N.E., Suite C-80.",
+    name: "During Your Infusion",
+    blurb: "What to expect in the chair",
+    items: [
+      {
+        q: "Will my infusion hurt?",
+        a: "The infusion itself is not painful. When your nurse places the IV catheter, you may feel a brief pinch — similar to having blood drawn. After that, the medication is delivered slowly and comfortably over a set period of time. Most patients read, watch something, or simply relax.",
+      },
+      {
+        q: "How big is the needle?",
+        a: "Very small — comparable to those used in children's hospitals. Your nurse will take every care to make placement quick and comfortable.",
+      },
+      {
+        q: "Where is the IV placed?",
+        a: "Typically in the arm. Your nurse will find the most comfortable and accessible site for you.",
+      },
+      {
+        q: "How long does an infusion take?",
+        a: "It depends on the medication. Some infusions take 15 to 30 minutes; others take two to four hours. We will tell you exactly how long to expect when we schedule your appointment. Here are a few examples:",
+        bullets: [
+          "Prolia: ~15 minutes",
+          "Cimzia or Simponi Aria: 30–45 minutes",
+          "Orencia or Benlysta: 45 min–1.5 hours",
+          "Remicade: ~2 hours",
+          "Krystexxa: ~2 hours + 1-hour observation",
+          "Rituxan or IVIG: 3–4+ hours",
+        ],
+      },
+      {
+        q: "Who will be supervising my infusion?",
+        a: "A licensed registered nurse will administer your infusion. A physician or supervising provider will be present in the suite throughout your visit — available for questions, concerns, or any clinical decisions that arise. This is not standard practice at most infusion centers. It is standard practice here.",
+      },
+      {
+        q: "Can I use the restroom during my infusion?",
+        a: "Yes. Let your nurse know and the infusion can be paused. Depending on your medication, your nurse may assist you.",
+      },
+      {
+        q: "Can I bring someone with me?",
+        a: "Yes. You are welcome to bring one companion. Just let us know in advance so we can accommodate.",
+      },
+      {
+        q: "What if I have a reaction during my infusion?",
+        a: "Infusion reactions can occur, though they are uncommon. Because a physician is in the suite for every infusion, we are prepared to respond immediately. Your nurse monitors you throughout your visit, and our team is trained to manage reactions quickly and calmly. Your safety is why the physician is always on site.",
+      },
+      {
+        q: "What are the possible side effects?",
+        a: "Side effects vary by medication. Common ones may include:",
+        bullets: [
+          "Fatigue or mild tiredness after the infusion",
+          "Mild headache",
+          "Nausea",
+          "Brief discomfort at the IV site",
+          "Mild infusion-related reactions during administration",
+        ],
+        note: "Your care team will review the risks specific to your medication before you begin and will monitor you closely throughout your visit.",
+      },
+    ],
   },
   {
-    q: "Can I drive myself home?",
-    a: "For most medications, yes. A small number of infusions require pre-medication that can make you drowsy. We will tell you in advance if you should arrange a ride.",
+    name: "After Your Infusion",
+    blurb: "Aftercare and follow-up",
+    items: [
+      {
+        q: "Can I drive myself home?",
+        a: "Most patients drive themselves home without any difficulty. Your physician will let you know if there are any restrictions based on your specific medication. If you are receiving a medication that may cause drowsiness for the first few visits, we recommend having someone with you.",
+      },
+      {
+        q: "What happens after my infusion is done?",
+        a: "We will remove your IV, check your vital signs one final time, and review any aftercare instructions specific to your medication. We will also schedule your next appointment before you leave.\n\nWe then send a full clinical note to your referring physician's office confirming that you received your medication, how you tolerated it, and when you are scheduled next. Your physician will know everything that happened during your visit.",
+      },
+      {
+        q: "What if I feel unwell after I get home?",
+        a: "Call us at (425) 453-0766 ext. 105. For any medical emergency, call 911 or go to the nearest emergency department. We also provide a nurse check-in call after your first infusion — so someone from our team will already be in touch.",
+      },
+      {
+        q: "What if I need to cancel or reschedule?",
+        a: "Please give us as much notice as possible — ideally 24 hours or more. This allows us to offer your slot to another patient and avoids the significant preparation work (nurse scheduling, insurance authorization, medication preparation) that happens in advance of every appointment. Call us at (425) 453-0766 ext. 105 and we will find a new time that works for you.",
+      },
+    ],
   },
-  {
-    q: "What if I have a reaction to the medication?",
-    a: "Infusion reactions are uncommon and almost always mild. Our staff is trained to recognize and manage reactions immediately, and a physician is always present in the suite. We have the medications, equipment, and clinical expertise to respond to any reaction safely.",
-  },
-  {
-    q: "Can I eat before my infusion?",
-    a: "Yes. Eat a normal meal before you arrive unless your physician has specifically told you otherwise.",
-  },
-  {
-    q: "Should I take my regular medications on infusion day?",
-    a: "Yes, continue your regular medications unless your physician or our team has specifically told you to hold one.",
-  },
-  {
-    q: "What if I am sick on the day of my infusion?",
-    a: "Call us. Most infusions should be postponed if you have a fever or active infection. We would rather reschedule you for next week than treat you while you are unwell.",
-  },
-  {
-    q: "Will my insurance cover this?",
-    a: "Most major commercial insurance plans and Medicare cover specialty infusion therapies when they are medically necessary and prior-authorized. Our financial team will verify your coverage and out-of-pocket cost before your first infusion, in writing.",
-  },
-  {
-    q: "What if I cannot afford the copay?",
-    a: "We will help. Our financial advocacy team applies for manufacturer copay assistance, patient assistance programs, and foundation grants for any patient who needs help. Many of our patients pay little or nothing out of pocket.",
-  },
-  {
-    q: "Do I need a referral?",
-    a: "For specialty infusion medications, yes — you will need a referral from your treating physician. For our cash-pay wellness services (B12, vitamin D, Myers Cocktail, iron, joint injections, PRP), a referral is not required, though we recommend discussing with your physician.",
-  },
-  {
-    q: "Can my family or a friend come with me?",
-    a: "Yes. You are welcome to bring one companion to your infusion. Many patients prefer to be alone or to have one trusted person along.",
-  },
-  {
-    q: "How do I get started?",
-    a: "If you are a patient: ask your physician to send us a referral by fax to (425) 533-2540 or by phone at (425) 453-0766 ext. 105. If you are a physician: send the referral and we will take it from there.",
-  },
-] as const;
+];
 
 export const WHY_REFER = [
   {
@@ -529,3 +709,183 @@ export const CONTACT_REASONS = [
   { value: "referral", label: "Refer a patient" },
   { value: "other", label: "Other" },
 ] as const;
+
+// Team members for the /team page, in display order. Photos live at
+// /staff/<slug>.jpg; the gallery falls back to an initials avatar until a real
+// photograph is supplied. `bio` is an array of paragraphs. `badge` shows a small
+// status pill (e.g. "Incoming"). Members are grouped by consecutive `category`.
+export type TeamMember = {
+  slug: string;
+  name: string;
+  credentials?: string;
+  role: string;
+  category: string;
+  badge?: string;
+  photo: string;
+  bio: readonly string[];
+};
+
+export const TEAM: readonly TeamMember[] = [
+  {
+    slug: "arinola-dada",
+    name: "Arinola Dada",
+    credentials: "MD, FACR",
+    role: "Rheumatologist",
+    category: "Providers",
+    photo: "/staff/arinola-dada.jpg",
+    bio: [
+      "Dr. Arinola Dada is a board-certified rheumatologist with more than 20 years of experience caring for patients with complex autoimmune and inflammatory conditions in the greater Seattle area. At Kirkland Specialty Infusion Center, she brings that depth of subspecialty expertise directly to the infusion suite, overseeing patient care with the same precision and personal attention that has defined her career.",
+      "Dr. Dada completed her rheumatology fellowship at the University of Washington and later served as a clinical instructor there, grounding her practice in both rigorous science and a genuine commitment to her patients. Her expertise spans rheumatoid arthritis, lupus, gout, psoriatic arthritis, ankylosing spondylitis, Sjögren's syndrome, osteoporosis, and a broad range of connective tissue and inflammatory diseases.",
+      "Dr. Dada has been recognized repeatedly as a top physician in the Pacific Northwest, including by Castle Connolly, Seattle Magazine, Seattle Metropolitan, and Vitals Top Doctors, and she brings that same standard of excellence to every patient she sees at Kirkland Specialty Infusion Center. Her approach is unhurried, evidence-based, and always centered on the individual in the chair.",
+    ],
+  },
+  {
+    slug: "deepa-gali",
+    name: "Deepa Gali",
+    credentials: "MD",
+    role: "Rheumatologist",
+    category: "Providers",
+    photo: "/staff/deepa-gali.jpg",
+    bio: [
+      "Dr. Deepa Gali is a board-certified rheumatologist with more than a decade of experience diagnosing and treating complex autoimmune and inflammatory conditions in the greater Seattle area. Her clinical expertise spans rheumatoid arthritis, psoriatic arthritis, ankylosing spondylitis, gout, and a wide range of musculoskeletal and autoimmune diseases.",
+      "Dr. Gali completed her medical degree in India before pursuing a combined Internal Medicine and Pediatrics residency at Louisiana State University, followed by a rheumatology fellowship at Wayne State University and Henry Ford Medical Center, training under nationally respected specialists in autoimmune disease. That foundation shaped her approach to care: thorough, collaborative, and deeply attuned to what each patient needs.",
+      "At Kirkland Specialty Infusion Center, Dr. Gali pairs her subspecialty knowledge with a genuine warmth that patients notice from their very first visit. She is known for taking time to listen, truly listen, and for helping patients feel confident and informed at every stage of their care. For patients navigating conditions that have been difficult to control, she offers something rare: both the science and the presence to help them move forward.",
+    ],
+  },
+  {
+    slug: "justin-putz",
+    name: "Justin Putz",
+    credentials: "DO",
+    role: "Rheumatologist",
+    category: "Providers",
+    photo: "/staff/justin-putz.jpg",
+    bio: [
+      "Dr. Justin Putz is a board-certified rheumatologist with specialized training in the full spectrum of autoimmune and inflammatory disease. His clinical expertise includes rheumatoid arthritis, ankylosing spondylitis, gout, lupus, vasculitis, scleroderma, inflammatory myopathies, and connective tissue diseases. At Kirkland Specialty Infusion Center, he brings that expertise, and a distinctly methodical, patient-first approach, to every infusion visit.",
+      "Dr. Putz earned his medical degree from Pacific Northwest University, completed his internal medicine residency in Iowa, and went on to finish his rheumatology fellowship at the University of California, San Diego, where he trained under nationally recognized leaders in autoimmune disease. Before medicine, he served five years in the U.S. Army as a combat medic, an experience that shaped his deep respect for resilience and his steady, disciplined approach to patient care.",
+      "That background translates directly into how Dr. Putz shows up for his patients: calm under pressure, meticulous in his thinking, and fully committed to finding meaningful relief for those whose conditions have been difficult to treat with standard therapies. Patients who have cycled through treatments without success often find in Dr. Putz a physician who doesn't give up, and a team that doesn't either.",
+    ],
+  },
+  {
+    slug: "sabahat-usmani",
+    name: "Sabahat Usmani",
+    credentials: "MD",
+    role: "Rheumatologist",
+    category: "Providers",
+    photo: "/staff/sabahat-usmani.jpg",
+    bio: [
+      "Dr. Sabahat Usmani is an incoming rheumatologist at Kirkland Specialty Infusion Center, bringing advanced training in autoimmune and inflammatory diseases and a compassionate, patient-centered approach to care. She is dedicated to helping patients navigate complex rheumatologic conditions with evidence-based treatment and individualized attention.",
+      "Dr. Usmani completed her internal medicine training at Weiss Memorial Hospital in Chicago, where she served as Chief Resident, and is completing her rheumatology fellowship at the Medical College of Wisconsin, where she was selected as incoming Chief Fellow for 2025–2026. Her clinical interests include rheumatoid arthritis, lupus, psoriatic arthritis, ankylosing spondylitis, gout, Sjögren's syndrome, osteoporosis, and other autoimmune conditions.",
+      "At Kirkland Specialty Infusion Center, Dr. Usmani is committed to providing safe, seamless infusion care while ensuring patients feel supported every step of the way.",
+    ],
+  },
+  {
+    slug: "megan-schluentz",
+    name: "Megan Schluentz",
+    credentials: "MD",
+    role: "Rheumatologist",
+    category: "Providers",
+    photo: "/staff/megan-schluentz.jpg",
+    bio: [
+      "Dr. Megan Schluentz is an incoming rheumatologist at Kirkland Specialty Infusion Center, bringing advanced training in autoimmune and inflammatory diseases along with a thoughtful, patient-centered approach to care. She is committed to helping patients manage complex rheumatologic conditions through evidence-based treatment and compassionate support.",
+      "Dr. Schluentz completed her internal medicine residency at Legacy Health Emanuel in Portland, Oregon, and is completing her rheumatology fellowship at Ochsner Medical Center in New Orleans. Her clinical interests include rheumatoid arthritis, lupus, psoriatic arthritis, ankylosing spondylitis, vasculitis, osteoporosis, and other autoimmune and connective tissue diseases.",
+      "At Kirkland Specialty Infusion Center, Dr. Schluentz is dedicated to providing safe, seamless infusion care while ensuring patients feel informed, supported, and cared for throughout their treatment journey.",
+    ],
+  },
+  {
+    slug: "tierra-anderson",
+    name: "Tierra Anderson",
+    credentials: "ARNP",
+    role: "Nurse Practitioner",
+    category: "Providers",
+    photo: "/staff/tierra-anderson.jpg",
+    bio: [
+      "Tierra Anderson is a board-certified nurse practitioner with more than 15 years of hands-on experience in direct patient care. Her clinical background spans intensive care, primary care, and chronic disease management, with a particular focus on autoimmune and musculoskeletal conditions including rheumatoid arthritis, osteoporosis, and inflammatory arthritis.",
+      "Tierra earned her Bachelor of Science in Nursing from Pace University and her Master of Science in Nursing with a focus in Acute Care from the University of Maryland, a combination that gives her the clinical depth to navigate complex presentations and the instincts to recognize when something needs immediate attention.",
+      "At Kirkland Specialty Infusion Center, Tierra's approach starts with listening. She takes time to understand each patient's story, their concerns, and what they need to feel truly supported during their infusion visits. Her experience caring for patients across all stages of life, including a special focus on older adults, makes her an exceptional advocate for those navigating chronic conditions that can sometimes feel overwhelming. Patients describe her as a calm, reassuring presence on even the most complicated days.",
+    ],
+  },
+  {
+    slug: "diana-szilvasi",
+    name: "Diana Szilvasi",
+    credentials: "DNP, ARNP",
+    role: "Family Nurse Practitioner",
+    category: "Providers",
+    photo: "/staff/diana-szilvasi.jpg",
+    bio: [
+      "Diana Szilvasi is a board-certified Family Nurse Practitioner with a Doctor of Nursing Practice degree and more than a decade of experience across home health, acute care, and outpatient rheumatology. At Kirkland Specialty Infusion Center, she brings that breadth of clinical experience to patients receiving infusion therapy for conditions including rheumatoid arthritis, lupus, psoriatic arthritis, ankylosing spondylitis, gout, osteoporosis, Sjögren's syndrome, and other complex autoimmune diseases.",
+      "Diana earned her Bachelor of Science in Nursing from the University of Washington and her Doctor of Nursing Practice from Seattle University, equipping her with both the academic foundation and the real-world clinical insight to deliver whole-person care in a rigorous setting.",
+      "Diana believes that healing begins with listening, and she brings that philosophy to every patient interaction — making the infusion experience feel less like a process and more like a partnership. Patients consistently describe her as thoughtful, attentive, and someone who makes them feel genuinely known.",
+    ],
+  },
+  {
+    slug: "christopher-dinh",
+    name: "Christopher Dinh",
+    credentials: "MSPAS, PA-C",
+    role: "Physician Assistant",
+    category: "Providers",
+    photo: "/staff/christopher-dinh.jpg",
+    bio: [
+      "Christopher Dinh is a nationally certified Physician Assistant with a Master of Science in Physician Assistant Studies from Baylor College of Medicine, one of the nation's leading PA programs, where he graduated with high honors. His clinical training spans primary care, internal medicine, geriatrics, and emergency medicine at institutions including Baylor St. Luke's Hospital, the Michael E. DeBakey VA Medical Center, and Texas Children's Hospital.",
+      "That breadth of training gives Christopher a sophisticated clinical foundation that he brings to every patient at Kirkland Specialty Infusion Center. He is thorough, equity-minded, and deeply committed to ensuring that every person in the suite feels genuinely cared for, not just processed through a protocol.",
+      "Originally from Mukilteo, Washington, Christopher returned home to serve his community and is proud to be part of the Kirkland Specialty Infusion team. His prior research experience, combined with earlier work as a Certified Nursing Assistant and an engineering internship at Stryker, gives him both the scientific mindset and the patient-centered instincts that infusion care demands. Patients appreciate his ability to explain what is happening in plain language and his genuine interest in how they are doing.",
+    ],
+  },
+  {
+    slug: "felicia-jones",
+    name: "Felicia Jones",
+    credentials: "MA-C",
+    role: "Medical Assistant & Phlebotomist",
+    category: "Infusion Nurses",
+    photo: "/staff/felicia-jones.jpg",
+    bio: [
+      "Felicia Jones is a certified Medical Assistant and Phlebotomist at Kirkland Specialty Infusion Center, playing an essential role in supporting patients through every step of their infusion visits, from specimen collection and vital sign assessments to patient education and hands-on care throughout their time in the suite.",
+      "Felicia's strengths lie in her exceptional organizational skills, her precision, and her genuine warmth with patients. She has a gift for keeping people informed and at ease, ensuring that each visit meets the highest standards of care from beginning to end. Her calm, attentive presence is often the first thing new patients notice, and the thing they mention when they return.",
+      "For patients who want to know who will be supporting them during their time at Kirkland Specialty Infusion Center, Felicia is exactly the kind of dedicated, compassionate professional they can count on from their very first visit.",
+    ],
+  },
+  {
+    slug: "kristal-lui",
+    name: "Kristal Lui",
+    role: "Infusion Nurse",
+    category: "Infusion Nurses",
+    photo: "/staff/kristal-lui.jpg",
+    bio: [
+      "Kristal Lui is an infusion nurse at Kirkland Specialty Infusion Center, specializing in the coordination and administration of therapeutic IV treatments. She brings both clinical precision and a naturally calming presence to every infusion visit — qualities that matter enormously when patients are navigating an unfamiliar experience.",
+      "Kristal understands that receiving an infusion for the first time, or the tenth, can feel uncertain. She is committed to making sure every patient feels safe, informed, and well cared for from the moment they arrive to the moment they leave. Patients and families consistently describe her as someone who puts them at ease without ever making them feel rushed.",
+    ],
+  },
+  {
+    slug: "sherry-qian",
+    name: "Sherry Qian",
+    role: "Infusion Nurse",
+    category: "Infusion Nurses",
+    photo: "/staff/sherry-qian.jpg",
+    bio: [
+      "Sherry Qian is an infusion nurse at Kirkland Specialty Infusion Center with nearly five years of experience in patient care. Her background in rheumatology infusion therapy makes her a knowledgeable and reassuring presence for patients receiving IV treatments for autoimmune and inflammatory conditions.",
+      "Sherry brings an organized, detail-oriented approach to every visit, attending carefully to each patient's individual needs, communicating closely with the clinical team, and consistently prioritizing comfort throughout the infusion process. She finds her work most meaningful in the moments when she sees patients beginning to experience relief and renewed quality of life. Her ability to connect with patients and keep them fully informed reflects the kind of attentive, personal care that defines the Kirkland Specialty Infusion experience.",
+    ],
+  },
+  {
+    slug: "elizabeth-kubay",
+    name: "Elizabeth Kubay",
+    role: "Infusion Nurse",
+    category: "Infusion Nurses",
+    photo: "/staff/elizabeth-kubay.jpg",
+    bio: [
+      "Elizabeth Kubay is an infusion nurse at Kirkland Specialty Infusion Center, where she plays an integral role in the day-to-day care of patients receiving IV therapy. She works closely with physicians and the broader clinical team to ensure that every infusion visit runs smoothly and that every patient receives attentive, high-quality care.",
+      "Elizabeth is known for her genuine curiosity and compassion when it comes to the people she serves. She takes time to understand each patient's unique background, preferences, and needs, creating an environment where patients feel heard, respected, and well supported. Her strong attention to detail and collaborative spirit make her a trusted and dependable presence throughout the infusion experience.",
+    ],
+  },
+  {
+    slug: "mary-kim",
+    name: "Mary Kim",
+    role: "Registered Nurse & Infusion Specialist",
+    category: "Infusion Nurses",
+    photo: "/staff/mary-kim.jpg",
+    bio: [
+      "Mary Kim is a Registered Nurse and Infusion Specialist at Kirkland Specialty Infusion Center, bringing a strong academic and clinical foundation to her role. She earned her Master of Science in Nursing from Emory University and has a deep familiarity with the day-to-day rhythms of the infusion suite, having joined the broader practice family in early 2023 before returning in her advanced nursing role.",
+      "In her current position, Mary oversees infusion visits from start to finish, performing blood draws, closely monitoring patients, and administering IV therapies with precision and genuine care. She is known for her attentiveness and her ability to tailor her approach to each person in the chair, ensuring that every patient feels truly seen rather than simply scheduled.",
+      "Mary is passionate about what infusion therapy can do for people, the return of mobility, the reduction of pain, the renewed ability to live fully, and she carries that belief into every interaction at the clinic.",
+    ],
+  },
+];

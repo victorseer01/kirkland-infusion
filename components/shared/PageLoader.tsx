@@ -25,10 +25,10 @@ export function PageLoader() {
       )}
     >
       <Image
-        src="/brand/kirkland-logo.png"
+        src="/brand/logo-stacked-white.png"
         alt=""
-        width={584}
-        height={442}
+        width={487}
+        height={367}
         priority
         className="h-28 w-auto animate-pulse sm:h-32"
       />

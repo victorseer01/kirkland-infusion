@@ -19,10 +19,14 @@ export function Logo({
       )}
     >
       <Image
-        src="/brand/kirkland-logo-2.png"
+        src={
+          variant === "light"
+            ? "/brand/logo-stacked-white.png"
+            : "/brand/logo-stacked-dark.png"
+        }
         alt="Kirkland Specialty Infusion Center"
-        width={584}
-        height={442}
+        width={487}
+        height={367}
         priority
         className={cn(
           "w-auto",
