@@ -37,9 +37,7 @@ function Field({
         {required && <span className="ml-1 text-coral">*</span>}
       </Label>
       {children}
-      {hint && !error && (
-        <p className="text-xs text-grey-500">{hint}</p>
-      )}
+      {hint && !error && <p className="text-xs text-grey-500">{hint}</p>}
       {error && <p className="text-xs font-medium text-coral-dark">{error}</p>}
     </div>
   );
@@ -94,7 +92,8 @@ export function ReferralForm() {
           Referral received
         </h3>
         <p className="mt-2 text-sm text-grey-700 sm:text-base">
-          Thank you. Our intake team will acknowledge this referral the same business day and reach out for anything else we need.
+          Thank you. Our intake team will acknowledge this referral the same
+          business day and reach out for anything else we need.
         </p>
         <Button
           type="button"
@@ -122,23 +121,40 @@ export function ReferralForm() {
 
         <div className="grid gap-5 sm:grid-cols-2">
           <Field
-            label="Physician name"
-            htmlFor="referringName"
-            error={errors.referringName?.message}
+            label="First name"
+            htmlFor="referringFirstName"
+            error={errors.referringFirstName?.message}
             required
           >
-            <Input id="referringName" autoComplete="name" {...register("referringName")} />
+            <Input
+              id="referringFirstName"
+              autoComplete="given-name"
+              {...register("referringFirstName")}
+            />
+          </Field>
+          <Field
+            label="Last name"
+            htmlFor="referringLastName"
+            error={errors.referringLastName?.message}
+            required
+          >
+            <Input
+              id="referringLastName"
+              autoComplete="family-name"
+              {...register("referringLastName")}
+            />
           </Field>
           <Field
             label="Practice name"
             htmlFor="practice"
             error={errors.practice?.message}
-            required
+            hint="Optional"
           >
-            <Input id="practice" autoComplete="organization" {...register("practice")} />
-          </Field>
-          <Field label="NPI" htmlFor="npi" error={errors.npi?.message} hint="Optional, 10 digits">
-            <Input id="npi" inputMode="numeric" {...register("npi")} />
+            <Input
+              id="practice"
+              autoComplete="organization"
+              {...register("practice")}
+            />
           </Field>
           <Field
             label="Phone"
@@ -146,18 +162,32 @@ export function ReferralForm() {
             error={errors.referringPhone?.message}
             required
           >
-            <Input id="referringPhone" type="tel" autoComplete="tel" {...register("referringPhone")} />
+            <Input
+              id="referringPhone"
+              type="tel"
+              autoComplete="tel"
+              {...register("referringPhone")}
+            />
           </Field>
-          <Field label="Fax" htmlFor="referringFax" error={errors.referringFax?.message}>
+          <Field
+            label="Fax"
+            htmlFor="referringFax"
+            error={errors.referringFax?.message}
+          >
             <Input id="referringFax" type="tel" {...register("referringFax")} />
           </Field>
           <Field
             label="Email"
             htmlFor="referringEmail"
             error={errors.referringEmail?.message}
-            required
+            hint="Optional"
           >
-            <Input id="referringEmail" type="email" autoComplete="email" {...register("referringEmail")} />
+            <Input
+              id="referringEmail"
+              type="email"
+              autoComplete="email"
+              {...register("referringEmail")}
+            />
           </Field>
         </div>
       </fieldset>
@@ -215,8 +245,16 @@ export function ReferralForm() {
           >
             <Input id="medication" {...register("medication")} />
           </Field>
-          <Field label="Dose & frequency" htmlFor="dose" error={errors.dose?.message}>
-            <Input id="dose" {...register("dose")} placeholder="e.g. 500 mg every 6 weeks" />
+          <Field
+            label="Dose & frequency"
+            htmlFor="dose"
+            error={errors.dose?.message}
+          >
+            <Input
+              id="dose"
+              {...register("dose")}
+              placeholder="e.g. 500 mg every 6 weeks"
+            />
           </Field>
           <Field
             label="Indication"
@@ -251,7 +289,8 @@ export function ReferralForm() {
           </Field>
         </div>
         <p className="text-xs text-grey-500">
-          Have a progress note or insurance card image? Send what you have by fax or secure email after submitting — our intake team will follow up.
+          Have a progress note or insurance card image? Send what you have by
+          fax or secure email after submitting, our intake team will follow up.
         </p>
       </fieldset>
 
@@ -262,11 +301,18 @@ export function ReferralForm() {
           <Checkbox
             id="hipaaAck"
             checked={hipaaAck === true}
-            onCheckedChange={(c) => setValue("hipaaAck", c === true ? true : (false as unknown as true), { shouldValidate: true })}
+            onCheckedChange={(c) =>
+              setValue(
+                "hipaaAck",
+                c === true ? true : (false as unknown as true),
+                { shouldValidate: true },
+              )
+            }
             aria-invalid={!!errors.hipaaAck}
           />
           <span>
-            I acknowledge the HIPAA notice above and confirm this submission is not for a medical emergency.
+            I acknowledge the HIPAA notice above and confirm this submission is
+            not for a medical emergency.
           </span>
         </label>
         {errors.hipaaAck && (
@@ -276,7 +322,12 @@ export function ReferralForm() {
         )}
       </div>
 
-      <Button type="submit" variant="coral" size="lg" disabled={submitState === "submitting"}>
+      <Button
+        type="submit"
+        variant="coral"
+        size="lg"
+        disabled={submitState === "submitting"}
+      >
         {submitState === "submitting" ? "Submitting…" : "Submit Referral"}
       </Button>
     </form>

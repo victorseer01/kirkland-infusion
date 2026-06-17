@@ -10,7 +10,8 @@ export default function NotFound() {
           We couldn&apos;t find that page
         </h1>
         <p className="mt-4 max-w-xl text-pretty text-base text-ice/90 sm:text-lg">
-          It may have moved, or the link is older than the site. Try the homepage, or call us — we are happy to help.
+          It may have moved, or the link is older than the site. Try the
+          homepage, or call us, we are happy to help.
         </p>
         <Link href="/" className="btn-coral mt-8">
           Back to home

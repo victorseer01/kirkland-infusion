@@ -1,15 +1,25 @@
 import { buildMetadata } from "@/lib/metadata";
 import { PageHero } from "@/components/shared/PageHero";
 import { SectionHeading } from "@/components/shared/SectionHeading";
-import { MEDICATIONS, CASH_PAY_SERVICES, SPECIALTIES, SITE } from "@/lib/constants";
-import { Info } from "lucide-react";
+import {
+  MEDICATIONS,
+  CASH_PAY_SERVICES,
+  SPECIALTIES,
+  SITE,
+} from "@/lib/constants";
+import { Info, ExternalLink } from "lucide-react";
 
 export const metadata = buildMetadata({
   title: "Medications & Therapies",
   description:
-    "Find your therapy under the specialty that uses it — rheumatology, neurology/MS, gastroenterology, dermatology, oncology/hematology, osteoporosis, allergy and immunology, and endocrinology — plus our full A–Z formulary and cash-pay wellness services.",
+    "Find your therapy under the specialty that uses it: rheumatology, neurology/MS, gastroenterology, dermatology, osteoporosis, allergy and immunology, and endocrinology, plus our full A-to-Z formulary and cash-pay wellness services.",
   path: "/medications",
 });
+
+// Manufacturer site for each therapy name, for hyperlinking the chips below.
+const MED_URL: Record<string, string> = Object.fromEntries(
+  MEDICATIONS.map((m) => [m.name, m.url]),
+);
 
 export default function MedicationsPage() {
   return (
@@ -25,7 +35,7 @@ export default function MedicationsPage() {
           <SectionHeading
             eyebrow="Therapies by specialty"
             title="Find your therapy under the specialty that uses it"
-            description="A patient referred by their neurologist sees MS and neurology therapies here; a patient referred by their oncologist sees oncology therapies. Biologics that span specialties appear under each relevant one."
+            description="A patient referred by their neurologist sees MS and neurology therapies here; a patient referred by their gastroenterologist sees GI therapies. Biologics that span specialties appear under each relevant one."
           />
 
           <div className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-grey-200 bg-grey-200 md:grid-cols-2">
@@ -35,14 +45,31 @@ export default function MedicationsPage() {
                   {s.name}
                 </h3>
                 <ul className="mt-4 flex flex-wrap gap-2">
-                  {s.therapies.map((t) => (
-                    <li
-                      key={t}
-                      className="rounded-full border border-primary/15 bg-primary/5 px-3 py-1.5 text-xs font-medium text-primary-dark sm:text-sm"
-                    >
-                      {t}
-                    </li>
-                  ))}
+                  {s.therapies.map((t) =>
+                    MED_URL[t] ? (
+                      <li key={t}>
+                        <a
+                          href={MED_URL[t]}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1 rounded-full border border-primary/15 bg-primary/5 px-3 py-1.5 text-xs font-medium text-primary-dark transition-colors hover:border-primary/40 hover:bg-primary/10 sm:text-sm"
+                        >
+                          {t}
+                          <ExternalLink
+                            className="h-3 w-3 opacity-60"
+                            aria-hidden
+                          />
+                        </a>
+                      </li>
+                    ) : (
+                      <li
+                        key={t}
+                        className="rounded-full border border-primary/15 bg-primary/5 px-3 py-1.5 text-xs font-medium text-primary-dark sm:text-sm"
+                      >
+                        {t}
+                      </li>
+                    ),
+                  )}
                 </ul>
               </article>
             ))}
@@ -53,9 +80,9 @@ export default function MedicationsPage() {
       <section className="section-y bg-grey-50">
         <div className="container-prose">
           <SectionHeading
-            eyebrow="Complete formulary (A–Z)"
+            eyebrow="Complete formulary (A to Z)"
             title="Every therapy we administer, with its indication"
-            description="The full list of biologic, biosimilar, and immunologic therapies — each administered by licensed clinical staff with a supervising provider present in the suite."
+            description="The full list of biologic, biosimilar, and immunologic therapies, each administered by licensed clinical staff with a supervising provider present in the suite."
           />
 
           <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -64,9 +91,18 @@ export default function MedicationsPage() {
                 key={m.name}
                 className="rounded-2xl border border-grey-200 bg-white p-6 shadow-sm"
               >
-                <h3 className="font-display text-lg text-primary-dark">
+                <a
+                  href={m.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex items-center gap-1.5 font-display text-lg text-primary-dark hover:text-coral"
+                >
                   {m.name}
-                </h3>
+                  <ExternalLink
+                    className="h-3.5 w-3.5 opacity-60 group-hover:opacity-100"
+                    aria-hidden
+                  />
+                </a>
                 <p className="mt-1 text-sm font-semibold text-primary">
                   {m.generic}
                 </p>
@@ -78,7 +114,10 @@ export default function MedicationsPage() {
           </div>
 
           <p className="mt-8 text-sm text-grey-500">
-            Additional infusion therapies are available upon request. If a specific agent is not listed above, please call us at {SITE.phone} ext. {SITE.phoneExt} — our formulary is reviewed and expanded regularly based on referring physician needs.
+            Additional infusion therapies are available upon request. If a
+            specific agent is not listed above, please call us at {SITE.phone}{" "}
+            ext. {SITE.phoneExt}, our formulary is reviewed and expanded
+            regularly based on referring physician needs.
           </p>
         </div>
       </section>
@@ -113,7 +152,11 @@ export default function MedicationsPage() {
                 A note on cash-pay services
               </p>
               <p className="mt-1 text-sm leading-relaxed text-grey-700 sm:text-base">
-                Cash-pay services are not a substitute for evaluation by your primary care physician or specialist. We recommend discussing supplemental therapies with your physician before booking. If you are unsure whether a service is appropriate for you, call us and we will help you decide.
+                Cash-pay services are not a substitute for evaluation by your
+                primary care physician or specialist. We recommend discussing
+                supplemental therapies with your physician before booking. If
+                you are unsure whether a service is appropriate for you, call us
+                and we will help you decide.
               </p>
             </div>
           </div>

@@ -12,7 +12,7 @@ import {
 export const metadata = buildMetadata({
   title: "For Patients",
   description:
-    "Your infusion journey in three clear stages — Pre-Infusion, Infusion Day, and Post-Infusion Follow-Up. From the day your referral arrives to the free nurse check-in after you go home, here is exactly what to expect.",
+    "Your infusion journey in three clear stages, Pre-Infusion, Infusion Day, and Post-Infusion Follow-Up. From the day your referral arrives to the free nurse check-in after you go home, here is exactly what to expect.",
   path: "/patients",
 });
 
@@ -24,7 +24,7 @@ export default function PatientsPage() {
       <PageHero
         eyebrow="For patients"
         title="Your infusion journey, in three clear stages"
-        description="If your doctor has referred you to us, welcome. We have broken down exactly what happens — before, during, and after your infusion — so there is no black box, no guessing, and nothing to worry about."
+        description="If your doctor has referred you to us, welcome. We have broken down exactly what happens, before, during, and after your infusion, so there is no black box, no guessing, and nothing to worry about."
       />
 
       <section className="section-y-lg bg-white">
@@ -32,7 +32,7 @@ export default function PatientsPage() {
           <SectionHeading
             eyebrow="What to expect"
             title="Pre-Infusion, Infusion Day, and Post-Infusion Follow-Up"
-            description="Three stages, each with a clear set of things we take care of. It is a managed, repeating cycle — you are guided through every step."
+            description="Three stages, each with a clear set of things we take care of. It is a managed, repeating cycle, you are guided through every step."
           />
 
           <div className="mt-14 space-y-14">
@@ -98,7 +98,9 @@ export default function PatientsPage() {
                 A managed cycle, not a one-off
               </p>
               <p className="mt-1 text-sm leading-relaxed text-grey-700 sm:text-base">
-                Your post-infusion follow-up flows straight back into preparing for your next visit — coverage re-checked, your appointment booked, reminders sent. You will always know what comes next.
+                Your post-infusion follow-up flows straight back into preparing
+                for your next visit, coverage re-checked, your appointment
+                booked, reminders sent. You will always know what comes next.
               </p>
             </div>
           </div>
@@ -114,24 +116,40 @@ export default function PatientsPage() {
           />
           <ul className="grid gap-3 text-sm text-ice/90 sm:text-base">
             <li className="flex items-start gap-3">
-              <ClipboardList className="mt-0.5 h-5 w-5 shrink-0 text-coral" aria-hidden />
+              <ClipboardList
+                className="mt-0.5 h-5 w-5 shrink-0 text-coral"
+                aria-hidden
+              />
               A list of current medications, supplements, and recent changes
             </li>
             <li className="flex items-start gap-3">
-              <ClipboardList className="mt-0.5 h-5 w-5 shrink-0 text-coral" aria-hidden />
+              <ClipboardList
+                className="mt-0.5 h-5 w-5 shrink-0 text-coral"
+                aria-hidden
+              />
               Insurance card and a form of photo ID
             </li>
             <li className="flex items-start gap-3">
-              <ClipboardList className="mt-0.5 h-5 w-5 shrink-0 text-coral" aria-hidden />
-              Something to keep you occupied — book, tablet, headphones
+              <ClipboardList
+                className="mt-0.5 h-5 w-5 shrink-0 text-coral"
+                aria-hidden
+              />
+              Something to keep you occupied, book, tablet, headphones
             </li>
             <li className="flex items-start gap-3">
-              <ClipboardList className="mt-0.5 h-5 w-5 shrink-0 text-coral" aria-hidden />
-              Loose, comfortable clothing — easy access to one arm
+              <ClipboardList
+                className="mt-0.5 h-5 w-5 shrink-0 text-coral"
+                aria-hidden
+              />
+              Loose, comfortable clothing, easy access to one arm
             </li>
             <li className="flex items-start gap-3">
-              <ClipboardList className="mt-0.5 h-5 w-5 shrink-0 text-coral" aria-hidden />
-              And drink plenty of water beforehand — it makes starting your IV easier
+              <ClipboardList
+                className="mt-0.5 h-5 w-5 shrink-0 text-coral"
+                aria-hidden
+              />
+              And drink plenty of water beforehand, it makes starting your IV
+              easier
             </li>
           </ul>
         </div>

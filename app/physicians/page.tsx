@@ -3,7 +3,7 @@ import { Phone, Printer, Mail, FileText, ArrowRight } from "lucide-react";
 import { buildMetadata } from "@/lib/metadata";
 import { PageHero } from "@/components/shared/PageHero";
 import { SectionHeading } from "@/components/shared/SectionHeading";
-import { WHY_REFER, SIX_STEP_PROCESS, SITE } from "@/lib/constants";
+import { SIX_STEP_PROCESS, SITE } from "@/lib/constants";
 import { ReferralForm } from "@/components/forms/ReferralForm";
 import { ServiceStack } from "@/components/services/ServiceStack";
 import { StickyCallBar } from "@/components/shared/StickyCallBar";
@@ -11,7 +11,7 @@ import { StickyCallBar } from "@/components/shared/StickyCallBar";
 export const metadata = buildMetadata({
   title: "For Referring Physicians",
   description:
-    "One referral. Zero hassle. We handle prior authorizations, financial advocacy, lab coordination, scheduling, infusion, and follow-up — and we close the loop with your office.",
+    "One referral. Zero hassle. We handle prior authorizations, financial advocacy, lab coordination, scheduling, infusion, and follow-up, and we close the loop with your office.",
   path: "/physicians",
 });
 
@@ -27,7 +27,7 @@ const REFER_METHODS = [
     icon: Phone,
     label: "Phone",
     value: `${SITE.phone} ext. ${SITE.phoneExt}`,
-    sub: "Mon–Fri, 7:30 AM – 5:00 PM",
+    sub: "Mon to Fri, 7:30 AM to 5:00 PM",
     href: `tel:${SITE.phoneTel}`,
   },
   {
@@ -58,20 +58,24 @@ const INCLUDE_ITEMS = [
 
 const WHITE_GLOVE = [
   {
-    title: "We perform the prior authorization on your behalf",
-    body: "Documentation, peer-to-peer reviews, and appeals are handled by our team — not by your office. We do not schedule the patient until coverage is confirmed.",
+    title: "We Manage the Administrative Burden",
+    body: "Our team handles prior authorizations, peer-to-peer reviews, appeals, benefits verification, copay assistance, and grant enrollment, reducing workload for your staff.",
   },
   {
-    title: "Your patient gets a nurse-practitioner pre-infusion visit",
-    body: "Any remaining questions about side effects or what to expect are answered at that visit — so your office is not called to re-explain what you already discussed.",
+    title: "We Provide Pre-Infusion Patient Support",
+    body: "Before infusion, patients meet with an Advanced Practice Provider (APP) to review treatment, discuss what to expect, and ask any remaining questions about side effects or their care plan, helping patients feel prepared while minimizing follow-up calls to your office.",
   },
   {
-    title: "Expert infusion nurses",
-    body: "Experienced clinical staff who do this every day, in a calm, private setting built for long-term infusion care.",
+    title: "A Provider is Always On Site",
+    body: "A licensed provider is present during every infusion to provide clinical oversight and support throughout treatment.",
   },
   {
-    title: "A provider is always on site",
-    body: "A nurse practitioner or physician is present in the suite for every infusion — not necessarily a rheumatologist, but always a provider. Your patient is never in a chair without clinical oversight.",
+    title: "We Keep the Care Loop Closed",
+    body: "Your office receives timely communication after infusion, including treatment status, patient tolerance, and next steps to support continuity of care.",
+  },
+  {
+    title: "We Support Treatment Adherence",
+    body: "We coordinate follow-up scheduling and patient reminders to help keep therapy on track and reduce missed infusions.",
   },
 ];
 
@@ -82,7 +86,7 @@ export default function PhysiciansPage() {
       <PageHero
         eyebrow="For referring physicians"
         title="A white-glove consult service for your referred patients"
-        description="You spend your time making clinical decisions. We spend ours making sure those decisions translate into infusions that actually happen — on time, with full insurance coverage, and with the clinical communication you need. We take the administrative burden off your office and keep you informed at every stage."
+        description="You spend your time making clinical decisions. We spend ours making sure those decisions translate into infusions that actually happen, on time, with full insurance coverage, and with the clinical communication you need. We take the administrative burden off your office and keep you informed at every stage."
       />
 
       <section className="section-y-lg bg-white">
@@ -111,30 +115,7 @@ export default function PhysiciansPage() {
         </div>
       </section>
 
-      <section className="section-y bg-grey-50">
-        <div className="container-prose">
-          <SectionHeading
-            eyebrow="Why refer to us"
-            title="Five things you can rely on, every infusion"
-            description="The behaviors that make our suite a different kind of partner for your practice."
-          />
-
-          <div className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-grey-200 bg-grey-200 lg:grid-cols-2">
-            {WHY_REFER.map((reason) => (
-              <article key={reason.title} className="bg-white p-7 sm:p-9">
-                <h3 className="font-display text-xl text-primary-dark">
-                  {reason.title}
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed text-grey-700 sm:text-base">
-                  {reason.body}
-                </p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-white pb-14 pt-14 sm:pt-20" id="process">
+      <section className="bg-grey-50 pb-14 pt-14 sm:pt-20" id="process">
         <div className="container-prose">
           <SectionHeading
             eyebrow="Our six-step process"
@@ -154,7 +135,7 @@ export default function PhysiciansPage() {
         </div>
       </section>
 
-      <section className="section-y bg-grey-50">
+      <section className="section-y bg-white">
         <div className="container-prose">
           <SectionHeading
             eyebrow="How to refer a patient"
@@ -203,7 +184,9 @@ export default function PhysiciansPage() {
                 ))}
               </ul>
               <p className="mt-6 rounded-xl bg-white p-4 text-sm text-grey-700">
-                <strong className="text-primary-dark">Missing items?</strong> Send what you have. Our team will follow up with you for anything we need.
+                <strong className="text-primary-dark">Missing items?</strong>{" "}
+                Send what you have. Our team will follow up with you for
+                anything we need.
               </p>
               <Link
                 href="/contact"

@@ -1,3 +1,5 @@
+import fs from "fs";
+import path from "path";
 import Link from "next/link";
 import { buildMetadata } from "@/lib/metadata";
 import { PageHero } from "@/components/shared/PageHero";
@@ -23,17 +25,41 @@ const ADVOCACY_LIST = [
   "Renew prior authorizations before they expire",
 ];
 
-const CARRIERS_PLACEHOLDER = [
-  "Premera Blue Cross",
-  "Regence BlueShield",
-  "Aetna",
-  "Cigna",
-  "UnitedHealthcare",
-  "Kaiser Permanente PPO",
-  "Tricare",
-  "Medicare",
-  "Medicare Advantage",
+// Drop a logo into public/insurance/<slug>.(svg|png|jpg|webp) and it appears
+// automatically; until then the carrier shows as a name-only card.
+const CARRIERS = [
+  { name: "Premera Blue Cross", slug: "premera-blue-cross" },
+  { name: "Regence BlueShield", slug: "regence-blueshield" },
+  { name: "Aetna", slug: "aetna" },
+  { name: "Cigna", slug: "cigna" },
+  { name: "UnitedHealthcare", slug: "unitedhealthcare" },
+  { name: "Kaiser Permanente PPO", slug: "kaiser-permanente" },
+  { name: "First Choice Health", slug: "first-choice-health" },
+  { name: "Medicare", slug: "medicare" },
+  { name: "Medicare Advantage", slug: "medicare-advantage" },
 ];
+
+// Resolve carrier logos present in /public/insurance at build time.
+function resolveCarrierLogos() {
+  const dir = path.join(process.cwd(), "public", "insurance");
+  let files: string[] = [];
+  try {
+    files = fs.readdirSync(dir);
+  } catch {
+    files = [];
+  }
+  const map: Record<string, string> = {};
+  for (const carrier of CARRIERS) {
+    const match = files.find((f) =>
+      /\.(svg|png|jpg|jpeg|webp)$/i.test(f) &&
+      f.slice(0, f.lastIndexOf(".")) === carrier.slug,
+    );
+    if (match) map[carrier.slug] = `/insurance/${match}`;
+  }
+  return map;
+}
+
+const CARRIER_LOGOS = resolveCarrierLogos();
 
 export default function InsurancePage() {
   return (
@@ -56,7 +82,10 @@ export default function InsurancePage() {
                 key={item}
                 className="flex items-start gap-3 text-sm leading-relaxed text-grey-700 sm:text-base"
               >
-                <CheckCircle2 className="mt-1 h-5 w-5 shrink-0 text-primary" aria-hidden />
+                <CheckCircle2
+                  className="mt-1 h-5 w-5 shrink-0 text-primary"
+                  aria-hidden
+                />
                 <span>{item}</span>
               </li>
             ))}
@@ -69,18 +98,33 @@ export default function InsurancePage() {
           <SectionHeading
             eyebrow="Insurance plans accepted"
             title="Most major commercial plans and Medicare"
-            description="We accept most major commercial insurance plans, Medicare, and many Medicare Advantage plans. The list below is being confirmed with our billing team — call us with your card in hand and we will give you a clear answer for your specific plan and medication."
+            description="We accept most major commercial insurance plans, Medicare, and many Medicare Advantage plans. The list below is being confirmed with our billing team, call us with your card in hand and we will give you a clear answer for your specific plan and medication."
           />
 
           <div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {CARRIERS_PLACEHOLDER.map((carrier) => (
-              <div
-                key={carrier}
-                className="rounded-xl border border-grey-200 bg-white px-4 py-3 text-sm font-medium text-grey-900"
-              >
-                {carrier}
-              </div>
-            ))}
+            {CARRIERS.map((carrier) => {
+              const logo = CARRIER_LOGOS[carrier.slug];
+              return (
+                <div
+                  key={carrier.slug}
+                  className="flex items-center gap-4 rounded-xl border border-grey-200 bg-white px-4 py-3"
+                >
+                  {logo ? (
+                    <span className="flex h-10 w-16 shrink-0 items-center justify-center">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={logo}
+                        alt={`${carrier.name} logo`}
+                        className="max-h-10 w-auto object-contain"
+                      />
+                    </span>
+                  ) : null}
+                  <span className="text-sm font-medium text-grey-900">
+                    {carrier.name}
+                  </span>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -92,7 +136,12 @@ export default function InsurancePage() {
               Self-pay patients
             </h3>
             <p className="mt-3 text-sm leading-relaxed text-grey-700 sm:text-base">
-              We welcome self-pay patients for our cash-pay wellness services (B12, vitamin D, Myers Cocktail IV, iron infusions, joint injections, and PRP). For specialty infusion medications, the medication cost is generally too high to self-pay, but we will explore every available assistance program before any patient is turned away for financial reasons.
+              We welcome self-pay patients for our cash-pay wellness services
+              (B12, vitamin D, Myers Cocktail IV, iron infusions, joint
+              injections, and PRP). For specialty infusion medications, the
+              medication cost is generally too high to self-pay, but we will
+              explore every available assistance program before any patient is
+              turned away for financial reasons.
             </p>
             <Link
               href="/medications"
@@ -108,12 +157,12 @@ export default function InsurancePage() {
               Questions about a bill
             </h3>
             <p className="mt-3 text-sm leading-relaxed text-grey-700 sm:text-base">
-              If you receive a bill that does not look right, or that exceeds what we told you to expect, please call us immediately. We will review the charges with you and contact the insurance company on your behalf if needed.
+              If you receive a bill that does not look right, or that exceeds
+              what we told you to expect, please call us immediately. We will
+              review the charges with you and contact the insurance company on
+              your behalf if needed.
             </p>
-            <a
-              href={`tel:${SITE.phoneTel}`}
-              className="btn-outline-dark mt-6"
-            >
+            <a href={`tel:${SITE.phoneTel}`} className="btn-outline-dark mt-6">
               <Phone className="h-4 w-4" aria-hidden />
               Call {SITE.phone} ext. {SITE.phoneExt}
             </a>

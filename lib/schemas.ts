@@ -3,17 +3,20 @@ import { z } from "zod";
 const phoneRegex = /^[\d\s().+\-]{7,}$/;
 
 export const referralSchema = z.object({
-  referringName: z.string().min(2, "Please enter the referring physician's name"),
-  practice: z.string().min(2, "Practice name is required"),
-  npi: z
+  referringFirstName: z.string().min(1, "First name is required"),
+  referringLastName: z.string().min(1, "Last name is required"),
+  practice: z.string().optional().or(z.literal("")),
+  referringFax: z
     .string()
+    .regex(phoneRegex, "Enter a valid fax number")
     .optional()
-    .refine((v) => !v || /^\d{10}$/.test(v.replace(/\s/g, "")), {
-      message: "NPI must be 10 digits",
-    }),
-  referringFax: z.string().regex(phoneRegex, "Enter a valid fax number").optional().or(z.literal("")),
+    .or(z.literal("")),
   referringPhone: z.string().regex(phoneRegex, "Enter a valid phone number"),
-  referringEmail: z.string().email("Enter a valid email"),
+  referringEmail: z
+    .string()
+    .email("Enter a valid email")
+    .optional()
+    .or(z.literal("")),
   patientName: z.string().min(2, "Patient name is required"),
   patientDob: z.string().min(1, "Patient date of birth is required"),
   insuranceCarrier: z.string().min(2, "Insurance carrier is required"),

@@ -126,8 +126,10 @@ export function TeamGallery({ members }: { members: readonly TeamMember[] }) {
 
   // Group consecutive members by category for section headings, keeping each
   // member's global index so the modal can page across the whole team.
-  const groups: { category: string; items: { member: TeamMember; index: number }[] }[] =
-    [];
+  const groups: {
+    category: string;
+    items: { member: TeamMember; index: number }[];
+  }[] = [];
   members.forEach((member, index) => {
     const last = groups[groups.length - 1];
     if (last && last.category === member.category) {
@@ -263,8 +265,8 @@ export function TeamGallery({ members }: { members: readonly TeamMember[] }) {
               </div>
             </div>
 
-            {/* Loader overlay — keeps image + content hidden until the photo is
-                ready so they reveal together. Sits below the close button. */}
+            {/* Loader overlay, keeps image + content hidden until the photo is
+ ready so they reveal together. Sits below the close button. */}
             {loading ? (
               <div className="absolute inset-0 z-10 flex items-center justify-center bg-white">
                 <span

@@ -18,10 +18,15 @@ export const SITE = {
   fax: "(425) 533-2540",
   email: "infusion@kirklandspecialty.com",
   hours: {
-    weekdays: "Monday – Friday: 7:30 AM – 5:00 PM",
+    weekdays: "Monday to Friday: 7:30 AM to 5:00 PM",
     weekend: "Saturday & Sunday: Closed",
   },
   affiliatedWith: "Evergreen Rheumatology",
+  oaoc: {
+    name: "Overlake Arthritis and Osteoporosis Center",
+    shortName: "OAOC",
+    url: "https://www.overlakearthritis.com",
+  },
 } as const;
 
 export type NavChild = {
@@ -94,7 +99,7 @@ export const NAV_LINKS: NavLink[] = [
 export const ALL_ROUTES: string[] = [
   "/",
   ...NAV_LINKS.flatMap((l) =>
-    l.href ? [l.href] : l.children?.map((c) => c.href) ?? [],
+    l.href ? [l.href] : (l.children?.map((c) => c.href) ?? []),
   ),
 ];
 
@@ -109,7 +114,7 @@ export const THREE_PILLARS = [
   },
   {
     title: "Seamless Communication",
-    body: "We close the loop with your referring office after every infusion — medication received, tolerance, next visit scheduled.",
+    body: "We close the loop with your referring office after every infusion, medication received, tolerance, next visit scheduled.",
   },
 ] as const;
 
@@ -138,10 +143,13 @@ export const SPECIALTIES = [
       "Cimzia",
       "Cosentyx",
       "Ilaris",
+      "Ilumya",
       "Krystexxa",
+      "Octagam (IVIG)",
       "Orencia",
       "Remicade",
       "Rituxan",
+      "Saphnelo",
       "Simponi Aria",
       "Stelara",
     ],
@@ -151,19 +159,7 @@ export const SPECIALTIES = [
     name: "Gastroenterology",
     body: "Biologic infusions for inflammatory bowel disease.",
     conditions: ["Crohn's disease", "Ulcerative colitis"],
-    therapies: ["Remicade", "Stelara", "Simponi Aria"],
-  },
-  {
-    slug: "oncology-hematology",
-    name: "Oncology / Hematology",
-    body: "Selected supportive-care and immunologic infusions, plus iron for chemotherapy-related and chronic anemia.",
-    conditions: [
-      "Non-Hodgkin lymphoma",
-      "Chronic lymphocytic leukemia",
-      "Immune thrombocytopenia",
-      "Chemotherapy-related and chronic anemia",
-    ],
-    therapies: ["Rituxan", "Octagam (IVIG)", "Iron (Venofer)"],
+    therapies: ["Entyvio", "Remicade", "Stelara", "Simponi Aria"],
   },
   {
     slug: "dermatology",
@@ -202,10 +198,7 @@ export const SPECIALTIES = [
     slug: "allergy-immunology",
     name: "Allergy & Immunology",
     body: "IVIG and biologic therapies for immunodeficiency and immunologic disease.",
-    conditions: [
-      "Primary immunodeficiency",
-      "Secondary immunodeficiency",
-    ],
+    conditions: ["Primary immunodeficiency", "Secondary immunodeficiency"],
     therapies: ["Octagam (IVIG)"],
   },
   {
@@ -217,108 +210,143 @@ export const SPECIALTIES = [
   },
 ] as const;
 
+// Each medication links to its manufacturer's official site (opens in a new tab).
 export const MEDICATIONS = [
   {
     name: "Actemra",
     generic: "Tocilizumab",
     indication:
       "Rheumatoid arthritis, giant cell arteritis, systemic juvenile idiopathic arthritis, cytokine release syndrome",
+    url: "https://www.actemra.com/",
   },
   {
     name: "Benlysta",
     generic: "Belimumab",
     indication: "Systemic lupus erythematosus, lupus nephritis",
+    url: "https://www.benlysta.com/",
   },
   {
     name: "Cimzia",
     generic: "Certolizumab pegol",
     indication:
       "Rheumatoid arthritis, psoriatic arthritis, axial spondyloarthritis, Crohn's disease, psoriasis",
+    url: "https://www.cimzia.com/",
   },
   {
     name: "Cosentyx",
     generic: "Secukinumab",
     indication:
       "Psoriasis, psoriatic arthritis, axial spondyloarthritis, hidradenitis suppurativa",
+    url: "https://www.cosentyx.com/",
+  },
+  {
+    name: "Entyvio",
+    generic: "Vedolizumab",
+    indication: "Crohn's disease, ulcerative colitis",
+    url: "https://www.entyvio.com/",
   },
   {
     name: "Evenity",
     generic: "Romosozumab",
     indication: "Severe osteoporosis with high fracture risk",
+    url: "https://www.evenity.com/",
   },
   {
     name: "Ilaris",
     generic: "Canakinumab",
     indication: "Periodic fever syndromes, Still's disease, gout flares",
+    url: "https://www.ilaris.com/",
   },
   {
     name: "Ilumya",
     generic: "Tildrakizumab",
     indication: "Moderate to severe plaque psoriasis",
+    url: "https://www.ilumya.com/",
   },
   {
     name: "Krystexxa",
     generic: "Pegloticase",
     indication: "Uncontrolled chronic gout refractory to conventional therapy",
+    url: "https://www.krystexxa.com/",
   },
   {
     name: "Octagam (IVIG)",
     generic: "Intravenous immunoglobulin",
     indication:
       "Primary and secondary immunodeficiency, immune thrombocytopenia, neuroinflammatory disease",
+    url: "https://octagamusa.com/",
   },
   {
     name: "Orencia",
     generic: "Abatacept",
     indication:
       "Rheumatoid arthritis, psoriatic arthritis, juvenile idiopathic arthritis",
+    url: "https://www.orencia.com/",
   },
   {
     name: "Pemgarda",
     generic: "Pemivibart",
-    indication: "COVID-19 pre-exposure prophylaxis for immunocompromised patients",
+    indication:
+      "COVID-19 pre-exposure prophylaxis for immunocompromised patients",
+    url: "https://pemgarda.com/",
   },
   {
     name: "Remicade",
     generic: "Infliximab",
     indication:
       "Rheumatoid arthritis, ankylosing spondylitis, psoriatic arthritis, Crohn's disease, ulcerative colitis, psoriasis",
+    url: "https://www.remicade.com/",
   },
   {
     name: "Rituxan",
     generic: "Rituximab",
     indication:
       "Rheumatoid arthritis, vasculitis, non-Hodgkin lymphoma, chronic lymphocytic leukemia, immune thrombocytopenia",
+    url: "https://www.rituxan.com/",
+  },
+  {
+    name: "Saphnelo",
+    generic: "Anifrolumab",
+    indication: "Systemic lupus erythematosus",
+    url: "https://www.saphnelohcp.com/",
   },
   {
     name: "Simponi Aria",
     generic: "Golimumab IV",
-    indication: "Rheumatoid arthritis, psoriatic arthritis, ankylosing spondylitis",
+    indication:
+      "Rheumatoid arthritis, psoriatic arthritis, ankylosing spondylitis",
+    url: "https://www.simponiaria.com/",
   },
   {
     name: "Stelara",
     generic: "Ustekinumab",
-    indication: "Psoriasis, psoriatic arthritis, Crohn's disease, ulcerative colitis",
+    indication:
+      "Psoriasis, psoriatic arthritis, Crohn's disease, ulcerative colitis",
+    url: "https://www.stelarainfo.com/",
   },
   {
     name: "Tepezza",
     generic: "Teprotumumab",
     indication: "Thyroid eye disease (Graves' ophthalmopathy)",
+    url: "https://www.tepezza.com/",
   },
   {
     name: "Uplizna",
     generic: "Inebilizumab",
     indication: "Neuromyelitis optica spectrum disorder",
+    url: "https://www.uplizna.com/",
   },
   {
     name: "Vyvgart",
     generic: "Efgartigimod",
     indication: "Generalized myasthenia gravis",
+    url: "https://www.vyvgart.com/",
   },
   {
     name: "Ocrevus",
     generic: "Ocrelizumab",
     indication: "Relapsing and primary progressive multiple sclerosis",
+    url: "https://www.ocrevus.com/",
   },
 ] as const;
 
@@ -348,13 +376,13 @@ export const CASH_PAY_SERVICES = [
 export const SIX_STEP_PROCESS = [
   {
     number: "01",
-    title: "Referral & Intake",
+    title: "Referral & Patient Coordination",
     body: "We receive your referral, verify insurance, and schedule the patient at their earliest convenience.",
   },
   {
     number: "02",
     title: "Prior Authorization",
-    body: "Our team handles the full prior authorization process — including documentation, peer-to-peer support, and appeals — minimizing the work for your office.",
+    body: "Our team handles the full prior authorization process, including documentation, peer-to-peer support, and appeals, minimizing the work for your office.",
   },
   {
     number: "03",
@@ -369,7 +397,7 @@ export const SIX_STEP_PROCESS = [
   {
     number: "05",
     title: "Infusion Day",
-    body: "Patients receive care in a calm, private setting with licensed medical staff and a supervising physician available for clinical guidance and medication questions.",
+    body: "Patients receive care in a calm, private setting with licensed medical staff and a provider available for clinical oversight, guidance, and medication questions.",
   },
   {
     number: "06",
@@ -380,33 +408,21 @@ export const SIX_STEP_PROCESS = [
 
 // The patient journey is presented as three named stages, not a single
 // timeline. The Pre-Infusion stage begins when the referral is received (not at
-// "recognize symptoms" — that is the referring physician's domain), and the
+// "recognize symptoms", that is the referring physician's domain), and the
 // nurse-practitioner visit is sequenced AFTER prior authorization is confirmed.
 export const PATIENT_JOURNEY = [
   {
     stage: "01",
     name: "Pre-Infusion",
-    lede: "Your journey with us begins the moment your physician's referral arrives — not before. From there, we do the work so your first infusion is already paid for, scheduled, and safe by the time you sit down.",
+    lede: "Before infusion, we take care of the details, verifying benefits, exploring copay assistance and grants when available, and coordinating a provider check-in to review treatment and answer questions.",
     points: [
       {
-        title: "We receive and acknowledge your referral",
-        body: "When your referring physician sends us your referral, we confirm receipt and review the documents they send — your diagnosis, the medication ordered, and your recent records.",
+        title: "We call you and schedule your provider appointment",
+        body: "We will contact you to schedule a provider appointment, an opportunity to ask questions about your medication and treatment, and better understand what to expect before your infusion.",
       },
       {
-        title: "We investigate your benefits and start prior authorization",
-        body: "Our team begins your insurance benefits investigation and starts the prior authorization right away. You will not need to call your insurance company yourself.",
-      },
-      {
-        title: "We call you and book your intake assessment",
-        body: "We call you to introduce ourselves, answer your first questions, and schedule your intake. You will always know what happens next.",
-      },
-      {
-        title: "We sign you up for financial assistance",
-        body: "Co-pay assistance cards, foundation grants, and manufacturer sponsorship are part of this stage — surfaced as a benefit you receive, not an afterthought. Many of our patients pay little or nothing out of pocket.",
-      },
-      {
-        title: "Your nurse-practitioner pre-infusion visit — after coverage is confirmed",
-        body: "Once prior authorization is confirmed, so we know your medicine will be paid for, you meet with our nurse practitioner. This visit confirms you are clinically ready with no risk of a reaction, and re-confirms what your referring physician explained in case anything slipped your mind between visits.",
+        title: "Your pre-infusion provider visit",
+        body: "You will meet with one of our Advanced Practice Providers (APPs) before your infusion to review your treatment, answer questions, and confirm you are ready for treatment. This visit also reinforces information discussed by your referring physician and provides time to discuss any concerns before infusion.",
       },
     ],
   },
@@ -417,11 +433,11 @@ export const PATIENT_JOURNEY = [
     points: [
       {
         title: "What to bring, and to drink plenty of water",
-        body: "Bring your insurance card, a photo ID, and a list of your current medications. Drink plenty of water beforehand — well-hydrated veins make starting your IV easier. Eat a normal meal unless told otherwise.",
+        body: "Bring your insurance card, a photo ID, and a list of your current medications. Drink plenty of water beforehand, well-hydrated veins make starting your IV easier. Eat a normal meal unless told otherwise.",
       },
       {
         title: "A calm, private setting",
-        body: "Our suite is calm and unhurried — patients read, work on a device, watch something, or simply rest in a comfortable chair. This is not a clinical-cold room, and you will not be one of a crowd.",
+        body: "Our suite is calm and unhurried, patients read, work on a device, watch something, or simply rest in a comfortable chair. This is not a clinical-cold room, and you will not be one of a crowd.",
       },
       {
         title: "Who you will see, and how long it takes",
@@ -436,7 +452,7 @@ export const PATIENT_JOURNEY = [
     points: [
       {
         title: "A free nurse check-in by phone",
-        body: "On the day of, or the day after, your infusion, one of our nurses calls you — free of charge — to check on how you are feeling. If anything is off, we want to hear about it early.",
+        body: "On the day of, or the day after, your infusion, one of our nurses calls you, free of charge, to check on how you are feeling. If anything is off, we want to hear about it early.",
       },
       {
         title: "We close the loop with your physician",
@@ -444,7 +460,7 @@ export const PATIENT_JOURNEY = [
       },
       {
         title: "A managed, repeating cycle",
-        body: "Your follow-up flows straight back into preparing for your next infusion — coverage re-checked, appointment booked, reminders sent. This is an ongoing, managed cycle, not a one-off, so you are never left wondering what comes next.",
+        body: "Your follow-up flows straight back into preparing for your next infusion, coverage re-checked, appointment booked, reminders sent. This is an ongoing, managed cycle, not a one-off, so you are never left wondering what comes next.",
       },
     ],
   },
@@ -474,7 +490,7 @@ export const FAQ_CATEGORIES: readonly FaqCategory[] = [
     items: [
       {
         q: "What is Kirkland Specialty Infusion Center?",
-        a: "We are a physician-led, outpatient specialty infusion suite located in Kirkland, Washington, affiliated with Evergreen Rheumatology — one of the Pacific Northwest's most respected rheumatology practices, with more than 20 years of specialty care.\n\nA licensed provider is present in the suite for every infusion — not nearby, not on call, but in the room.",
+        a: "We are a physician-led, outpatient specialty infusion suite located in Kirkland, Washington, affiliated with Evergreen Rheumatology, one of the Pacific Northwest's most respected rheumatology practices, with more than 20 years of specialty care.\n\nA licensed provider is present in the suite for every infusion, not nearby, not on call, but in the room.",
       },
       {
         q: "What is infusion therapy?",
@@ -489,7 +505,7 @@ export const FAQ_CATEGORIES: readonly FaqCategory[] = [
           "The medication requires monitoring during administration",
           "Faster or more reliable absorption is needed for your treatment to work",
         ],
-        note: "Your doctor chose this because it is the right treatment for you — and we will make the experience as smooth as possible.",
+        note: "Your doctor chose this because it is the right treatment for you, and we will make the experience as smooth as possible.",
       },
       {
         q: "What conditions and specialties does KSIC serve?",
@@ -512,9 +528,9 @@ export const FAQ_CATEGORIES: readonly FaqCategory[] = [
         q: "How is Kirkland Specialty Infusion Center different from a hospital infusion suite?",
         a: "Several meaningful ways:",
         bullets: [
-          "A physician is in the suite during every infusion — this is not the industry standard, it is ours",
-          "Our suite is calm and private — not a busy hospital floor with rotating staff",
-          "You will see the same faces visit after visit — staff who know your name, your treatment, and the small details that make your visit easier",
+          "A physician is in the suite during every infusion, this is not the industry standard, it is ours",
+          "Our suite is calm and private, not a busy hospital floor with rotating staff",
+          "You will see the same faces visit after visit, staff who know your name, your treatment, and the small details that make your visit easier",
           "Our financial advocacy team pursues every available assistance program so cost is rarely the barrier",
           "We send a full clinical note back to your referring physician after every infusion",
         ],
@@ -529,11 +545,11 @@ export const FAQ_CATEGORIES: readonly FaqCategory[] = [
     items: [
       {
         q: "Does KSIC accept my insurance?",
-        a: "We accept most major commercial insurance plans, Medicare, and many Medicare Advantage plans, including Premera Blue Cross, Regence BlueShield, Aetna, Cigna, UnitedHealthcare, Kaiser Permanente PPO, and Tricare, among others.\n\nCall us with your insurance card in hand and we will give you a clear answer for your specific plan and medication before you commit to anything.",
+        a: "We accept most major commercial insurance plans, Medicare, and many Medicare Advantage plans, including Premera Blue Cross, Regence BlueShield, Aetna, Cigna, UnitedHealthcare, Kaiser Permanente PPO, and First Choice Health, among others.\n\nCall us with your insurance card in hand and we will give you a clear answer for your specific plan and medication before you commit to anything.",
       },
       {
         q: "Will my insurance cover my infusion therapy?",
-        a: "Most specialty infusion medications are covered by commercial insurance and Medicare. Our team handles the prior authorization process for you — including any appeals, peer-to-peer reviews, and supporting documentation. You should not need to call your insurance company yourself.",
+        a: "Most specialty infusion medications are covered by commercial insurance and Medicare. Our team handles the prior authorization process for you, including any appeals, peer-to-peer reviews, and supporting documentation. You should not need to call your insurance company yourself.",
       },
       {
         q: "What if I cannot afford the copay or out-of-pocket costs?",
@@ -582,18 +598,18 @@ export const FAQ_CATEGORIES: readonly FaqCategory[] = [
         q: "How do I prepare for my infusion?",
         a: "For most infusions, the preparation is simple:",
         bullets: [
-          "Eat a normal meal beforehand — unless your physician has told you otherwise",
+          "Eat a normal meal beforehand, unless your physician has told you otherwise",
           "Continue your regular medications unless specifically told to hold one",
           "Drink water and stay well hydrated",
           "Wear comfortable, loose clothing with easy access to one arm",
-          "Bring something to keep you occupied — a book, tablet, headphones, or a show",
+          "Bring something to keep you occupied, a book, tablet, headphones, or a show",
           "Bring your insurance card, a photo ID, and a list of current medications and supplements",
         ],
         note: "Arrive about 15 minutes before your scheduled time. Your care team will give you any medication-specific instructions before your appointment.",
       },
       {
         q: "What is a loading dose?",
-        a: "Some medications start with a loading phase — a higher or more frequent initial dose to help the medication reach a therapeutic level in your body more quickly. After the loading period, you transition to a regular maintenance schedule. Your care team will explain what to expect for your specific therapy.",
+        a: "Some medications start with a loading phase, a higher or more frequent initial dose to help the medication reach a therapeutic level in your body more quickly. After the loading period, you transition to a regular maintenance schedule. Your care team will explain what to expect for your specific therapy.",
       },
     ],
   },
@@ -603,11 +619,11 @@ export const FAQ_CATEGORIES: readonly FaqCategory[] = [
     items: [
       {
         q: "Will my infusion hurt?",
-        a: "The infusion itself is not painful. When your nurse places the IV catheter, you may feel a brief pinch — similar to having blood drawn. After that, the medication is delivered slowly and comfortably over a set period of time. Most patients read, watch something, or simply relax.",
+        a: "The infusion itself is not painful. When your nurse places the IV catheter, you may feel a brief pinch, similar to having blood drawn. After that, the medication is delivered slowly and comfortably over a set period of time. Most patients read, watch something, or simply relax.",
       },
       {
         q: "How big is the needle?",
-        a: "Very small — comparable to those used in children's hospitals. Your nurse will take every care to make placement quick and comfortable.",
+        a: "Very small, comparable to those used in children's hospitals. Your nurse will take every care to make placement quick and comfortable.",
       },
       {
         q: "Where is the IV placed?",
@@ -618,16 +634,16 @@ export const FAQ_CATEGORIES: readonly FaqCategory[] = [
         a: "It depends on the medication. Some infusions take 15 to 30 minutes; others take two to four hours. We will tell you exactly how long to expect when we schedule your appointment. Here are a few examples:",
         bullets: [
           "Prolia: ~15 minutes",
-          "Cimzia or Simponi Aria: 30–45 minutes",
-          "Orencia or Benlysta: 45 min–1.5 hours",
+          "Cimzia or Simponi Aria: 30-45 minutes",
+          "Orencia or Benlysta: 45 min to 1.5 hours",
           "Remicade: ~2 hours",
           "Krystexxa: ~2 hours + 1-hour observation",
-          "Rituxan or IVIG: 3–4+ hours",
+          "Rituxan or IVIG: 3-4+ hours",
         ],
       },
       {
         q: "Who will be supervising my infusion?",
-        a: "A licensed registered nurse will administer your infusion. A physician or supervising provider will be present in the suite throughout your visit — available for questions, concerns, or any clinical decisions that arise. This is not standard practice at most infusion centers. It is standard practice here.",
+        a: "A licensed registered nurse will administer your infusion. A physician or supervising provider will be present in the suite throughout your visit, available for questions, concerns, or any clinical decisions that arise. This is not standard practice at most infusion centers. It is standard practice here.",
       },
       {
         q: "Can I use the restroom during my infusion?",
@@ -669,11 +685,11 @@ export const FAQ_CATEGORIES: readonly FaqCategory[] = [
       },
       {
         q: "What if I feel unwell after I get home?",
-        a: "Call us at (425) 453-0766 ext. 105. For any medical emergency, call 911 or go to the nearest emergency department. We also provide a nurse check-in call after your first infusion — so someone from our team will already be in touch.",
+        a: "Call us at (425) 453-0766 ext. 105. For any medical emergency, call 911 or go to the nearest emergency department. We also provide a nurse check-in call after your first infusion, so someone from our team will already be in touch.",
       },
       {
         q: "What if I need to cancel or reschedule?",
-        a: "Please give us as much notice as possible — ideally 24 hours or more. This allows us to offer your slot to another patient and avoids the significant preparation work (nurse scheduling, insurance authorization, medication preparation) that happens in advance of every appointment. Call us at (425) 453-0766 ext. 105 and we will find a new time that works for you.",
+        a: "Please give us as much notice as possible, ideally 24 hours or more. This allows us to offer your slot to another patient and avoids the significant preparation work (nurse scheduling, insurance authorization, medication preparation) that happens in advance of every appointment. Call us at (425) 453-0766 ext. 105 and we will find a new time that works for you.",
       },
     ],
   },
@@ -682,7 +698,7 @@ export const FAQ_CATEGORIES: readonly FaqCategory[] = [
 export const WHY_REFER = [
   {
     title: "A Physician Is Always Present",
-    body: "Every infusion we administer is supervised by a physician or licensed provider — on-site, in real time. Most outpatient infusion centers cannot say this. We can. Your patient is never in a chair without clinical oversight. That is your peace of mind, and theirs.",
+    body: "Every infusion we administer is supervised by a physician or licensed provider, on-site, in real time. Most outpatient infusion centers cannot say this. We can. Your patient is never in a chair without clinical oversight. That is your peace of mind, and theirs.",
   },
   {
     title: "We Close the Loop With You",
@@ -698,7 +714,7 @@ export const WHY_REFER = [
   },
   {
     title: "We Keep Patients on Schedule",
-    body: "We book follow-up appointments before the patient leaves and send reminders to ensure compliance — protecting your treatment plan and improving your outcomes data. Adherence is the most powerful lever in chronic immunologic and inflammatory disease, and we treat it accordingly.",
+    body: "We book follow-up appointments before the patient leaves and send reminders to ensure compliance, protecting your treatment plan and improving your outcomes data. Adherence is the most powerful lever in chronic immunologic and inflammatory disease, and we treat it accordingly.",
   },
 ] as const;
 
@@ -774,7 +790,7 @@ export const TEAM: readonly TeamMember[] = [
     photo: "/staff/sabahat-usmani.jpg",
     bio: [
       "Dr. Sabahat Usmani is an incoming rheumatologist at Kirkland Specialty Infusion Center, bringing advanced training in autoimmune and inflammatory diseases and a compassionate, patient-centered approach to care. She is dedicated to helping patients navigate complex rheumatologic conditions with evidence-based treatment and individualized attention.",
-      "Dr. Usmani completed her internal medicine training at Weiss Memorial Hospital in Chicago, where she served as Chief Resident, and is completing her rheumatology fellowship at the Medical College of Wisconsin, where she was selected as incoming Chief Fellow for 2025–2026. Her clinical interests include rheumatoid arthritis, lupus, psoriatic arthritis, ankylosing spondylitis, gout, Sjögren's syndrome, osteoporosis, and other autoimmune conditions.",
+      "Dr. Usmani completed her internal medicine training at Weiss Memorial Hospital in Chicago, where she served as Chief Resident, and is completing her rheumatology fellowship at the Medical College of Wisconsin, where she was selected as incoming Chief Fellow for 2025-2026. Her clinical interests include rheumatoid arthritis, lupus, psoriatic arthritis, ankylosing spondylitis, gout, Sjögren's syndrome, osteoporosis, and other autoimmune conditions.",
       "At Kirkland Specialty Infusion Center, Dr. Usmani is committed to providing safe, seamless infusion care while ensuring patients feel supported every step of the way.",
     ],
   },
@@ -814,7 +830,7 @@ export const TEAM: readonly TeamMember[] = [
     bio: [
       "Diana Szilvasi is a board-certified Family Nurse Practitioner with a Doctor of Nursing Practice degree and more than a decade of experience across home health, acute care, and outpatient rheumatology. At Kirkland Specialty Infusion Center, she brings that breadth of clinical experience to patients receiving infusion therapy for conditions including rheumatoid arthritis, lupus, psoriatic arthritis, ankylosing spondylitis, gout, osteoporosis, Sjögren's syndrome, and other complex autoimmune diseases.",
       "Diana earned her Bachelor of Science in Nursing from the University of Washington and her Doctor of Nursing Practice from Seattle University, equipping her with both the academic foundation and the real-world clinical insight to deliver whole-person care in a rigorous setting.",
-      "Diana believes that healing begins with listening, and she brings that philosophy to every patient interaction — making the infusion experience feel less like a process and more like a partnership. Patients consistently describe her as thoughtful, attentive, and someone who makes them feel genuinely known.",
+      "Diana believes that healing begins with listening, and she brings that philosophy to every patient interaction, making the infusion experience feel less like a process and more like a partnership. Patients consistently describe her as thoughtful, attentive, and someone who makes them feel genuinely known.",
     ],
   },
   {
@@ -850,7 +866,7 @@ export const TEAM: readonly TeamMember[] = [
     category: "Infusion Nurses",
     photo: "/staff/kristal-lui.jpg",
     bio: [
-      "Kristal Lui is an infusion nurse at Kirkland Specialty Infusion Center, specializing in the coordination and administration of therapeutic IV treatments. She brings both clinical precision and a naturally calming presence to every infusion visit — qualities that matter enormously when patients are navigating an unfamiliar experience.",
+      "Kristal Lui is an infusion nurse at Kirkland Specialty Infusion Center, specializing in the coordination and administration of therapeutic IV treatments. She brings both clinical precision and a naturally calming presence to every infusion visit, qualities that matter enormously when patients are navigating an unfamiliar experience.",
       "Kristal understands that receiving an infusion for the first time, or the tenth, can feel uncertain. She is committed to making sure every patient feels safe, informed, and well cared for from the moment they arrive to the moment they leave. Patients and families consistently describe her as someone who puts them at ease without ever making them feel rushed.",
     ],
   },

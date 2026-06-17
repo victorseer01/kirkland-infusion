@@ -13,7 +13,7 @@ export function WhoWeServe() {
         <SectionHeading
           eyebrow="Who we serve"
           title="A specialty infusion center, in the truest sense"
-          description="Our infusion suite welcomes patients referred by rheumatologists, gastroenterologists, oncologists, dermatologists, neurologists, endocrinologists, allergists and immunologists, and physicians caring for patients with osteoporosis and metabolic bone disease."
+          description="Our infusion suite welcomes patients referred by rheumatologists, gastroenterologists, dermatologists, neurologists, endocrinologists, allergists and immunologists, and physicians caring for patients with osteoporosis and metabolic bone disease."
         />
 
         <div className="mt-12 grid gap-8 lg:grid-cols-[1fr_1.4fr] lg:items-stretch lg:gap-10">
@@ -76,8 +76,12 @@ export function WhoWeServe() {
               Were you told you have a condition, or prescribed a medicine?
             </p>
             <p className="mt-1 text-sm text-grey-700">
-              Find your condition and your therapy by name — and see exactly what to expect at every stage.{" "}
-              <Link href="/physicians#refer" className="font-semibold text-primary-dark hover:text-coral">
+              Find your condition and your therapy by name, and see exactly what
+              to expect at every stage.{" "}
+              <Link
+                href="/physicians#refer"
+                className="font-semibold text-primary-dark hover:text-coral"
+              >
                 Referring physicians, start here.
               </Link>
             </p>

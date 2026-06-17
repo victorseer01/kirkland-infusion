@@ -36,9 +36,7 @@ export function PageHero({
         }}
       />
       <div className="container-prose relative py-16 sm:py-24">
-        {eyebrow && (
-          <p className="eyebrow text-coral">{eyebrow}</p>
-        )}
+        {eyebrow && <p className="eyebrow text-coral">{eyebrow}</p>}
         <h1 className="mt-4 max-w-4xl text-balance text-4xl text-white sm:text-5xl lg:text-6xl">
           {title}
         </h1>

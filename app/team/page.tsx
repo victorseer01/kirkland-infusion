@@ -9,7 +9,7 @@ import { TEAM, SITE } from "@/lib/constants";
 export const metadata = buildMetadata({
   title: "Our Team",
   description:
-    "Meet the providers and infusion nurses at Kirkland Specialty Infusion Center — the same faces you will see visit after visit, who know your name and your treatment.",
+    "Meet the providers and infusion nurses at Kirkland Specialty Infusion Center, the same faces you will see visit after visit, who know your name and your treatment.",
   path: "/team",
 });
 
@@ -19,7 +19,7 @@ export default function TeamPage() {
       <PageHero
         eyebrow="Our team"
         title="The people who will care for you"
-        description="You will see the same faces visit after visit — staff who know your name, your treatment, and the small details that make your visit easier. Select anyone below to read their full profile."
+        description="You will see the same faces visit after visit, staff who know your name, your treatment, and the small details that make your visit easier. Select anyone below to read their full profile."
       />
 
       <section className="section-y-lg bg-white">

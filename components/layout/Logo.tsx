@@ -12,7 +12,7 @@ export function Logo({
   return (
     <Link
       href="/"
-      aria-label="Kirkland Specialty Infusion Center — home"
+      aria-label="Kirkland Specialty Infusion Center, home"
       className={cn(
         "inline-flex items-center transition-opacity hover:opacity-90",
         className,

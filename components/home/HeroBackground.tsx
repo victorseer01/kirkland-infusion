@@ -11,7 +11,7 @@ export type HeroSlide = {
 };
 
 // Slides are served from /public/hero/. Replace these placeholder JPGs with
-// real photos (same path, same filename) — ideally 1920×1080 or larger.
+// real photos (same path, same filename), ideally 1920×1080 or larger.
 const PLACEHOLDER_SLIDES: HeroSlide[] = [
   { src: "/hero/01.jpg", alt: "" },
   { src: "/hero/02.jpg", alt: "" },

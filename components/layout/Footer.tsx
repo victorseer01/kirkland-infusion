@@ -1,5 +1,12 @@
 import Link from "next/link";
-import { MapPin, Phone, Printer, Mail, Clock } from "lucide-react";
+import {
+  MapPin,
+  Phone,
+  Printer,
+  Mail,
+  Clock,
+  ExternalLink,
+} from "lucide-react";
 import { NAV_LINKS, SITE } from "@/lib/constants";
 import { Logo } from "./Logo";
 
@@ -16,7 +23,10 @@ const FOOTER_LINKS: { href: string; label: string }[] = [
   ...NAV_LINKS.flatMap((link) =>
     link.href
       ? [{ href: link.href, label: toStandardCase(link.label) }]
-      : link.children?.map((c) => ({ href: c.href, label: toStandardCase(c.label) })) ?? [],
+      : (link.children?.map((c) => ({
+          href: c.href,
+          label: toStandardCase(c.label),
+        })) ?? []),
   ),
 ];
 
@@ -28,21 +38,36 @@ export function Footer() {
           <div>
             <Logo variant="light" />
             <p className="mt-5 max-w-md text-sm leading-relaxed text-ice/80">
-              {SITE.name} is a physician-led outpatient infusion suite affiliated with {SITE.affiliatedWith}, serving the greater Kirkland and Eastside community.
+              {SITE.name} is a physician-led outpatient infusion suite
+              affiliated with {SITE.affiliatedWith}, serving the greater
+              Kirkland and Eastside community.
             </p>
             {/* <p className="mt-4 text-xs uppercase tracking-[0.18em] text-ice/70">
-              {SITE.tagline}
-            </p> */}
+ {SITE.tagline}
+ </p> */}
             <p className="mt-8 text-xs text-ice/60">
-              Affiliated with {SITE.affiliatedWith} — part of the Overlake Arthritis and Osteoporosis Center family of practices.
+              Affiliated with {SITE.affiliatedWith}, part of the{" "}
+              {SITE.oaoc.name} family of practices.
             </p>
+            <a
+              href={SITE.oaoc.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-5 inline-flex items-center gap-2 rounded-full border border-white/25 px-4 py-2 text-sm font-semibold text-white transition-colors hover:border-coral hover:text-coral"
+            >
+              Learn more about our clinical care partner, {SITE.oaoc.shortName}
+              <ExternalLink className="h-4 w-4" aria-hidden />
+            </a>
           </div>
 
           <div>
             <h2 className="font-display text-lg text-white">Visit Us</h2>
             <ul className="mt-4 space-y-3 text-sm text-ice/90">
               <li className="flex gap-3">
-                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-coral" aria-hidden />
+                <MapPin
+                  className="mt-0.5 h-4 w-4 shrink-0 text-coral"
+                  aria-hidden
+                />
                 <span>
                   {SITE.address.line1}
                   <br />
@@ -50,23 +75,35 @@ export function Footer() {
                 </span>
               </li>
               <li className="flex gap-3">
-                <Phone className="mt-0.5 h-4 w-4 shrink-0 text-coral" aria-hidden />
+                <Phone
+                  className="mt-0.5 h-4 w-4 shrink-0 text-coral"
+                  aria-hidden
+                />
                 <a href={`tel:${SITE.phoneTel}`} className="hover:text-white">
                   {SITE.phone} ext. {SITE.phoneExt}
                 </a>
               </li>
               <li className="flex gap-3">
-                <Printer className="mt-0.5 h-4 w-4 shrink-0 text-coral" aria-hidden />
+                <Printer
+                  className="mt-0.5 h-4 w-4 shrink-0 text-coral"
+                  aria-hidden
+                />
                 <span>Fax {SITE.fax}</span>
               </li>
               <li className="flex gap-3">
-                <Mail className="mt-0.5 h-4 w-4 shrink-0 text-coral" aria-hidden />
+                <Mail
+                  className="mt-0.5 h-4 w-4 shrink-0 text-coral"
+                  aria-hidden
+                />
                 <a href={`mailto:${SITE.email}`} className="hover:text-white">
                   {SITE.email}
                 </a>
               </li>
               <li className="flex gap-3">
-                <Clock className="mt-0.5 h-4 w-4 shrink-0 text-coral" aria-hidden />
+                <Clock
+                  className="mt-0.5 h-4 w-4 shrink-0 text-coral"
+                  aria-hidden
+                />
                 <span>
                   {SITE.hours.weekdays}
                   <br />
@@ -90,7 +127,6 @@ export function Footer() {
                 </li>
               ))}
             </ul>
-            
           </div>
         </div>
 
@@ -99,7 +135,8 @@ export function Footer() {
             &copy; {new Date().getFullYear()} {SITE.name}. All rights reserved.
           </p>
           <p>
-            For medical emergencies, call 911 or go to the nearest emergency department.
+            For medical emergencies, call 911 or go to the nearest emergency
+            department.
           </p>
         </div>
       </div>

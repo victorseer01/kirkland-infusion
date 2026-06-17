@@ -22,7 +22,9 @@ export function Proof() {
               {SITE.affiliatedWith}
             </h2>
             <p className="mt-4 max-w-xl text-pretty text-base leading-relaxed text-grey-700 sm:text-lg">
-              One of the Pacific Northwest&apos;s most respected rheumatology practices — more than two decades of specialty care, now anchoring the only physician-led specialty infusion suite in Kirkland.
+              One of the Pacific Northwest&apos;s most respected rheumatology
+              practices, more than two decades of specialty care, now anchoring
+              the only physician-led specialty infusion suite in Kirkland.
             </p>
 
             <dl className="mt-8 grid grid-cols-3 gap-3 sm:gap-6">
@@ -73,7 +75,8 @@ export function Proof() {
           <p className="eyebrow text-coral">Our standard</p>
           <p className="mx-auto mt-5 max-w-4xl text-balance font-display text-2xl leading-snug text-white sm:text-3xl lg:text-4xl">
             A licensed provider is present in the suite for{" "}
-            <span className="text-coral">every infusion</span> — not nearby, not on call, but in the room.
+            <span className="text-coral">every infusion</span>, not nearby, not
+            on call, but in the room.
           </p>
         </blockquote>
       </div>
@@ -86,7 +89,9 @@ export function Proof() {
               Two decades of physician recognition
             </h3>
             <p className="mt-3 max-w-2xl text-base text-grey-700">
-              Awards earned by our affiliated physicians at Evergreen Rheumatology and Overlake Arthritis over twenty years of caring for Pacific Northwest patients.
+              Awards earned by our affiliated physicians at Evergreen
+              Rheumatology and Overlake Arthritis over twenty years of caring
+              for Pacific Northwest patients.
             </p>
 
             <div

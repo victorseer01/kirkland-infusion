@@ -8,7 +8,7 @@ import { MapPin, Phone, Printer, Mail, Clock } from "lucide-react";
 export const metadata = buildMetadata({
   title: "Contact & Directions",
   description:
-    "Visit, call, fax, or send a message. We are located in Kirkland, Washington — Mon–Fri 7:30 AM – 5:00 PM, free parking on-site.",
+    "Visit, call, fax, or send a message. We are located in Kirkland, Washington, Mon to Fri 7:30 AM to 5:00 PM, free parking on-site.",
   path: "/contact",
 });
 
@@ -83,7 +83,9 @@ export default function ContactPage() {
                     <dt className="text-xs uppercase tracking-[0.16em] text-primary">
                       {row.label}
                     </dt>
-                    <dd className="mt-1 text-base text-grey-900">{row.value}</dd>
+                    <dd className="mt-1 text-base text-grey-900">
+                      {row.value}
+                    </dd>
                   </div>
                 </div>
               ))}
@@ -104,7 +106,7 @@ export default function ContactPage() {
             <SectionHeading
               eyebrow="Send a message"
               title="We respond the same business day"
-              description="Existing patients can schedule, reschedule, or confirm an appointment by phone. New patients will need a referral from their physician — see the For Physicians page for details."
+              description="Existing patients can schedule, reschedule, or confirm an appointment by phone. New patients will need a referral from their physician, see the For Physicians page for details."
             />
             <div className="mt-8">
               <ContactForm />
@@ -120,7 +122,10 @@ export default function ContactPage() {
             {SITE.tagline}
           </h2>
           <p className="mt-5 max-w-3xl text-pretty text-base text-ice/90 sm:text-lg">
-            Whether you are a referring physician, a patient walking into your first infusion, or a family member trying to understand a loved one&apos;s care — we are here, we are reachable, and we will treat your questions as if they were our own. Welcome to {SITE.name}.
+            Whether you are a referring physician, a patient walking into your
+            first infusion, or a family member trying to understand a loved
+            one&apos;s care, we are here, we are reachable, and we will treat
+            your questions as if they were our own. Welcome to {SITE.name}.
           </p>
         </div>
       </section>

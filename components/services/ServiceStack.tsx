@@ -25,10 +25,7 @@ export function ServiceStack({
         {items.map((item, i) => (
           <div
             key={item.title}
-            className={cn(
-              "relative",
-              sticky && "lg:min-h-screen lg:pb-16",
-            )}
+            className={cn("relative", sticky && "lg:min-h-screen lg:pb-16")}
           >
             <div
               className={cn(

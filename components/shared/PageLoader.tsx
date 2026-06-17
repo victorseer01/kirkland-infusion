@@ -11,7 +11,9 @@ export function PageLoader() {
 
   useEffect(() => {
     setVisible(true);
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const reduce = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
     const id = window.setTimeout(() => setVisible(false), reduce ? 50 : 650);
     return () => window.clearTimeout(id);
   }, [pathname]);

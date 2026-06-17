@@ -12,11 +12,21 @@ export default function HomePage() {
     <>
       <StickyCallBar />
       <Hero />
-      <Reveal><Proof /></Reveal>
-      <Reveal><ThreePillars /></Reveal>
-      <Reveal><WhoWeServe /></Reveal>
-      <Reveal><PatientStories /></Reveal>
-      <Reveal><BottomCta /></Reveal>
+      <Reveal>
+        <Proof />
+      </Reveal>
+      <Reveal>
+        <ThreePillars />
+      </Reveal>
+      <Reveal>
+        <WhoWeServe />
+      </Reveal>
+      <Reveal>
+        <PatientStories />
+      </Reveal>
+      <Reveal>
+        <BottomCta />
+      </Reveal>
     </>
   );
 }

@@ -128,10 +128,7 @@ export function MobileMenu({
           <Phone className="h-4 w-4" aria-hidden />
           Call {SITE.phone}
         </a>
-        <Link
-          href="/physicians#refer"
-          className="btn-outline-dark mt-3 w-full"
-        >
+        <Link href="/physicians#refer" className="btn-outline-dark mt-3 w-full">
           Refer a Patient
         </Link>
       </div>

@@ -15,7 +15,10 @@ export async function POST(req: Request) {
 
   const parsed = contactSchema.safeParse(body);
   if (!parsed.success) {
-    return NextResponse.json({ ok: false, issues: parsed.error.flatten() }, { status: 422 });
+    return NextResponse.json(
+      { ok: false, issues: parsed.error.flatten() },
+      { status: 422 },
+    );
   }
 
   await forwardToWebhook("contact", parsed.data);

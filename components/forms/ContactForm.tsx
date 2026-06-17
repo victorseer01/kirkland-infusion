@@ -49,7 +49,9 @@ function Field({
 }
 
 export function ContactForm() {
-  const [submitState, setSubmitState] = useState<"idle" | "submitting" | "success">("idle");
+  const [submitState, setSubmitState] = useState<
+    "idle" | "submitting" | "success"
+  >("idle");
   const {
     register,
     handleSubmit,
@@ -93,7 +95,7 @@ export function ContactForm() {
           Message received
         </h3>
         <p className="mt-2 text-sm text-grey-700 sm:text-base">
-          Thank you — we will respond the same business day.
+          Thank you, we will respond the same business day.
         </p>
         <Button
           type="button"
@@ -114,11 +116,26 @@ export function ContactForm() {
       className="space-y-6 rounded-2xl border border-grey-200 bg-white p-6 shadow-sm sm:p-8"
     >
       <div className="grid gap-5 sm:grid-cols-2">
-        <Field label="Your name" htmlFor="name" error={errors.name?.message} required>
+        <Field
+          label="Your name"
+          htmlFor="name"
+          error={errors.name?.message}
+          required
+        >
           <Input id="name" autoComplete="name" {...register("name")} />
         </Field>
-        <Field label="Phone" htmlFor="phone" error={errors.phone?.message} required>
-          <Input id="phone" type="tel" autoComplete="tel" {...register("phone")} />
+        <Field
+          label="Phone"
+          htmlFor="phone"
+          error={errors.phone?.message}
+          required
+        >
+          <Input
+            id="phone"
+            type="tel"
+            autoComplete="tel"
+            {...register("phone")}
+          />
         </Field>
         <Field
           label="Email"
@@ -127,7 +144,12 @@ export function ContactForm() {
           required
           className="sm:col-span-2"
         >
-          <Input id="email" type="email" autoComplete="email" {...register("email")} />
+          <Input
+            id="email"
+            type="email"
+            autoComplete="email"
+            {...register("email")}
+          />
         </Field>
         <Field
           label="Reason for contact"
@@ -174,14 +196,19 @@ export function ContactForm() {
             id="hipaaAck"
             checked={hipaaAck === true}
             onCheckedChange={(c) =>
-              setValue("hipaaAck", c === true ? true : (false as unknown as true), {
-                shouldValidate: true,
-              })
+              setValue(
+                "hipaaAck",
+                c === true ? true : (false as unknown as true),
+                {
+                  shouldValidate: true,
+                },
+              )
             }
             aria-invalid={!!errors.hipaaAck}
           />
           <span>
-            I acknowledge the HIPAA notice above and confirm this is not a medical emergency.
+            I acknowledge the HIPAA notice above and confirm this is not a
+            medical emergency.
           </span>
         </label>
         {errors.hipaaAck && (
@@ -191,7 +218,12 @@ export function ContactForm() {
         )}
       </div>
 
-      <Button type="submit" variant="coral" size="lg" disabled={submitState === "submitting"}>
+      <Button
+        type="submit"
+        variant="coral"
+        size="lg"
+        disabled={submitState === "submitting"}
+      >
         {submitState === "submitting" ? "Sending…" : "Send Message"}
       </Button>
     </form>

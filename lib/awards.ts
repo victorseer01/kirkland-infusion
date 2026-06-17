@@ -9,7 +9,7 @@ export type Award = {
 };
 
 // Derive a readable alt from a filename like "Dada-Castle-Connolly-2017.jpg"
-// → "Castle Connolly Top Doctors — 2017"
+// → "Castle Connolly Top Doctors, 2017"
 function altFromFilename(filename: string): string {
   const base = path
     .basename(filename, path.extname(filename))
@@ -23,7 +23,7 @@ function altFromFilename(filename: string): string {
     .replace(/-/g, " ")
     .replace(/\s+/g, " ")
     .trim();
-  return year ? `${body} — ${year}` : body;
+  return year ? `${body}, ${year}` : body;
 }
 
 export function getAwards(): Award[] {

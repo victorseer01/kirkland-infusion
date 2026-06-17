@@ -37,7 +37,7 @@ export async function forwardToWebhook(
 
   if (!url) {
     console.info(
-      `[forms] FORM_WEBHOOK_URL not set — dropping ${formId} submission after validation`,
+      `[forms] FORM_WEBHOOK_URL not set, dropping ${formId} submission after validation`,
       { form_id: formId, submitted_at: payload.submitted_at },
     );
     return { ok: true };

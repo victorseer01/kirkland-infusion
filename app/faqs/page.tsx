@@ -15,7 +15,7 @@ import { Phone, ArrowRight } from "lucide-react";
 export const metadata = buildMetadata({
   title: "Frequently Asked Questions",
   description:
-    "Honest answers to the questions patients actually ask about specialty infusion treatment in Kirkland, Washington — from billing and insurance to what to expect before, during, and after your infusion.",
+    "Honest answers to the questions patients actually ask about specialty infusion treatment in Kirkland, Washington, from billing and insurance to what to expect before, during, and after your infusion.",
   path: "/faqs",
 });
 
@@ -67,7 +67,7 @@ export default function FaqsPage() {
       <PageHero
         eyebrow="Frequently asked questions"
         title="Honest answers to the questions patients actually ask"
-        description="Browse by topic below. Still have a question? Call us — a real human will pick up the phone."
+        description="Browse by topic below. Still have a question? Call us, a real human will pick up the phone."
       />
 
       <section className="section-y-lg bg-white">
@@ -78,7 +78,8 @@ export default function FaqsPage() {
                 Cannot find your answer?
               </p>
               <p className="mt-1 text-sm text-grey-700">
-                Call us with your question — including your insurance and medication — and we will give you a clear answer.
+                Call us with your question, including your insurance and
+                medication, and we will give you a clear answer.
               </p>
             </div>
             <div className="flex w-full shrink-0 flex-col gap-3 sm:w-auto sm:flex-row">

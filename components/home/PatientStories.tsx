@@ -12,7 +12,7 @@ const TESTIMONIALS = [
   {
     question: "How is this different from previous infusion experiences?",
     answer:
-      "Calmer. The room is quiet, and there is a physician here every time — I do not have to wait twenty minutes for someone to come from another building when a question comes up. My old infusion center felt like a busy clinic. This feels like a place built for what I am here to do.",
+      "Calmer. The room is quiet, and there is a physician here every time, I do not have to wait twenty minutes for someone to come from another building when a question comes up. My old infusion center felt like a busy clinic. This feels like a place built for what I am here to do.",
     attribution: "Marcus T.",
   },
   {
@@ -36,13 +36,24 @@ export function PatientStories() {
         <div className="mt-8 grid gap-10 lg:grid-cols-[1.1fr_1fr] lg:items-center lg:gap-16">
           <div className="space-y-5 text-base leading-relaxed text-grey-700 sm:text-lg">
             <p>
-              Many of our patients arrive nervous. Some have had difficult experiences in larger hospital infusion suites — long waits, rotating staff, the feeling of being a name on a chart rather than a person. We built Kirkland Specialty Infusion Center as the antidote to that experience.
+              Many of our patients arrive nervous. Some have had difficult
+              experiences in larger hospital infusion suites, long waits,
+              rotating staff, the feeling of being a name on a chart rather than
+              a person. We built Kirkland Specialty Infusion Center as the
+              antidote to that experience.
             </p>
             <p>
-              Our suite is calm and private. Our staff knows your name, your treatment, and the small details that make your visit easier. You will see the same faces visit after visit. And there is always a physician in the building, available the moment a question, a concern, or a clinical decision arises.
+              Our suite is calm and private. Our staff knows your name, your
+              treatment, and the small details that make your visit easier. You
+              will see the same faces visit after visit. And there is always a
+              physician in the building, available the moment a question, a
+              concern, or a clinical decision arises.
             </p>
             <p className="text-primary-dark">
-              Patients live full lives — they work, travel, garden, hike the Cascades, hold their grandchildren. Our job is to make the time they spend with us so unremarkable that the rest of their week stays remarkable.
+              Patients live full lives, they work, travel, garden, hike the
+              Cascades, hold their grandchildren. Our job is to make the time
+              they spend with us so unremarkable that the rest of their week
+              stays remarkable.
             </p>
           </div>
 
@@ -80,7 +91,9 @@ export function PatientStories() {
             Honest stories, gathered with consent
           </h3>
           <p className="mt-3 max-w-2xl text-base text-grey-700">
-            Testimonials will be collected from our Evergreen Rheumatology and Overlake patient base with their consent. Three patients, three answers in their own words.
+            Testimonials will be collected from our Evergreen Rheumatology and
+            Overlake patient base with their consent. Three patients, three
+            answers in their own words.
           </p>
 
           <div className="mt-8 grid gap-6 md:grid-cols-3">

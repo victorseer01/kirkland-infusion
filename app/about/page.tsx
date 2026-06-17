@@ -3,7 +3,7 @@ import { buildMetadata } from "@/lib/metadata";
 import { PageHero } from "@/components/shared/PageHero";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { SITE } from "@/lib/constants";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ExternalLink } from "lucide-react";
 
 export const metadata = buildMetadata({
   title: "About Us",
@@ -31,7 +31,7 @@ const DIFFERENCES = [
   },
   {
     title: "We Keep Patients on Schedule",
-    body: "We book the next infusion before the patient leaves the chair. We send reminders. We re-verify insurance well in advance. We anticipate prior authorization renewals before they expire. Adherence is the single biggest determinant of long-term outcomes in chronic immunologic and inflammatory disease — and we treat it that way.",
+    body: "We book the next infusion before the patient leaves the chair. We send reminders. We re-verify insurance well in advance. We anticipate prior authorization renewals before they expire. Adherence is the single biggest determinant of long-term outcomes in chronic immunologic and inflammatory disease, and we treat it that way.",
   },
 ];
 
@@ -41,7 +41,7 @@ export default function AboutPage() {
       <PageHero
         eyebrow="About us"
         title="A better infusion experience, built on twenty years of specialty care"
-        description="Our story, our standards, and our team — built around the patients we treat and the physicians who refer them."
+        description="Our story, our standards, and our team, built around the patients we treat and the physicians who refer them."
       />
 
       <section className="section-y-lg bg-white">
@@ -52,13 +52,28 @@ export default function AboutPage() {
           />
           <div className="space-y-5 text-base leading-relaxed text-grey-700 sm:text-lg">
             <p>
-              {SITE.name} was founded by the physicians and team behind {SITE.affiliatedWith} and Overlake Arthritis and Osteoporosis Center — a Bellevue-area practice that has cared for thousands of patients with arthritis, autoimmune disease, gout, osteoporosis, and other rheumatologic conditions for more than two decades.
+              {SITE.name} was founded by the physicians and team behind{" "}
+              {SITE.affiliatedWith} and Overlake Arthritis and Osteoporosis
+              Center, a Bellevue-area practice that has cared for thousands of
+              patients with arthritis, autoimmune disease, gout, osteoporosis,
+              and other rheumatologic conditions for more than two decades.
             </p>
             <p>
-              Over the years, our patients told us the same thing in different words: they trusted our practice, but the infusion experience elsewhere was the weak link in their care. Long waits. Confusing billing. Staff who did not know their history. The unsettling feeling of receiving a complex medication without a physician readily available to answer questions or adjust the plan in real time.
+              Over the years, our patients told us the same thing in different
+              words: they trusted our practice, but the infusion experience
+              elsewhere was the weak link in their care. Long waits. Confusing
+              billing. Staff who did not know their history. The unsettling
+              feeling of receiving a complex medication without a physician
+              readily available to answer questions or adjust the plan in real
+              time.
             </p>
             <p>
-              So we built our own infusion center. We built it the way we wished infusion centers were built when we refer our own family members. Physician-led. Financially advocated. Communicative. Calm. And open not just to our own patients, but to every referring physician in the region who wants their patients to receive the same standard of care.
+              So we built our own infusion center. We built it the way we wished
+              infusion centers were built when we refer our own family members.
+              Physician-led. Financially advocated. Communicative. Calm. And
+              open not just to our own patients, but to every referring
+              physician in the region who wants their patients to receive the
+              same standard of care.
             </p>
           </div>
         </div>
@@ -91,7 +106,7 @@ export default function AboutPage() {
           <SectionHeading
             eyebrow="Our team"
             title="Experienced infusion nurses, supervised by physicians"
-            description="A licensed provider is present in the suite for every infusion. Meet the providers and infusion nurses who will care for you — the same faces you will see visit after visit."
+            description="A licensed provider is present in the suite for every infusion. Meet the providers and infusion nurses who will care for you, the same faces you will see visit after visit."
           />
           <div>
             <Link href="/team" className="btn-coral">
@@ -109,9 +124,27 @@ export default function AboutPage() {
             title="Same physicians. Same standard of care."
             tone="light"
           />
-          <p className="text-pretty text-base leading-relaxed text-ice/90 sm:text-lg">
-            {SITE.name} is affiliated with {SITE.affiliatedWith}, the Kirkland branch of the Overlake Arthritis and Osteoporosis Center family of practices. Patients receive the same physicians, the same clinical culture, and the same standard of care across both locations. {SITE.affiliatedWith} focuses on rheumatologic and immunologic disease; {SITE.name} serves patients across rheumatology, gastroenterology, oncology, dermatology, neurology, and other specialties referred by physicians throughout the region.
-          </p>
+          <div>
+            <p className="text-pretty text-base leading-relaxed text-ice/90 sm:text-lg">
+              {SITE.name} is affiliated with {SITE.affiliatedWith}, the Kirkland
+              branch of the {SITE.oaoc.name} family of practices. Patients
+              receive the same physicians, the same clinical culture, and the
+              same standard of care across both locations. {SITE.affiliatedWith}{" "}
+              focuses on rheumatologic and immunologic disease; {SITE.name}{" "}
+              serves patients across rheumatology, gastroenterology,
+              dermatology, neurology, and other specialties referred by
+              physicians throughout the region.
+            </p>
+            <a
+              href={SITE.oaoc.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-coral mt-6"
+            >
+              Learn more about our clinical care partner, {SITE.oaoc.shortName}
+              <ExternalLink className="h-4 w-4" aria-hidden />
+            </a>
+          </div>
         </div>
       </section>
     </>

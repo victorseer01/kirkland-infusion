@@ -8,7 +8,7 @@ import { Phone, ArrowRight } from "lucide-react";
 export const metadata = buildMetadata({
   title: "Specialties & Conditions",
   description:
-    "A multi-specialty infusion center. Find your condition by name and the therapy your physician prescribed — across rheumatology, neurology/MS, gastroenterology, dermatology, oncology/hematology, osteoporosis, allergy and immunology, and endocrinology.",
+    "A multi-specialty infusion center. Find your condition by name and the therapy your physician prescribed, across rheumatology, neurology/MS, gastroenterology, dermatology, osteoporosis, allergy and immunology, and endocrinology.",
   path: "/specialties",
 });
 
@@ -18,14 +18,17 @@ export default function SpecialtiesPage() {
       <PageHero
         eyebrow="Specialties & conditions"
         title="Find your condition by name, and the therapy you were prescribed"
-        description="We are a multi-specialty infusion center. Whether you were told you have rheumatoid arthritis, Crohn's disease, multiple sclerosis, severe osteoporosis, thyroid eye disease, or another condition below, you can see here exactly which specialty cares for it and which therapies we offer."
+        description="We are a multi-specialty infusion center. Whether you were told you have rheumatoid arthritis, Crohn's disease, multiple sclerosis, gout, thyroid eye disease, or another condition below, you can see here exactly which specialty cares for it and which therapies we offer."
       />
 
       <section className="section-y-lg bg-white">
         <div className="container-prose">
           <div className="grid gap-px overflow-hidden rounded-2xl border border-grey-200 bg-grey-200 md:grid-cols-2">
             {SPECIALTIES.map((s) => (
-              <article key={s.slug} className="flex flex-col bg-white p-7 sm:p-9">
+              <article
+                key={s.slug}
+                className="flex flex-col bg-white p-7 sm:p-9"
+              >
                 <h2 className="font-display text-2xl text-primary-dark">
                   {s.name}
                 </h2>
@@ -66,13 +69,10 @@ export default function SpecialtiesPage() {
           <SectionHeading
             eyebrow="Don't see what you need?"
             title="Our formulary is broader than this list"
-            description="We routinely add new agents as we receive referrals — provided the medication is appropriate for outpatient infusion in a physician-supervised setting. Call us to discuss a specific therapy, and we will let you know whether we can accommodate the referral."
+            description="We routinely add new agents as we receive referrals, provided the medication is appropriate for outpatient infusion in a physician-supervised setting. Call us to discuss a specific therapy, and we will let you know whether we can accommodate the referral."
           />
           <div className="space-y-3">
-            <a
-              href={`tel:${SITE.phoneTel}`}
-              className="btn-coral w-full"
-            >
+            <a href={`tel:${SITE.phoneTel}`} className="btn-coral w-full">
               <Phone className="h-4 w-4" aria-hidden />
               Call {SITE.phone} ext. {SITE.phoneExt}
             </a>
