@@ -3,9 +3,8 @@ import { Phone, Printer, Mail, FileText, ArrowRight } from "lucide-react";
 import { buildMetadata } from "@/lib/metadata";
 import { PageHero } from "@/components/shared/PageHero";
 import { SectionHeading } from "@/components/shared/SectionHeading";
-import { SIX_STEP_PROCESS, SITE } from "@/lib/constants";
+import { SITE } from "@/lib/constants";
 import { ReferralForm } from "@/components/forms/ReferralForm";
-import { ServiceStack } from "@/components/services/ServiceStack";
 import { StickyCallBar } from "@/components/shared/StickyCallBar";
 
 export const metadata = buildMetadata({
@@ -66,8 +65,8 @@ const WHITE_GLOVE = [
     body: "Before infusion, patients meet with an Advanced Practice Provider (APP) to review treatment, discuss what to expect, and ask any remaining questions about side effects or their care plan, helping patients feel prepared while minimizing follow-up calls to your office.",
   },
   {
-    title: "A Provider is Always On Site",
-    body: "A licensed provider is present during every infusion to provide clinical oversight and support throughout treatment.",
+    title: "A Physician is Always On Site",
+    body: "A Physician or experienced Advanced Practice Provider (APP) is present during every infusion to provide clinical oversight and support throughout treatment.",
   },
   {
     title: "We Keep the Care Loop Closed",
@@ -76,6 +75,14 @@ const WHITE_GLOVE = [
   {
     title: "We Support Treatment Adherence",
     body: "We coordinate follow-up scheduling and patient reminders to help keep therapy on track and reduce missed infusions.",
+  },
+  {
+    title: "Referral & Patient Coordination",
+    body: "We receive your referral, verify insurance, and schedule the patient at their earliest convenience.",
+  },
+  {
+    title: "Infusion Day",
+    body: "Patients receive care in a calm, private setting with licensed medical staff and a provider available for clinical oversight, guidance, and medication questions.",
   },
 ];
 
@@ -97,7 +104,7 @@ export default function PhysiciansPage() {
             description="One referral from you sets all of this in motion. You send the referral; we do the rest."
           />
 
-          <div className="mt-12 grid gap-4 sm:grid-cols-2">
+          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {WHITE_GLOVE.map((item) => (
               <article
                 key={item.title}
@@ -115,27 +122,7 @@ export default function PhysiciansPage() {
         </div>
       </section>
 
-      <section className="bg-grey-50 pb-14 pt-14 sm:pt-20" id="process">
-        <div className="container-prose">
-          <SectionHeading
-            eyebrow="Our six-step process"
-            title="Seamless from referral to follow-up"
-            description="A walk-through of what happens between the moment we receive your referral and the note that lands back in your inbox after every infusion."
-          />
-        </div>
-        <div className="container-prose mt-12">
-          <ServiceStack
-            sticky
-            items={SIX_STEP_PROCESS.map((step) => ({
-              eyebrow: `Step ${step.number}`,
-              title: step.title,
-              body: step.body,
-            }))}
-          />
-        </div>
-      </section>
-
-      <section className="section-y bg-white">
+      <section className="section-y bg-grey-50">
         <div className="container-prose">
           <SectionHeading
             eyebrow="How to refer a patient"

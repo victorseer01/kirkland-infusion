@@ -1,7 +1,10 @@
+import Image from "next/image";
 import Link from "next/link";
 import { buildMetadata } from "@/lib/metadata";
 import { PageHero } from "@/components/shared/PageHero";
 import { SectionHeading } from "@/components/shared/SectionHeading";
+import { AwardsMarquee } from "@/components/shared/AwardsMarquee";
+import { AlternatingFeatures } from "@/components/shared/AlternatingFeatures";
 import { SITE } from "@/lib/constants";
 import { ArrowRight, ExternalLink } from "lucide-react";
 
@@ -46,10 +49,31 @@ export default function AboutPage() {
 
       <section className="section-y-lg bg-white">
         <div className="container-prose grid gap-10 lg:grid-cols-[1fr_1.4fr] lg:gap-16">
-          <SectionHeading
-            eyebrow="Our story"
-            title="The infusion suite we wished existed for our own patients"
-          />
+          <div className="lg:sticky lg:top-24 lg:self-start">
+            <SectionHeading
+              eyebrow="Our story"
+              title="The infusion suite we wished existed for our own patients"
+            />
+            <figure className="mt-8 flex items-center gap-4 overflow-hidden rounded-2xl border border-grey-200 bg-white p-4 shadow-sm sm:gap-5 sm:p-5 lg:flex-col lg:items-stretch lg:p-0">
+              <div className="relative aspect-square w-28 shrink-0 overflow-hidden rounded-xl bg-grey-100 sm:w-32 lg:aspect-[4/3] lg:w-full lg:rounded-none">
+                <Image
+                  src="/staff/arinola-dada.jpg"
+                  alt="Dr. Arinola Dada, MD, FACR"
+                  fill
+                  sizes="(min-width: 1024px) 360px, 128px"
+                  className="object-cover object-top"
+                />
+              </div>
+              <figcaption className="lg:px-5 lg:py-4">
+                <p className="font-display text-lg text-primary-dark">
+                  Dr. Arinola Dada, MD, FACR
+                </p>
+                <p className="mt-1 text-sm text-grey-600">
+                  Board Certified Rheumatologist
+                </p>
+              </figcaption>
+            </figure>
+          </div>
           <div className="space-y-5 text-base leading-relaxed text-grey-700 sm:text-lg">
             <p>
               {SITE.name} was founded by the physicians and team behind{" "}
@@ -61,8 +85,10 @@ export default function AboutPage() {
             <p>
               Over the years, our patients told us the same thing in different
               words: they trusted our practice, but the infusion experience
-              elsewhere was the weak link in their care. Long waits. Confusing
-              billing. Staff who did not know their history. The unsettling
+              elsewhere was the weak link in their care.
+            </p>
+            <p>
+              Long waits, confusing billing, staff who did not know their history, the unsettling
               feeling of receiving a complex medication without a physician
               readily available to answer questions or adjust the plan in real
               time.
@@ -70,7 +96,9 @@ export default function AboutPage() {
             <p>
               So we built our own infusion center. We built it the way we wished
               infusion centers were built when we refer our own family members.
-              Physician-led. Financially advocated. Communicative. Calm. And
+              </p>  
+              <p>
+              Physician-led, financially advocated, communicative, calm and
               open not just to our own patients, but to every referring
               physician in the region who wants their patients to receive the
               same standard of care.
@@ -86,17 +114,8 @@ export default function AboutPage() {
             title="Five standards we will not compromise on"
             description="The promises that shape every infusion, every chart note, and every call back to your office."
           />
-          <div className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-grey-200 bg-grey-200 lg:grid-cols-2">
-            {DIFFERENCES.map((d) => (
-              <article key={d.title} className="bg-white p-7 sm:p-9">
-                <h3 className="font-display text-xl text-primary-dark">
-                  {d.title}
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed text-grey-700 sm:text-base">
-                  {d.body}
-                </p>
-              </article>
-            ))}
+          <div className="mt-10">
+            <AlternatingFeatures items={DIFFERENCES} />
           </div>
         </div>
       </section>
@@ -114,6 +133,12 @@ export default function AboutPage() {
               <ArrowRight className="h-4 w-4" aria-hidden />
             </Link>
           </div>
+        </div>
+      </section>
+
+      <section className="bg-grey-50">
+        <div className="container-prose section-y">
+          <AwardsMarquee />
         </div>
       </section>
 

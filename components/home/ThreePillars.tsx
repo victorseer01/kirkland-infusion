@@ -14,7 +14,7 @@ const META = [
     icon: HandCoins,
     tone: "coral" as const,
     src: "/home/pillar-2-financial.jpg",
-    alt: "Financial counselor reviewing coverage with a patient",
+    alt: "A clear, no-surprise billing summary of patient costs",
   },
   {
     icon: MessagesSquare,

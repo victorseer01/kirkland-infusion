@@ -52,7 +52,7 @@ function resolveCarrierLogos() {
   for (const carrier of CARRIERS) {
     const match = files.find((f) =>
       /\.(svg|png|jpg|jpeg|webp)$/i.test(f) &&
-      f.slice(0, f.lastIndexOf(".")) === carrier.slug,
+      f.slice(0, f.lastIndexOf(".")).toLowerCase() === carrier.slug,
     );
     if (match) map[carrier.slug] = `/insurance/${match}`;
   }
@@ -101,27 +101,35 @@ export default function InsurancePage() {
             description="We accept most major commercial insurance plans, Medicare, and many Medicare Advantage plans. The list below is being confirmed with our billing team, call us with your card in hand and we will give you a clear answer for your specific plan and medication."
           />
 
-          <div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {CARRIERS.map((carrier) => {
               const logo = CARRIER_LOGOS[carrier.slug];
               return (
                 <div
                   key={carrier.slug}
-                  className="flex items-center gap-4 rounded-xl border border-grey-200 bg-white px-4 py-3"
+                  title={carrier.name}
+                  className="group relative flex h-28 items-center justify-center rounded-xl border border-grey-200 bg-white px-6 py-5 transition hover:border-grey-300 hover:shadow-sm"
                 >
                   {logo ? (
-                    <span className="flex h-10 w-16 shrink-0 items-center justify-center">
+                    <>
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
                         src={logo}
                         alt={`${carrier.name} logo`}
-                        className="max-h-10 w-auto object-contain"
+                        className="max-h-16 w-auto max-w-[85%] object-contain transition duration-200 group-hover:opacity-0"
                       />
+                      <span
+                        aria-hidden
+                        className="absolute inset-0 flex items-center justify-center rounded-xl bg-white px-4 text-center text-sm font-semibold text-grey-900 opacity-0 transition duration-200 group-hover:opacity-100"
+                      >
+                        {carrier.name}
+                      </span>
+                    </>
+                  ) : (
+                    <span className="text-center text-sm font-medium text-grey-900">
+                      {carrier.name}
                     </span>
-                  ) : null}
-                  <span className="text-sm font-medium text-grey-900">
-                    {carrier.name}
-                  </span>
+                  )}
                 </div>
               );
             })}

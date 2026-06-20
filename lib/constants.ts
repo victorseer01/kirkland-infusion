@@ -105,7 +105,7 @@ export const ALL_ROUTES: string[] = [
 
 export const THREE_PILLARS = [
   {
-    title: "Physician-Supervised",
+    title: "Physician Supervised",
     body: "A licensed provider is present in the suite for every infusion. This is not the industry standard. It is ours.",
   },
   {
@@ -414,7 +414,7 @@ export const PATIENT_JOURNEY = [
   {
     stage: "01",
     name: "Pre-Infusion",
-    lede: "Before infusion, we take care of the details, verifying benefits, exploring copay assistance and grants when available, and coordinating a provider check-in to review treatment and answer questions.",
+    lede: "Before you arrive, we are already working.\n\nYour benefits are verified. Your out-of-pocket costs are reviewed, and if there is a copay assistance program, manufacturer grant, or foundation award that could reduce or eliminate what you owe, we find it and apply for it before your first visit. A member of our clinical team will connect with you to review your treatment, walk through what to expect, and answer every question you have, however small it feels.\n\nBy the time you sit down in the chair, the hard work is done. You just show up.",
     points: [
       {
         title: "We call you and schedule your provider appointment",

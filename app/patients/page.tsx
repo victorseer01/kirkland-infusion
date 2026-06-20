@@ -56,9 +56,11 @@ export default function PatientsPage() {
                     <h3 className="font-display text-2xl text-primary-dark sm:text-3xl">
                       {stage.name}
                     </h3>
-                    <p className="mt-3 max-w-2xl text-pretty text-sm leading-relaxed text-grey-700 sm:text-base">
-                      {stage.lede}
-                    </p>
+                    <div className="mt-3 max-w-2xl space-y-3 text-pretty text-sm leading-relaxed text-grey-700 sm:text-base">
+                      {stage.lede.split("\n\n").map((para, pi) => (
+                        <p key={pi}>{para}</p>
+                      ))}
+                    </div>
 
                     <ol className="mt-8 space-y-4">
                       {stage.points.map((point, pi) => (
