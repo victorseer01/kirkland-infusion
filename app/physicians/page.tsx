@@ -4,7 +4,7 @@ import { buildMetadata } from "@/lib/metadata";
 import { PageHero } from "@/components/shared/PageHero";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { SITE } from "@/lib/constants";
-import { ReferralForm } from "@/components/forms/ReferralForm";
+import { ReferLink } from "@/components/shared/ReferLink";
 import { StickyCallBar } from "@/components/shared/StickyCallBar";
 
 export const metadata = buildMetadata({
@@ -35,13 +35,6 @@ const REFER_METHODS = [
     value: SITE.email,
     sub: "Same-business-day acknowledgment",
     href: `mailto:${SITE.email}`,
-  },
-  {
-    icon: FileText,
-    label: "Online referral",
-    value: "Submit below",
-    sub: "HIPAA-aligned web form",
-    href: "#refer",
   },
 ];
 
@@ -127,10 +120,10 @@ export default function PhysiciansPage() {
           <SectionHeading
             eyebrow="How to refer a patient"
             title="Choose whichever method is easiest for your office"
-            description="We accept referrals by fax, secure email, phone, or this online form. Every referral is acknowledged the same business day."
+            description="Submit a referral through our secure online portal, or send it by fax, secure email, or phone. Every referral is acknowledged the same business day."
           />
 
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-10 grid gap-4 sm:grid-cols-3">
             {REFER_METHODS.map((m) => (
               <a
                 key={m.label}
@@ -184,15 +177,22 @@ export default function PhysiciansPage() {
               </Link>
             </aside>
 
-            <div>
+            <div className="flex flex-col justify-center rounded-2xl border border-grey-200 bg-primary-dark p-8 text-ice sm:p-10">
+              <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-white/10 text-coral">
+                <FileText className="h-6 w-6" aria-hidden />
+              </span>
               <SectionHeading
                 eyebrow="Online referral"
-                title="Send a referral now"
-                description="Submitting below routes directly to our intake team. We acknowledge every referral the same business day."
-                className="max-w-none"
+                title="Submit a referral through our portal"
+                description="Our secure referral portal routes directly to the intake team. We acknowledge every referral the same business day."
+                tone="light"
+                className="mt-5 max-w-none"
               />
               <div className="mt-6">
-                <ReferralForm />
+                <ReferLink className="btn-coral">
+                  Refer a Patient
+                  <ArrowRight className="h-4 w-4" aria-hidden />
+                </ReferLink>
               </div>
             </div>
           </div>

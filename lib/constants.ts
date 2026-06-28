@@ -33,7 +33,7 @@ export const SITE = {
 // the hosted referral form/portal URL; when unset it falls back to the on-site
 // referral form section. External (http/https) values open in a new tab.
 export const REFERRAL_URL =
-  process.env.NEXT_PUBLIC_REFERRAL_URL?.trim() || "/physicians#refer";
+  process.env.NEXT_PUBLIC_REFERRAL_URL?.trim() || "/physicians";
 export const REFERRAL_IS_EXTERNAL = /^https?:\/\//i.test(REFERRAL_URL);
 
 export type NavChild = {
