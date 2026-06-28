@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 import { SPECIALTIES, MEDICATIONS } from "@/lib/constants";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { MediaPlaceholder } from "@/components/shared/MediaPlaceholder";
+import { ReferLink } from "@/components/shared/ReferLink";
 
 const FEATURED = MEDICATIONS.slice(0, 16).map((m) => m.name);
 
@@ -78,12 +79,9 @@ export function WhoWeServe() {
             <p className="mt-1 text-sm text-grey-700">
               Find your condition and your therapy by name, and see exactly what
               to expect at every stage.{" "}
-              <Link
-                href="/physicians#refer"
-                className="font-semibold text-primary-dark hover:text-coral"
-              >
+              <ReferLink className="font-semibold text-primary-dark hover:text-coral">
                 Referring physicians, start here.
-              </Link>
+              </ReferLink>
             </p>
           </div>
           <Link href="/specialties" className="btn-coral shrink-0">

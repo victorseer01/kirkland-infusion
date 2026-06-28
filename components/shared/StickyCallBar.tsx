@@ -3,6 +3,7 @@
 import { Phone, FileText } from "lucide-react";
 import Link from "next/link";
 import { SITE } from "@/lib/constants";
+import { ReferLink } from "@/components/shared/ReferLink";
 
 export function StickyCallBar({
   variant = "default",
@@ -28,13 +29,10 @@ export function StickyCallBar({
             Refer
           </Link>
         ) : (
-          <Link
-            href="/physicians#refer"
-            className="flex flex-1 items-center justify-center gap-2 rounded-xl border border-primary/30 px-4 py-3 text-sm font-semibold text-primary-dark"
-          >
+          <ReferLink className="flex flex-1 items-center justify-center gap-2 rounded-xl border border-primary/30 px-4 py-3 text-sm font-semibold text-primary-dark">
             <FileText className="h-4 w-4" aria-hidden />
             Refer a Patient
-          </Link>
+          </ReferLink>
         )}
       </div>
     </div>

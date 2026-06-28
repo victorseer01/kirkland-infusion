@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 import { X, Phone } from "lucide-react";
 import { NAV_LINKS, SITE } from "@/lib/constants";
 import { Logo } from "./Logo";
+import { ReferLink } from "@/components/shared/ReferLink";
 import { cn } from "@/lib/utils";
 
 export function MobileMenu({
@@ -128,9 +129,12 @@ export function MobileMenu({
           <Phone className="h-4 w-4" aria-hidden />
           Call {SITE.phone}
         </a>
-        <Link href="/physicians#refer" className="btn-outline-dark mt-3 w-full">
+        <ReferLink
+          className="btn-outline-dark mt-3 w-full"
+          onClick={onClose}
+        >
           Refer a Patient
-        </Link>
+        </ReferLink>
       </div>
     </div>
   );

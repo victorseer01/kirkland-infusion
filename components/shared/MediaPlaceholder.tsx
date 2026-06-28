@@ -38,7 +38,7 @@ export function MediaPlaceholder({
   return (
     <div
       className={cn(
-        "relative isolate overflow-hidden rounded-2xl bg-gradient-to-br",
+        "group/media relative isolate overflow-hidden rounded-2xl bg-gradient-to-br",
         ASPECT[aspect],
         TONE[tone],
         className,
@@ -50,7 +50,7 @@ export function MediaPlaceholder({
           alt={alt ?? ""}
           fill
           sizes="(min-width: 1024px) 50vw, 100vw"
-          className="object-cover"
+          className="object-cover transition-transform duration-500 ease-out group-hover/media:scale-105"
         />
       ) : (
         <>

@@ -55,13 +55,13 @@ export default function AboutPage() {
               title="The infusion suite we wished existed for our own patients"
             />
             <figure className="mt-8 flex items-center gap-4 overflow-hidden rounded-2xl border border-grey-200 bg-white p-4 shadow-sm sm:gap-5 sm:p-5 lg:flex-col lg:items-stretch lg:p-0">
-              <div className="relative aspect-square w-28 shrink-0 overflow-hidden rounded-xl bg-grey-100 sm:w-32 lg:aspect-[4/3] lg:w-full lg:rounded-none">
+              <div className="group/media relative aspect-square w-28 shrink-0 overflow-hidden rounded-xl bg-grey-100 sm:w-32 lg:aspect-[4/3] lg:w-full lg:rounded-none">
                 <Image
                   src="/staff/arinola-dada.jpg"
                   alt="Dr. Arinola Dada, MD, FACR"
                   fill
                   sizes="(min-width: 1024px) 360px, 128px"
-                  className="object-cover object-top"
+                  className="object-cover object-top transition-transform duration-500 ease-out group-hover/media:scale-105"
                 />
               </div>
               <figcaption className="lg:px-5 lg:py-4">

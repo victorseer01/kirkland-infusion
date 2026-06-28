@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Phone, ArrowRight } from "lucide-react";
 import { SITE } from "@/lib/constants";
+import { ReferLink } from "@/components/shared/ReferLink";
 import { HeroBackground } from "./HeroBackground";
 
 export function Hero() {
@@ -26,10 +27,10 @@ export function Hero() {
               See what to expect
               <ArrowRight className="h-4 w-4" aria-hidden />
             </Link>
-            <Link href="/physicians#refer" className="btn-outline-light">
+            <ReferLink className="btn-outline-light">
               Refer a Patient
               <ArrowRight className="h-4 w-4" aria-hidden />
-            </Link>
+            </ReferLink>
           </div>
           <p className="mt-6 text-sm text-ice/85">
             Prefer to call?{" "}

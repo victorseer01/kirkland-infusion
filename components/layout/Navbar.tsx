@@ -8,6 +8,7 @@ import { NAV_LINKS, type NavLink } from "@/lib/constants";
 import { Logo } from "./Logo";
 import { MobileMenu } from "./MobileMenu";
 import { NavDropdown } from "./NavDropdown";
+import { ReferLink } from "@/components/shared/ReferLink";
 import { cn } from "@/lib/utils";
 
 function isLinkActive(link: NavLink, pathname: string): boolean {
@@ -74,13 +75,10 @@ export function Navbar() {
             </nav>
 
             <div className="flex items-center gap-2">
-              <Link
-                href="/physicians#refer"
-                className="btn-coral inline-flex px-4 py-2 text-sm shadow-md shadow-coral/20 ring-1 ring-white/20 sm:px-6 sm:py-3 sm:text-base"
-              >
+              <ReferLink className="btn-coral inline-flex px-4 py-2 text-sm shadow-md shadow-coral/20 ring-1 ring-white/20 sm:px-6 sm:py-3 sm:text-base">
                 <span className="hidden sm:inline">Refer a Patient</span>
                 <span className="sm:hidden">Refer</span>
-              </Link>
+              </ReferLink>
               <button
                 type="button"
                 onClick={() => setOpen(true)}

@@ -57,31 +57,28 @@ export function PatientStories() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
-            <MediaPlaceholder
-              aspect="portrait"
-              tone="accent"
-              src="/home/patient-1-gardening.jpg"
-              alt="Patient tending to a garden"
+          <div className="relative isolate">
+            {/* soft blurred color glow behind the pair */}
+            <div
+              aria-hidden
+              className="pointer-events-none absolute -inset-6 z-0 rounded-[2.5rem] bg-gradient-to-br from-primary/25 via-accent/15 to-coral/25 opacity-70 blur-3xl"
             />
-            <MediaPlaceholder
-              aspect="portrait"
-              tone="primary"
-              src="/home/patient-2-cascades.jpg"
-              alt="Patient hiking in the Cascades"
-            />
-            <MediaPlaceholder
-              aspect="portrait"
-              tone="navy"
-              src="/home/patient-3-grandchildren.jpg"
-              alt="Patient with grandchildren"
-            />
-            <MediaPlaceholder
-              aspect="portrait"
-              tone="coral"
-              src="/home/patient-4-work.jpg"
-              alt="Patient back at the desk"
-            />
+            <div className="relative z-10 space-y-8 sm:space-y-10">
+              <MediaPlaceholder
+                aspect="wide"
+                tone="accent"
+                src="/home/patient-1-gardening.jpg"
+                alt="Patient tending to a garden"
+                className="w-3/4 rounded-2xl shadow-lg ring-1 ring-grey-200 transition duration-300 ease-out hover:-translate-y-1 hover:shadow-2xl"
+              />
+              <MediaPlaceholder
+                aspect="wide"
+                tone="primary"
+                src="/home/patient-2-cascades.jpg"
+                alt="Patient hiking in the Cascades"
+                className="ml-auto w-3/4 rounded-2xl shadow-lg ring-1 ring-grey-200 transition duration-300 ease-out hover:-translate-y-1 hover:shadow-2xl"
+              />
+            </div>
           </div>
         </div>
 

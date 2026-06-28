@@ -29,6 +29,13 @@ export const SITE = {
   },
 } as const;
 
+// Destination for every "Refer a Patient" CTA. Set NEXT_PUBLIC_REFERRAL_URL to
+// the hosted referral form/portal URL; when unset it falls back to the on-site
+// referral form section. External (http/https) values open in a new tab.
+export const REFERRAL_URL =
+  process.env.NEXT_PUBLIC_REFERRAL_URL?.trim() || "/physicians#refer";
+export const REFERRAL_IS_EXTERNAL = /^https?:\/\//i.test(REFERRAL_URL);
+
 export type NavChild = {
   href: string;
   label: string;
@@ -792,19 +799,6 @@ export const TEAM: readonly TeamMember[] = [
       "Dr. Sabahat Usmani is an incoming rheumatologist at Kirkland Specialty Infusion Center, bringing advanced training in autoimmune and inflammatory diseases and a compassionate, patient-centered approach to care. She is dedicated to helping patients navigate complex rheumatologic conditions with evidence-based treatment and individualized attention.",
       "Dr. Usmani completed her internal medicine training at Weiss Memorial Hospital in Chicago, where she served as Chief Resident, and is completing her rheumatology fellowship at the Medical College of Wisconsin, where she was selected as incoming Chief Fellow for 2025-2026. Her clinical interests include rheumatoid arthritis, lupus, psoriatic arthritis, ankylosing spondylitis, gout, Sjögren's syndrome, osteoporosis, and other autoimmune conditions.",
       "At Kirkland Specialty Infusion Center, Dr. Usmani is committed to providing safe, seamless infusion care while ensuring patients feel supported every step of the way.",
-    ],
-  },
-  {
-    slug: "megan-schluentz",
-    name: "Megan Schluentz",
-    credentials: "MD",
-    role: "Rheumatologist",
-    category: "Providers",
-    photo: "/staff/megan-schluentz.jpg",
-    bio: [
-      "Dr. Megan Schluentz is an incoming rheumatologist at Kirkland Specialty Infusion Center, bringing advanced training in autoimmune and inflammatory diseases along with a thoughtful, patient-centered approach to care. She is committed to helping patients manage complex rheumatologic conditions through evidence-based treatment and compassionate support.",
-      "Dr. Schluentz completed her internal medicine residency at Legacy Health Emanuel in Portland, Oregon, and is completing her rheumatology fellowship at Ochsner Medical Center in New Orleans. Her clinical interests include rheumatoid arthritis, lupus, psoriatic arthritis, ankylosing spondylitis, vasculitis, osteoporosis, and other autoimmune and connective tissue diseases.",
-      "At Kirkland Specialty Infusion Center, Dr. Schluentz is dedicated to providing safe, seamless infusion care while ensuring patients feel informed, supported, and cared for throughout their treatment journey.",
     ],
   },
   {
