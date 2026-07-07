@@ -22,11 +22,42 @@ export const SITE = {
     weekend: "Saturday & Sunday: Closed",
   },
   affiliatedWith: "Evergreen Rheumatology",
+  // Affiliated practices shown in the homepage + footer affiliation line. Each
+  // name links to its site when a `url` is known; names without one render as
+  // plain text ("link if applicable"). TODO: add Evergreen Rheumatology and
+  // Bellevue Specialty Infusion Center URLs once confirmed by the client.
+  affiliates: [
+    {
+      name: "Evergreen Rheumatology",
+      url: null,
+      blurb:
+        "Expert rheumatology care in Kirkland, delivering personalized treatment for arthritis and autoimmune conditions.",
+    },
+    {
+      name: "Overlake Arthritis and Osteoporosis Center",
+      url: "https://www.overlakearthritis.com",
+      blurb:
+        "A comprehensive specialty center in Bellevue offering advanced rheumatology, osteoporosis, infusion, and diagnostic services.",
+    },
+    {
+      name: "Bellevue Specialty Infusion Center",
+      url: null,
+      blurb:
+        "Advanced infusion therapies in Bellevue, delivered with comfort, convenience, and expert clinical care.",
+    },
+  ],
   oaoc: {
     name: "Overlake Arthritis and Osteoporosis Center",
     shortName: "OAOC",
     url: "https://www.overlakearthritis.com",
   },
+} as const;
+
+// "Formulary Update" announcement shown just below the hero. NOTE: the
+// medication names below are the EXAMPLE set from the client feedback doc
+// (KSI-UPDATES) and must be confirmed with the client before launch.
+export const FORMULARY_UPDATE = {
+  medications: ["Ocrevus Zunovo", "Ojjaara", "Vyvgart Hytrulo"],
 } as const;
 
 // Destination for every "Refer a Patient" CTA. Set NEXT_PUBLIC_REFERRAL_URL to
@@ -125,95 +156,161 @@ export const THREE_PILLARS = [
   },
 ] as const;
 
-// Conditions are named individually (not lumped under umbrella terms such as
-// "inflammatory arthritis") so a patient can find their specific diagnosis by
-// name. Therapies are grouped under the specialty that uses them; biologics that
-// span specialties are listed under each relevant one.
+// Specialty detail content (overview, conditions, therapies) is client-approved
+// copy from the KSI-UPDATES feedback doc. `body` is a short summary used in the
+// page hero + meta description; `overview` is the long-form detail-page copy.
+// NOTE: "Endocrinology" (Thyroid Eye Disease / Tepezza) has no subtab in the
+// feedback doc but is a live offering, so it is retained pending client confirm.
 export const SPECIALTIES = [
   {
     slug: "rheumatology",
     name: "Rheumatology",
     body: "Biologic and non-biologic infusions for systemic inflammatory and autoimmune disease, administered under physician supervision.",
+    overview: [
+      "Autoimmune and inflammatory conditions can affect the joints, muscles, bones, and connective tissues throughout the body. These disorders occur when the immune system mistakenly attacks healthy tissues, leading to inflammation, pain, stiffness, fatigue, and, in some cases, progressive damage.",
+      "Many rheumatologic diseases require ongoing management to control symptoms, reduce disease activity, and help preserve long-term function. Advances in biologic therapies and targeted treatments have transformed care for patients living with chronic inflammatory conditions.",
+      "At Kirkland Specialty Infusion, we partner with rheumatologists and healthcare providers to deliver infusion and injection therapies in a comfortable outpatient setting, providing individualized care and ongoing treatment support.",
+    ],
     conditions: [
-      "Rheumatoid arthritis",
-      "Psoriatic arthritis",
-      "Ankylosing spondylitis / axial spondyloarthritis",
-      "Lupus (systemic lupus erythematosus)",
-      "Vasculitis",
+      "Rheumatoid Arthritis",
+      "Psoriatic Arthritis",
+      "Ankylosing Spondylitis",
+      "Lupus (SLE)",
       "Gout",
-      "Polymyalgia rheumatica",
-      "Giant cell arteritis",
+      "Vasculitis",
+      "Polymyalgia Rheumatica",
+      "Sjögren's Syndrome",
+      "Inflammatory Myopathies",
     ],
     therapies: [
-      "Actemra",
-      "Benlysta",
-      "Cimzia",
-      "Cosentyx",
-      "Ilaris",
-      "Ilumya",
-      "Krystexxa",
-      "Octagam (IVIG)",
-      "Orencia",
-      "Remicade",
-      "Rituxan",
-      "Saphnelo",
-      "Simponi Aria",
-      "Stelara",
+      "Orencia® (abatacept)",
+      "Rituxan® / Ruxience® (rituximab)",
+      "Simponi Aria® (golimumab)",
+      "Remicade® / Inflectra® (infliximab)",
+      "Actemra® (tocilizumab)",
+      "Saphnelo® (anifrolumab)",
+      "Krystexxa® (pegloticase)",
+      "Benlysta® (belimumab)",
+      "Cimzia® (certolizumab pegol)",
     ],
   },
   {
     slug: "gastroenterology",
     name: "Gastroenterology",
     body: "Biologic infusions for inflammatory bowel disease.",
-    conditions: ["Crohn's disease", "Ulcerative colitis"],
-    therapies: ["Entyvio", "Remicade", "Stelara", "Simponi Aria"],
+    overview: [
+      "Gastrointestinal autoimmune and inflammatory diseases can significantly impact digestive health, nutrition, and overall well-being. Conditions such as Crohn's disease and ulcerative colitis occur when chronic inflammation affects the digestive tract, often causing symptoms that interfere with daily life.",
+      "Treatment often focuses on reducing inflammation, maintaining remission, and preventing disease-related complications. Biologic therapies have become an important part of care for many patients with moderate to severe inflammatory bowel disease.",
+      "Kirkland Specialty Infusion works closely with gastroenterologists to provide infusion-based treatments in a convenient outpatient environment while supporting continuity of care between patients and their providers.",
+    ],
+    conditions: [
+      "Crohn's Disease",
+      "Ulcerative Colitis",
+      "Inflammatory Bowel Disease (IBD)",
+    ],
+    therapies: ["Entyvio®", "Remicade® / Inflectra®", "Skyrizi®", "Stelara®", "Cimzia®"],
   },
   {
     slug: "dermatology",
     name: "Dermatology",
     body: "Biologic infusions for immune-mediated skin disease.",
-    conditions: [
-      "Severe plaque psoriasis",
-      "Psoriatic disease",
-      "Hidradenitis suppurativa",
+    overview: [
+      "Certain chronic skin conditions are driven by immune system dysfunction and ongoing inflammation. These disorders can affect not only physical comfort but also confidence, emotional well-being, and quality of life. Advances in biologic therapies have provided new treatment options for patients with moderate to severe inflammatory skin diseases by targeting the underlying immune pathways responsible for symptoms.",
+      "At Kirkland Specialty Infusion, we collaborate with dermatologists and specialists to provide biologic and infusion therapies designed to help patients achieve better disease control and long-term symptom management.",
     ],
-    therapies: ["Cosentyx", "Ilumya", "Remicade", "Stelara"],
+    conditions: [
+      "Plaque Psoriasis",
+      "Psoriatic Arthritis",
+      "Hidradenitis Suppurativa",
+      "Chronic Inflammatory Skin Disorders",
+    ],
+    therapies: ["Skyrizi®", "Ilumya®", "Remicade® / Inflectra®"],
   },
   {
     slug: "neurology",
     name: "Neurology / MS",
     body: "Therapies for neuroinflammatory and neuromuscular conditions.",
-    conditions: [
-      "Multiple sclerosis",
-      "Neuromyelitis optica spectrum disorder",
-      "Myasthenia gravis",
-      "Chronic inflammatory demyelinating polyneuropathy (CIDP)",
+    overview: [
+      "Neurologic autoimmune disorders occur when the immune system affects the brain, spinal cord, nerves, or muscles. These conditions can impact mobility, strength, sensation, vision, and other important functions, often requiring specialized long-term care.",
+      "Modern infusion therapies have expanded treatment options for many neurologic conditions, helping to reduce disease activity, manage symptoms, and support improved quality of life.",
+      "Kirkland Specialty Infusion partners with neurologists and healthcare providers to deliver advanced therapies in a safe, comfortable, and closely monitored outpatient setting.",
     ],
-    therapies: ["Ocrevus", "Uplizna", "Vyvgart", "Octagam (IVIG)"],
+    conditions: [
+      "Multiple Sclerosis (MS)",
+      "Neuromyelitis Optica Spectrum Disorder (NMOSD)",
+      "Myasthenia Gravis",
+      "Chronic Inflammatory Demyelinating Polyneuropathy (CIDP)",
+    ],
+    therapies: ["Ocrevus®", "Rituxan® / Ruxience®", "IVIG"],
   },
   {
     slug: "osteoporosis-bone-health",
     name: "Osteoporosis & Bone Health",
     body: "Anabolic and antiresorptive bone-building infusions, with DEXA coordination.",
-    conditions: [
-      "Severe osteoporosis",
-      "High fracture risk / prior fragility fracture",
+    overview: [
+      "Osteoporosis is a common condition that weakens bones and increases the risk of fractures. Because bone loss often occurs gradually and without noticeable symptoms, many individuals are unaware they have osteoporosis until a fracture occurs.",
+      "Treatment focuses on preserving bone strength, improving bone density, and reducing fracture risk. Infusion and injectable therapies can play an important role in helping patients maintain mobility, independence, and long-term skeletal health.",
+      "At Kirkland Specialty Infusion, we provide convenient access to osteoporosis therapies while coordinating care with primary care providers, endocrinologists, and specialists.",
     ],
-    therapies: ["Evenity"],
+    conditions: [
+      "Osteoporosis",
+      "Postmenopausal Osteoporosis",
+      "Glucocorticoid-Induced Osteoporosis",
+      "Osteopenia (when clinically indicated)",
+    ],
+    therapies: ["Reclast®", "Prolia®", "Evenity®"],
   },
   {
     slug: "allergy-immunology",
-    name: "Allergy & Immunology",
-    body: "IVIG and biologic therapies for immunodeficiency and immunologic disease.",
-    conditions: ["Primary immunodeficiency", "Secondary immunodeficiency"],
-    therapies: ["Octagam (IVIG)"],
+    name: "Allergy & Immunocompromised Conditions",
+    body: "IVIG and biologic therapies for immunodeficiency, severe allergic, and immune-mediated conditions.",
+    overview: [
+      "The immune system plays a critical role in protecting the body from infection and disease. However, some individuals experience conditions in which the immune system becomes overactive, underactive, or unable to function properly.",
+      "Patients with immunodeficiency disorders may experience recurrent infections, while others may require advanced therapies to manage severe allergic or immune-mediated conditions. These disorders often benefit from specialized treatment plans designed to support immune function and reduce complications.",
+      "Kirkland Specialty Infusion works alongside allergists, immunologists, and referring providers to deliver infusion and biologic therapies in a supportive and patient-centered environment.",
+    ],
+    conditions: [
+      "Primary Immunodeficiency Disorders",
+      "Secondary Immunodeficiency",
+      "Chronic Urticaria (Chronic Hives)",
+      "Severe Allergic Asthma",
+      "Immune-Mediated Conditions Requiring IVIG",
+    ],
+    therapies: ["IVIG", "Xolair®", "Fasenra®", "Cinqair®"],
+  },
+  {
+    slug: "inflammatory-eye-disease",
+    name: "Inflammatory Eye Disease",
+    body: "Advanced infusion therapies for immune-mediated inflammatory eye disease, in partnership with ophthalmology.",
+    overview: [
+      "Inflammatory eye diseases are a group of conditions that cause inflammation within the eye and surrounding tissues. These disorders may occur on their own or in association with autoimmune conditions such as rheumatoid arthritis, lupus, vasculitis, and inflammatory bowel disease.",
+      "Symptoms may include eye redness, pain, light sensitivity, blurred vision, floaters, and changes in vision. Early diagnosis and appropriate treatment are important to help control inflammation and protect long-term eye health.",
+      "Kirkland Specialty Infusion partners with ophthalmologists and specialists to provide advanced infusion therapies that support disease management and help preserve vision.",
+    ],
+    conditions: [
+      "Uveitis",
+      "Non-Infectious Posterior Uveitis",
+      "Scleritis",
+      "Retinal Vasculitis",
+      "Immune-Mediated Ocular Inflammatory Disorders",
+    ],
+    therapies: [
+      "Remicade® / Inflectra®",
+      "Rituxan® / Ruxience®",
+      "Actemra®",
+      "Solu-Medrol®",
+    ],
   },
   {
     slug: "endocrinology",
     name: "Endocrinology",
     body: "Specialty infusions with full prior authorization and financial advocacy support.",
-    conditions: ["Thyroid eye disease (Graves' ophthalmopathy)"],
-    therapies: ["Tepezza"],
+    overview: [
+      "Thyroid eye disease is an autoimmune condition that causes inflammation of the tissues around the eyes and can lead to eye bulging, double vision, pain, and pressure.",
+      "At Kirkland Specialty Infusion, we provide targeted infusion therapy for thyroid eye disease with full prior authorization support and financial advocacy, coordinating closely with endocrinologists and ophthalmologists.",
+    ],
+    conditions: ["Thyroid Eye Disease (Graves' ophthalmopathy)"],
+    therapies: ["Tepezza® (teprotumumab)"],
   },
 ] as const;
 
@@ -497,7 +594,7 @@ export const FAQ_CATEGORIES: readonly FaqCategory[] = [
     items: [
       {
         q: "What is Kirkland Specialty Infusion Center?",
-        a: "We are a physician-led, outpatient specialty infusion suite located in Kirkland, Washington, affiliated with Evergreen Rheumatology, one of the Pacific Northwest's most respected rheumatology practices, with more than 20 years of specialty care.\n\nA licensed provider is present in the suite for every infusion, not nearby, not on call, but in the room.",
+        a: "We are a physician-led, outpatient specialty infusion suite located in Kirkland, Washington, affiliated with Evergreen Rheumatology, one of the Pacific Northwest's most respected rheumatology practices, with more than 40 years of specialty care.\n\nA licensed provider is present in the suite for every infusion, not nearby, not on call, but in the room.",
       },
       {
         q: "What is infusion therapy?",
@@ -546,9 +643,7 @@ export const FAQ_CATEGORIES: readonly FaqCategory[] = [
   },
   {
     name: "Billing & Insurance",
-    blurb: "Cost should not stand between you and treatment",
-    intro:
-      "Our financial advocacy program exists because we have watched too many patients delay or decline treatment out of fear of the bill. We will not let that happen if there is any way to prevent it.",
+    blurb: "Helping You Understand Your Coverage",
     items: [
       {
         q: "Does KSIC accept my insurance?",
@@ -622,7 +717,7 @@ export const FAQ_CATEGORIES: readonly FaqCategory[] = [
   },
   {
     name: "During Your Infusion",
-    blurb: "What to expect in the chair",
+    blurb: "What to expect during treatment",
     items: [
       {
         q: "Will my infusion hurt?",

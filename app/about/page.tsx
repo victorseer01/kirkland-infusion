@@ -4,7 +4,8 @@ import { buildMetadata } from "@/lib/metadata";
 import { PageHero } from "@/components/shared/PageHero";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { AwardsMarquee } from "@/components/shared/AwardsMarquee";
-import { AlternatingFeatures } from "@/components/shared/AlternatingFeatures";
+import { AffiliationList } from "@/components/shared/AffiliationList";
+import { DifferencesScroller } from "@/components/about/DifferencesScroller";
 import { SITE } from "@/lib/constants";
 import { ArrowRight, ExternalLink } from "lucide-react";
 
@@ -80,7 +81,7 @@ export default function AboutPage() {
               {SITE.affiliatedWith} and Overlake Arthritis and Osteoporosis
               Center, a Bellevue-area practice that has cared for thousands of
               patients with arthritis, autoimmune disease, gout, osteoporosis,
-              and other rheumatologic conditions for more than two decades.
+              and other rheumatologic conditions for more than four decades.
             </p>
             <p>
               Over the years, our patients told us the same thing in different
@@ -97,6 +98,10 @@ export default function AboutPage() {
               So we built our own infusion center. We built it the way we wished
               infusion centers were built when we refer our own family members.
               </p>  
+              <blockquote className="border-l-2 border-coral pl-5 font-display text-xl leading-snug text-primary-dark sm:text-2xl">
+                We built the infusion center we wished existed when we refer our
+                own family members.
+              </blockquote>
               <p>
               Physician-led, financially advocated, communicative, calm and
               open not just to our own patients, but to every referring
@@ -107,16 +112,16 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="section-y bg-grey-50">
+      <section className="bg-grey-50 pt-8 sm:pt-10">
         <div className="container-prose">
           <SectionHeading
             eyebrow="What makes us different"
             title="Five standards we will not compromise on"
-            description="The promises that shape every infusion, every chart note, and every call back to your office."
+            description="The promises that shape every infusion, every chart note, and every call back to your office. Scroll to move through the deck."
           />
-          <div className="mt-10">
-            <AlternatingFeatures items={DIFFERENCES} />
-          </div>
+        </div>
+        <div className="mt-4 sm:mt-6">
+          <DifferencesScroller items={DIFFERENCES} />
         </div>
       </section>
 
@@ -145,20 +150,20 @@ export default function AboutPage() {
       <section className="section-y bg-primary-dark text-ice">
         <div className="container-prose grid gap-8 lg:grid-cols-[1fr_1.4fr] lg:gap-16">
           <SectionHeading
-            eyebrow="Our affiliated practice"
+            eyebrow="Our affiliated network"
             title="Same physicians. Same standard of care."
             tone="light"
           />
           <div>
             <p className="text-pretty text-base leading-relaxed text-ice/90 sm:text-lg">
-              {SITE.name} is affiliated with {SITE.affiliatedWith}, the Kirkland
-              branch of the {SITE.oaoc.name} family of practices. Patients
-              receive the same physicians, the same clinical culture, and the
-              same standard of care across both locations. {SITE.affiliatedWith}{" "}
-              focuses on rheumatologic and immunologic disease; {SITE.name}{" "}
-              serves patients across rheumatology, gastroenterology,
-              dermatology, neurology, and other specialties referred by
-              physicians throughout the region.
+              {SITE.name} is part of a trusted network of specialty practices,
+              affiliated with{" "}
+              <AffiliationList linkClassName="font-medium text-white hover:text-coral" />
+              . Patients receive the same physicians, the same clinical culture,
+              and the same standard of care across our locations. Together, we
+              serve patients across rheumatology, gastroenterology, dermatology,
+              neurology, and other specialties referred by physicians throughout
+              the region.
             </p>
             <a
               href={SITE.oaoc.url}

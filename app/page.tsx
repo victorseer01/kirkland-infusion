@@ -1,4 +1,5 @@
 import { Hero } from "@/components/home/Hero";
+import { FormularyUpdate } from "@/components/home/FormularyUpdate";
 import { Proof } from "@/components/home/Proof";
 import { ThreePillars } from "@/components/home/ThreePillars";
 import { WhoWeServe } from "@/components/home/WhoWeServe";
@@ -12,6 +13,9 @@ export default function HomePage() {
     <>
       <StickyCallBar />
       <Hero />
+      <Reveal>
+        <FormularyUpdate />
+      </Reveal>
       <Reveal>
         <Proof />
       </Reveal>

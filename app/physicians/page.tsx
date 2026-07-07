@@ -1,5 +1,18 @@
 import Link from "next/link";
-import { Phone, Printer, Mail, FileText, ArrowRight } from "lucide-react";
+import {
+  Phone,
+  Printer,
+  Mail,
+  FileText,
+  ArrowRight,
+  ClipboardCheck,
+  HeartHandshake,
+  Stethoscope,
+  MessagesSquare,
+  CalendarCheck,
+  ClipboardList,
+  Syringe,
+} from "lucide-react";
 import { buildMetadata } from "@/lib/metadata";
 import { PageHero } from "@/components/shared/PageHero";
 import { SectionHeading } from "@/components/shared/SectionHeading";
@@ -37,6 +50,17 @@ const REFER_METHODS = [
     href: `mailto:${SITE.email}`,
   },
 ];
+
+// Icons for the white-glove cards, in the same order as WHITE_GLOVE.
+const WHITE_GLOVE_ICONS = [
+  ClipboardCheck,
+  HeartHandshake,
+  Stethoscope,
+  MessagesSquare,
+  CalendarCheck,
+  ClipboardList,
+  Syringe,
+] as const;
 
 const INCLUDE_ITEMS = [
   "Patient demographics and insurance information",
@@ -98,19 +122,25 @@ export default function PhysiciansPage() {
           />
 
           <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {WHITE_GLOVE.map((item) => (
-              <article
-                key={item.title}
-                className="rounded-2xl border border-grey-200 bg-white p-7 shadow-sm"
-              >
-                <h3 className="font-display text-lg text-primary-dark">
-                  {item.title}
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed text-grey-700 sm:text-base">
-                  {item.body}
-                </p>
-              </article>
-            ))}
+            {WHITE_GLOVE.map((item, i) => {
+              const Icon = WHITE_GLOVE_ICONS[i];
+              return (
+                <article
+                  key={item.title}
+                  className="rounded-2xl border border-grey-200 bg-white p-7 shadow-sm transition-shadow hover:shadow-md"
+                >
+                  <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                    <Icon className="h-5 w-5" aria-hidden />
+                  </span>
+                  <h3 className="mt-4 font-display text-lg text-primary-dark">
+                    {item.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-grey-700 sm:text-base">
+                    {item.body}
+                  </p>
+                </article>
+              );
+            })}
           </div>
         </div>
       </section>

@@ -15,7 +15,6 @@ export type HeroSlide = {
 const PLACEHOLDER_SLIDES: HeroSlide[] = [
   { src: "/hero/01.jpg", alt: "" },
   { src: "/hero/02.jpg", alt: "" },
-  { src: "/hero/03.jpg", alt: "" },
   { src: "/hero/04.jpg", alt: "" },
 ];
 

@@ -23,42 +23,43 @@ export default function SpecialtiesPage() {
 
       <section className="section-y-lg bg-white">
         <div className="container-prose">
-          <div className="grid gap-px overflow-hidden rounded-2xl border border-grey-200 bg-grey-200 md:grid-cols-2">
+          {/* Image-tile format (per client feedback). Each tile links to the
+              specialty's dedicated page. TODO: drop a representative photo at
+              /public/specialties/<slug>.jpg to replace the gradient placeholder. */}
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {SPECIALTIES.map((s) => (
-              <article
+              <Link
                 key={s.slug}
-                className="flex flex-col bg-white p-7 sm:p-9"
+                href={`/specialties/${s.slug}`}
+                aria-label={`${s.name} — view specialty`}
+                className="group relative isolate flex aspect-[4/3] items-end overflow-hidden rounded-2xl bg-gradient-to-br from-primary via-primary-dark to-navy shadow-sm transition-transform hover:-translate-y-0.5"
               >
-                <h2 className="font-display text-2xl text-primary-dark">
-                  {s.name}
-                </h2>
-                <p className="mt-3 text-sm leading-relaxed text-grey-700 sm:text-base">
-                  {s.body}
-                </p>
-                <div className="mt-5">
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-primary">
-                    Conditions we treat
-                  </p>
-                  <ul className="mt-3 flex flex-1 flex-wrap content-start gap-2">
-                    {s.conditions.map((c) => (
-                      <li
-                        key={c}
-                        className="rounded-full border border-primary/15 bg-primary/5 px-3 py-1.5 text-xs font-medium text-primary-dark"
-                      >
-                        {c}
-                      </li>
-                    ))}
-                  </ul>
+                <div
+                  aria-hidden
+                  className="absolute inset-0 opacity-[0.12]"
+                  style={{
+                    backgroundImage:
+                      "radial-gradient(circle, rgba(255,255,255,0.95) 1px, transparent 1px)",
+                    backgroundSize: "20px 20px",
+                  }}
+                />
+                <div
+                  aria-hidden
+                  className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/65 via-black/25 to-transparent"
+                />
+                <div className="relative w-full p-5 text-center">
+                  <h2 className="font-display text-lg text-white sm:text-xl">
+                    {s.name}
+                  </h2>
+                  <span className="mt-1.5 inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-[0.14em] text-white/85 transition-colors group-hover:text-coral">
+                    View specialty
+                    <ArrowRight
+                      className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5"
+                      aria-hidden
+                    />
+                  </span>
                 </div>
-                <div className="mt-5 border-t border-grey-200 pt-5">
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-primary">
-                    Therapies we offer
-                  </p>
-                  <p className="mt-2 text-sm text-grey-700">
-                    {s.therapies.join(" · ")}
-                  </p>
-                </div>
-              </article>
+              </Link>
             ))}
           </div>
         </div>

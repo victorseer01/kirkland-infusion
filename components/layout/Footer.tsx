@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import { NAV_LINKS, SITE } from "@/lib/constants";
 import { Logo } from "./Logo";
+import { AffiliationList } from "@/components/shared/AffiliationList";
 
 // The main nav labels are styled ALL CAPS; the footer uses standard case.
 // Convert only fully-uppercase labels so mixed-case ones (e.g. "FAQs") are
@@ -39,15 +40,9 @@ export function Footer() {
             <Logo variant="light" />
             <p className="mt-5 max-w-md text-sm leading-relaxed text-ice/80">
               {SITE.name} is a physician-led outpatient infusion suite
-              affiliated with {SITE.affiliatedWith}, serving the greater
-              Kirkland and Eastside community.
-            </p>
-            {/* <p className="mt-4 text-xs uppercase tracking-[0.18em] text-ice/70">
- {SITE.tagline}
- </p> */}
-            <p className="mt-8 text-xs text-ice/60">
-              Affiliated with {SITE.affiliatedWith}, part of the{" "}
-              {SITE.oaoc.name} family of practices.
+              affiliated with{" "}
+              <AffiliationList linkClassName="font-medium text-white hover:text-coral" />
+              , serving the greater Kirkland and Eastside community.
             </p>
             <a
               href={SITE.oaoc.url}

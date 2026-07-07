@@ -32,12 +32,12 @@ export function Navbar() {
     <>
       <header
         className={cn(
-          "sticky top-0 z-40 w-full border-b border-white/10 bg-primary-dark transition-all",
-          scrolled && "shadow-lg backdrop-blur-md",
+          "sticky top-0 z-40 w-full border-b border-grey-200 bg-white transition-all",
+          scrolled && "shadow-md backdrop-blur-md",
         )}
       >
-        <div className="container-prose flex h-20 items-center justify-between gap-4 lg:h-28">
-          <Logo variant="light" />
+        <div className="container-prose flex h-20 items-center justify-between gap-4 lg:h-24">
+          <Logo variant="dark" />
 
           <div className="flex items-center gap-3 lg:gap-6">
             <nav className="hidden lg:block" aria-label="Primary">
@@ -62,8 +62,8 @@ export function Navbar() {
                         className={cn(
                           "rounded-full px-3 py-2 text-sm font-medium transition-colors",
                           active
-                            ? "text-white"
-                            : "text-ice/85 hover:text-white",
+                            ? "text-primary-dark"
+                            : "text-grey-600 hover:text-primary-dark",
                         )}
                       >
                         {link.label}
@@ -75,7 +75,7 @@ export function Navbar() {
             </nav>
 
             <div className="flex items-center gap-2">
-              <ReferLink className="btn-coral inline-flex px-4 py-2 text-sm shadow-md shadow-coral/20 ring-1 ring-white/20 sm:px-6 sm:py-3 sm:text-base">
+              <ReferLink className="btn-coral inline-flex px-4 py-2 text-sm shadow-md shadow-coral/20 sm:px-6 sm:py-3 sm:text-base">
                 <span className="hidden sm:inline">Refer a Patient</span>
                 <span className="sm:hidden">Refer</span>
               </ReferLink>
@@ -83,7 +83,7 @@ export function Navbar() {
                 type="button"
                 onClick={() => setOpen(true)}
                 aria-label="Open menu"
-                className="inline-flex items-center justify-center rounded-full p-2 text-ice hover:bg-white/10 lg:hidden"
+                className="inline-flex items-center justify-center rounded-full p-2 text-primary-dark hover:bg-grey-100 lg:hidden"
               >
                 <Menu className="h-6 w-6" />
               </button>

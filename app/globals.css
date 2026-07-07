@@ -43,11 +43,11 @@
   }
 
   .section-y {
-    @apply py-14 sm:py-20;
+    @apply py-10 sm:py-14;
   }
 
   .section-y-lg {
-    @apply py-16 sm:py-24;
+    @apply py-12 sm:py-16;
   }
 
   .eyebrow {

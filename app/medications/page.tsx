@@ -7,7 +7,15 @@ import {
   SPECIALTIES,
   SITE,
 } from "@/lib/constants";
-import { Info, ExternalLink } from "lucide-react";
+import {
+  Info,
+  ExternalLink,
+  Syringe,
+  Sun,
+  FlaskConical,
+  Droplets,
+  Activity,
+} from "lucide-react";
 
 export const metadata = buildMetadata({
   title: "Medications & Therapies",
@@ -20,6 +28,9 @@ export const metadata = buildMetadata({
 const MED_URL: Record<string, string> = Object.fromEntries(
   MEDICATIONS.map((m) => [m.name, m.url]),
 );
+
+// Icons for the cash-pay wellness cards, in the same order as CASH_PAY_SERVICES.
+const CASH_PAY_ICONS = [Syringe, Sun, FlaskConical, Droplets, Activity] as const;
 
 export default function MedicationsPage() {
   return (
@@ -131,16 +142,22 @@ export default function MedicationsPage() {
           />
 
           <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {CASH_PAY_SERVICES.map((s) => (
-              <article key={s.name} className="card-soft">
-                <h3 className="font-display text-lg text-primary-dark">
-                  {s.name}
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed text-grey-700 sm:text-base">
-                  {s.body}
-                </p>
-              </article>
-            ))}
+            {CASH_PAY_SERVICES.map((s, i) => {
+              const Icon = CASH_PAY_ICONS[i] ?? Syringe;
+              return (
+                <article key={s.name} className="card-soft">
+                  <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                    <Icon className="h-5 w-5" aria-hidden />
+                  </span>
+                  <h3 className="mt-4 font-display text-lg text-primary-dark">
+                    {s.name}
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-grey-700 sm:text-base">
+                    {s.body}
+                  </p>
+                </article>
+              );
+            })}
           </div>
 
           <div className="mt-10 flex items-start gap-4 rounded-2xl border border-coral/30 bg-coral/5 p-5 sm:p-6">
