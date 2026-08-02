@@ -13,8 +13,8 @@ export function WhoWeServe() {
       <div className="container-prose">
         <SectionHeading
           eyebrow="Who we serve"
-          title="A specialty infusion center, in the truest sense"
-          description="Our infusion suite welcomes patients referred by rheumatologists, gastroenterologists, dermatologists, neurologists, endocrinologists, allergists and immunologists, and physicians caring for patients with osteoporosis and metabolic bone disease."
+          title="Specialized Care. Personalized Support."
+          description="Our infusion center serves and welcomes patients with a wide range of medical conditions, including autoimmune diseases, thyroid eye disease, neurologic disorders, gout, gastrointestinal conditions, and other specialty care needs. Working closely with referring physicians, we provide expert infusion therapy in a welcoming environment where comfort, communication, and exceptional care come first."
         />
 
         <div className="mt-12 grid gap-8 lg:grid-cols-[1fr_1.4fr] lg:items-stretch lg:gap-10">
@@ -74,18 +74,21 @@ export function WhoWeServe() {
         <div className="mt-10 flex flex-col items-start justify-between gap-4 rounded-2xl border border-grey-200 bg-white p-7 shadow-sm sm:flex-row sm:items-center sm:p-8">
           <div>
             <p className="font-display text-lg text-primary-dark sm:text-xl">
-              Were you told you have a condition, or prescribed a medicine?
+              Find Your Condition, Treatment, or Specialty
             </p>
             <p className="mt-1 text-sm text-grey-700">
-              Find your condition and your therapy by name, and see exactly what
-              to expect at every stage.{" "}
-              <ReferLink className="font-semibold text-primary-dark hover:text-coral">
-                Referring physicians, start here.
-              </ReferLink>
+              Browse the conditions we treat, infusion therapies we offer, and
+              specialties we support. Whether you&apos;re a patient exploring
+              treatment options or a provider seeking infusion services for a
+              patient, you&apos;ll find detailed information and resources here.
             </p>
+            <ReferLink className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-primary-dark hover:text-coral">
+              Referring a patient? Visit our Physician Resources
+              <ArrowRight className="h-4 w-4" aria-hidden />
+            </ReferLink>
           </div>
           <Link href="/specialties" className="btn-coral shrink-0">
-            Find your condition
+            Explore Conditions &amp; Treatments
             <ArrowRight className="h-4 w-4" aria-hidden />
           </Link>
         </div>

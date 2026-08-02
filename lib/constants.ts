@@ -518,53 +518,53 @@ export const PATIENT_JOURNEY = [
   {
     stage: "01",
     name: "Pre-Infusion",
-    lede: "Before you arrive, we are already working.\n\nYour benefits are verified. Your out-of-pocket costs are reviewed, and if there is a copay assistance program, manufacturer grant, or foundation award that could reduce or eliminate what you owe, we find it and apply for it before your first visit. A member of our clinical team will connect with you to review your treatment, walk through what to expect, and answer every question you have, however small it feels.\n\nBy the time you sit down in the chair, the hard work is done. You just show up.",
+    lede: "Before you arrive, we're already preparing for your care.\n\nOur team verifies your insurance, reviews your benefits, explores available financial assistance and manufacturer copay programs, and coordinates every detail needed to begin treatment. Before your first infusion, you'll also meet with one of our providers to review your treatment plan, answer your questions, and ensure you feel informed and confident before starting therapy.",
     points: [
       {
-        title: "We call you and schedule your provider appointment",
-        body: "We will contact you to schedule a provider appointment, an opportunity to ask questions about your medication and treatment, and better understand what to expect before your infusion.",
+        title: "We'll Reach Out and Get Things Started",
+        body: "Our team will contact you to schedule your pre-infusion provider appointment and your infusion appointment. We'll also answer any initial questions and walk you through what to expect before your treatment begins.",
       },
       {
-        title: "Your pre-infusion provider visit",
-        body: "You will meet with one of our Advanced Practice Providers (APPs) before your infusion to review your treatment, answer questions, and confirm you are ready for treatment. This visit also reinforces information discussed by your referring physician and provides time to discuss any concerns before infusion.",
+        title: "Meet With an Advanced Practice Provider (APP)",
+        body: "Before your first infusion, you'll meet with one of our Advanced Practice Providers (APPs) to ensure your treatment is as safe and effective as possible. During this visit, we'll review your medical history, discuss your treatment plan, answer your questions, and confirm that all required labs, screenings, and medication prerequisites have been completed. This helps minimize the risk of adverse reactions and ensures you're ready to begin therapy with confidence.",
       },
     ],
   },
   {
     stage: "02",
     name: "Infusion Day",
-    lede: "On the day itself, your only job is to be comfortable. Here is what to expect so nothing is a surprise.",
+    lede: "After completing your pre-treatment visit, you're ready for infusion day. Here's what to expect during your appointment and how our team will support you throughout your treatment.",
     points: [
       {
-        title: "What to bring, and to drink plenty of water",
-        body: "Bring your insurance card, a photo ID, and a list of your current medications. Drink plenty of water beforehand, well-hydrated veins make starting your IV easier. Eat a normal meal unless told otherwise.",
+        title: "Getting Ready for Your Visit",
+        body: "Bring your insurance card, a photo ID, and a list of your current medications. We also recommend drinking plenty of water before your appointment, as well-hydrated veins can make IV placement easier. Unless instructed otherwise, eat a normal meal before your visit.",
       },
       {
-        title: "A calm, private setting",
-        body: "Our suite is calm and unhurried, patients read, work on a device, watch something, or simply rest in a comfortable chair. This is not a clinical-cold room, and you will not be one of a crowd.",
+        title: "A Comfortable Space to Recharge",
+        body: "We believe infusion therapy should be as comfortable as possible. Our patients enjoy a quiet, welcoming environment where they can rest, catch up on work, read, or simply take time for themselves during treatment.",
       },
       {
-        title: "Who you will see, and how long it takes",
-        body: "A licensed nurse starts your IV and stays with you, and a provider is always on site throughout. Most infusions take between thirty minutes and a few hours; we tell you exactly how long to plan for when we schedule you.",
+        title: "Your Care Team Will Be With You Every Step of the Way",
+        body: "An experienced infusion nurse will start your IV, monitor your treatment, and help ensure you're comfortable throughout your visit. A licensed provider is always on site to provide clinical oversight and support whenever needed.",
       },
     ],
   },
   {
     stage: "03",
     name: "Post-Infusion Follow-Up",
-    lede: "Your care does not end when the IV comes out. We stay with you after you go home, and we keep the cycle running smoothly to the next visit.",
+    lede: "Your care doesn't end when your infusion is complete. Before you leave, we'll review any next steps, answer remaining questions, and help coordinate follow-up care so you feel informed and supported moving forward.",
     points: [
       {
-        title: "A free nurse check-in by phone",
-        body: "On the day of, or the day after, your infusion, one of our nurses calls you, free of charge, to check on how you are feeling. If anything is off, we want to hear about it early.",
+        title: "We'll Check In After Your Treatment",
+        body: "Your care doesn't end when you leave our infusion center. Following your treatment, a member of our clinical team will check in with you to see how you're doing and ensure you have the support you need.",
       },
       {
-        title: "We close the loop with your physician",
-        body: "We send a note to your referring physician confirming you received your medication, how you tolerated it, and when you are scheduled next. Your whole care team stays informed.",
+        title: "We Keep Your Providers Informed",
+        body: "We communicate with your referring provider after your treatment, sharing important updates about your infusion and any relevant follow-up information. By keeping your care team connected, we help ensure continuity of care between visits.",
       },
       {
-        title: "A managed, repeating cycle",
-        body: "Your follow-up flows straight back into preparing for your next infusion, coverage re-checked, appointment booked, reminders sent. This is an ongoing, managed cycle, not a one-off, so you are never left wondering what comes next.",
+        title: "Planning Ahead for Future Treatments",
+        body: "If your treatment plan includes ongoing infusions, we'll help coordinate future appointments, verify insurance requirements, and provide reminders along the way. Our goal is to make staying on track with treatment as simple and stress-free as possible.",
       },
     ],
   },

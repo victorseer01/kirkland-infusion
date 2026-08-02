@@ -30,30 +30,28 @@ export function PatientStories() {
       <div className="container-prose">
         <SectionHeading
           eyebrow="A different kind of infusion center"
-          title="Where serious medicine meets gentle hands"
+          title="Where Specialized Medicine Meets Gentle Hands"
         />
 
         <div className="mt-8 grid gap-10 lg:grid-cols-[1.1fr_1fr] lg:items-center lg:gap-16">
           <div className="space-y-5 text-base leading-relaxed text-grey-700 sm:text-lg">
             <p>
-              Many of our patients arrive nervous. Some have had difficult
-              experiences in larger hospital infusion suites, long waits,
-              rotating staff, the feeling of being a name on a chart rather than
-              a person. We built Kirkland Specialty Infusion Center as the
-              antidote to that experience.
+              Many patients arrive with questions, concerns, or uncertainty
+              about starting infusion therapy. Our goal is to make every visit
+              feel comfortable, personal, and reassuring from the moment you walk
+              through our doors.
             </p>
             <p>
-              Our suite is calm and private. Our staff knows your name, your
-              treatment, and the small details that make your visit easier. You
-              will see the same faces visit after visit. And there is always a
-              physician in the building, available the moment a question, a
-              concern, or a clinical decision arises.
+              At Kirkland Specialty Infusion Center, you&apos;ll be cared for by a
+              dedicated team that takes the time to know you, your treatment
+              plan, and your individual needs. With consistent staff, physician
+              oversight, and a calm, welcoming environment, we&apos;re committed
+              to making every infusion experience as seamless as possible.
             </p>
             <p className="text-primary-dark">
-              Patients live full lives, they work, travel, garden, hike the
-              Cascades, hold their grandchildren. Our job is to make the time
-              they spend with us so unremarkable that the rest of their week
-              stays remarkable.
+              Because infusion therapy is only one part of your life. Our job is
+              to provide exceptional care, so you can spend more time focusing on
+              the people, activities, and moments that matter most.
             </p>
           </div>
 
@@ -85,12 +83,13 @@ export function PatientStories() {
         <div className="mt-10">
           <p className="eyebrow text-coral">What patients say</p>
           <h3 className="mt-3 text-balance font-display text-2xl text-primary-dark sm:text-3xl">
-            Honest stories, gathered with consent
+            Why Patients Choose Kirkland Specialty Infusion Center
           </h3>
           <p className="mt-3 max-w-2xl text-base text-grey-700">
-            Testimonials will be collected from our Evergreen Rheumatology and
-            Overlake patient base with their consent. Three patients, three
-            answers in their own words.
+            From the comfort of our infusion suites to the personalized attention
+            of our clinical team, patients consistently tell us that their
+            experience feels different here. These stories reflect the care,
+            compassion, and expertise we strive to provide every day.
           </p>
 
           <div className="mt-8 grid gap-6 md:grid-cols-3">

@@ -65,8 +65,8 @@ export default function ContactPage() {
     <>
       <PageHero
         eyebrow="Contact & directions"
-        title="We look forward to welcoming your referrals"
-        description="Just off I-405 and easily accessible from Bellevue, Redmond, Bothell, Woodinville, and the greater Eastside. Free parking on-site. Ground-floor, fully wheelchair accessible."
+        title="We're Here to Help You Get Started"
+        description="Whether you're a patient exploring treatment options, preparing for an upcoming infusion, or a provider looking to refer a patient, our team is ready to help. Contact us with questions, referrals, scheduling needs, or general inquiries."
       />
 
       <section className="section-y-lg bg-white">
@@ -105,8 +105,8 @@ export default function ContactPage() {
           <div>
             <SectionHeading
               eyebrow="Send a message"
-              title="We respond the same business day"
-              description="Existing patients can schedule, reschedule, or confirm an appointment by phone. New patients will need a referral from their physician, see the For Physicians page for details."
+              title="We Respond Within One Business Day"
+              description="Existing patients may schedule, reschedule, or confirm appointments by phone. New patients will need a referral from their physician before scheduling. If you have questions about treatment, insurance, billing, referrals, or our services, send us a message and a member of our team will be happy to assist you."
             />
             <div className="mt-8">
               <ContactForm />
@@ -119,13 +119,13 @@ export default function ContactPage() {
         <div className="container-prose py-14 sm:py-20">
           <p className="eyebrow text-coral">Final reassurance</p>
           <h2 className="mt-3 max-w-3xl text-balance text-3xl text-white sm:text-4xl">
-            {SITE.tagline}
+            Expert Care. Personal Attention.
           </h2>
           <p className="mt-5 max-w-3xl text-pretty text-base text-ice/90 sm:text-lg">
-            Whether you are a referring physician, a patient walking into your
-            first infusion, or a family member trying to understand a loved
-            one&apos;s care, we are here, we are reachable, and we will treat
-            your questions as if they were our own. Welcome to {SITE.name}.
+            Whether you&apos;re visiting us for treatment, referring a patient,
+            or helping a loved one navigate care, you&apos;ll find a team that
+            values relationships, clear communication, and personalized support
+            every step of the way.
           </p>
         </div>
       </section>

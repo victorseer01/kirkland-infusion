@@ -65,10 +65,10 @@ const WHITE_GLOVE_ICONS = [
 const INCLUDE_ITEMS = [
   "Patient demographics and insurance information",
   "Medication name, dose, frequency, and indication",
-  "Recent relevant labs and imaging",
-  "TB and hepatitis screening results for biologic-naïve patients",
-  "Any premedication orders",
-  "Brief clinical summary or copy of recent progress note",
+  "Recent relevant laboratory results and imaging",
+  "TB and hepatitis screening results (when applicable)",
+  "Premedication orders, if required",
+  "Recent progress note or clinical summary",
   "Preferred contact information for clinical communication",
 ];
 
@@ -109,8 +109,8 @@ export default function PhysiciansPage() {
       <StickyCallBar variant="refer" />
       <PageHero
         eyebrow="For referring physicians"
-        title="A white-glove consult service for your referred patients"
-        description="You spend your time making clinical decisions. We spend ours making sure those decisions translate into infusions that actually happen, on time, with full insurance coverage, and with the clinical communication you need. We take the administrative burden off your office and keep you informed at every stage."
+        title="White-Glove Support for Your Patients and Your Practice"
+        description="You focus on making clinical decisions. We focus on helping patients start treatment sooner, stay on therapy, and receive the coordinated support they need throughout their infusion journey. From insurance approvals and patient outreach to clinical communication and follow-up, our team manages the details while keeping your office informed every step of the way."
       />
 
       <section className="section-y-lg bg-white">
@@ -149,8 +149,8 @@ export default function PhysiciansPage() {
         <div className="container-prose">
           <SectionHeading
             eyebrow="How to refer a patient"
-            title="Choose whichever method is easiest for your office"
-            description="Submit a referral through our secure online portal, or send it by fax, secure email, or phone. Every referral is acknowledged the same business day."
+            title="Send the Referral. We'll Handle the Rest."
+            description="Once we receive your referral, our team begins coordinating insurance approvals, patient outreach, scheduling, and treatment preparation, keeping both your office and your patient informed along the way."
           />
 
           <div className="mt-10 grid gap-4 sm:grid-cols-3">
@@ -177,8 +177,13 @@ export default function PhysiciansPage() {
           <div className="mt-12 grid gap-8 lg:grid-cols-[1fr_1.2fr] lg:items-start lg:gap-12">
             <aside className="rounded-2xl border border-grey-200 bg-grey-50 p-7 sm:p-9 lg:sticky lg:top-24">
               <h3 className="font-display text-xl text-primary-dark">
-                What to include with your referral
+                Helping Patients Get Started Quickly
               </h3>
+              <p className="mt-3 text-sm leading-relaxed text-grey-700">
+                To help us begin coordinating care as efficiently as possible,
+                please include the following information with your referral when
+                available:
+              </p>
               <ul className="mt-5 space-y-3">
                 {INCLUDE_ITEMS.map((item) => (
                   <li
@@ -194,9 +199,12 @@ export default function PhysiciansPage() {
                 ))}
               </ul>
               <p className="mt-6 rounded-xl bg-white p-4 text-sm text-grey-700">
-                <strong className="text-primary-dark">Missing items?</strong>{" "}
-                Send what you have. Our team will follow up with you for
-                anything we need.
+                <strong className="text-primary-dark">
+                  Don&apos;t have everything yet?
+                </strong>{" "}
+                That&apos;s okay. Send what you have, and our team will work with
+                you to obtain any additional information needed to coordinate
+                care.
               </p>
               <Link
                 href="/contact"

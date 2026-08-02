@@ -16,13 +16,13 @@ export const metadata = buildMetadata({
 
 const ADVOCACY_LIST = [
   "Verify your insurance coverage before your first infusion",
-  "Estimate your out-of-pocket cost in writing, before treatment begins",
-  "Apply for prior authorization on every covered medication",
-  "Identify and apply for manufacturer copay assistance programs",
-  "Identify and apply for patient assistance programs (PAPs) when copay assistance is not available",
-  "Identify and apply for foundation grants from organizations such as the HealthWell Foundation, Patient Advocate Foundation, and Good Days, when appropriate",
-  "Re-verify your benefits each calendar year and at any plan change",
-  "Renew prior authorizations before they expire",
+  "Provide an estimate of your expected out-of-pocket costs whenever possible",
+  "Submit and track prior authorizations for covered medications",
+  "Explore manufacturer copay assistance programs",
+  "Evaluate eligibility for patient assistance programs (PAPs)",
+  "Identify available foundation grants and financial support resources",
+  "Re-verify benefits when coverage changes occur",
+  "Renew authorizations before they expire",
 ];
 
 // Drop a logo into public/insurance/<slug>.(svg|png|jpg|webp) and it appears
@@ -66,15 +66,15 @@ export default function InsurancePage() {
     <>
       <PageHero
         eyebrow="Insurance & financial assistance"
-        title="Cost should not stand between you and treatment"
-        description="Our financial advocacy program exists because we have watched too many patients delay treatment, ration medication, or decline care altogether because they were afraid of the bill. We will not let that happen on our watch if there is any way to prevent it."
+        title="We're Here to Help You Navigate the Financial Side of Care"
+        description="Understanding insurance coverage and treatment costs can feel overwhelming. Our team works closely with patients, providers, and insurance companies to help clarify benefits, explore available assistance programs, and make the process as straightforward as possible."
       />
 
       <section className="section-y-lg bg-white">
         <div className="container-prose grid gap-10 lg:grid-cols-[1fr_1.4fr] lg:gap-16">
           <SectionHeading
             eyebrow="What we do for every patient"
-            title="A standing order, on every chart"
+            title="Helping You Navigate Insurance With Confidence"
           />
           <ul className="space-y-4">
             {ADVOCACY_LIST.map((item) => (
@@ -97,8 +97,8 @@ export default function InsurancePage() {
         <div className="container-prose">
           <SectionHeading
             eyebrow="Insurance plans accepted"
-            title="Most major commercial plans and Medicare"
-            description="We accept most major commercial insurance plans, Medicare, and many Medicare Advantage plans. The list below is being confirmed with our billing team, call us with your card in hand and we will give you a clear answer for your specific plan and medication."
+            title="We Work With Most Major Insurance Plans"
+            description="We accept Medicare and many major commercial insurance plans. Coverage for infusion therapy can vary based on your specific plan and prescribed medication, so our team will verify your benefits and explain your coverage before treatment begins."
           />
 
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -141,34 +141,32 @@ export default function InsurancePage() {
         <div className="container-prose grid gap-10 lg:grid-cols-2">
           <article className="card-soft">
             <h3 className="font-display text-xl text-primary-dark">
-              Self-pay patients
+              Self-Pay Patients
             </h3>
             <p className="mt-3 text-sm leading-relaxed text-grey-700 sm:text-base">
-              We welcome self-pay patients for our cash-pay wellness services
-              (B12, vitamin D, Myers Cocktail IV, iron infusions, joint
-              injections, and PRP). For specialty infusion medications, the
-              medication cost is generally too high to self-pay, but we will
-              explore every available assistance program before any patient is
-              turned away for financial reasons.
+              Some of our wellness and supportive care services are available on
+              a self-pay basis. Our team is happy to discuss pricing, answer
+              questions, and help you determine whether a self-pay option may be
+              right for your needs.
             </p>
             <Link
               href="/medications"
               className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-primary-dark hover:text-coral"
             >
-              See cash-pay services
+              Learn About Self-Pay Services
               <ArrowRight className="h-4 w-4" aria-hidden />
             </Link>
           </article>
 
           <article className="card-soft">
             <h3 className="font-display text-xl text-primary-dark">
-              Questions about a bill
+              Need Help Understanding a Bill?
             </h3>
             <p className="mt-3 text-sm leading-relaxed text-grey-700 sm:text-base">
-              If you receive a bill that does not look right, or that exceeds
-              what we told you to expect, please call us immediately. We will
-              review the charges with you and contact the insurance company on
-              your behalf if needed.
+              Insurance claims and medical billing can be confusing. If something
+              doesn&apos;t look right or you have questions about your charges,
+              contact our team and we&apos;ll help review the information with
+              you.
             </p>
             <a href={`tel:${SITE.phoneTel}`} className="btn-outline-dark mt-6">
               <Phone className="h-4 w-4" aria-hidden />

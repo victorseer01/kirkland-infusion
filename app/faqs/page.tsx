@@ -66,8 +66,8 @@ export default function FaqsPage() {
       <JsonLd data={faqJsonLd} />
       <PageHero
         eyebrow="Frequently asked questions"
-        title="Honest answers to the questions patients actually ask"
-        description="Browse by topic below. Still have a question? Call us, a real human will pick up the phone."
+        title="Clear Answers, Every Step of the Way"
+        description="From your first appointment through ongoing treatment, we're committed to making infusion therapy as straightforward and stress-free as possible. Browse answers to common questions about our services, insurance, treatment expectations, and more."
       />
 
       <section className="section-y-lg bg-white">
@@ -75,11 +75,12 @@ export default function FaqsPage() {
           <div className="mb-12 flex flex-col items-start justify-between gap-4 rounded-2xl border border-grey-200 bg-grey-50 p-6 sm:flex-row sm:items-center sm:p-7">
             <div>
               <p className="font-display text-lg text-primary-dark sm:text-xl">
-                Cannot find your answer?
+                Can&apos;t Find What You&apos;re Looking For?
               </p>
               <p className="mt-1 text-sm text-grey-700">
-                Call us with your question, including your insurance and
-                medication, and we will give you a clear answer.
+                We&apos;re committed to making infusion therapy as clear and
+                straightforward as possible. If you still have questions, our
+                team is just a phone call or message away and happy to help.
               </p>
             </div>
             <div className="flex w-full shrink-0 flex-col gap-3 sm:w-auto sm:flex-row">

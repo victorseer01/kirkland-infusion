@@ -37,16 +37,16 @@ export default function MedicationsPage() {
     <>
       <PageHero
         eyebrow="Medications & therapies"
-        title="Do we have your medicine? Find it under your specialty"
-        description="Therapies are grouped under the specialty that uses them, so you can quickly find the one your physician prescribed. Some biologics treat conditions across more than one specialty, so you will see them listed under each. All infusions are administered under physician supervision."
+        title="Find the Therapy That's Right for Your Condition"
+        description="Whether you've been prescribed a biologic medication, infusion therapy, or specialty treatment, we've organized our formulary by specialty to make it easier to find the information you need."
       />
 
       <section className="section-y-lg bg-white">
         <div className="container-prose">
           <SectionHeading
             eyebrow="Therapies by specialty"
-            title="Find your therapy under the specialty that uses it"
-            description="A patient referred by their neurologist sees MS and neurology therapies here; a patient referred by their gastroenterologist sees GI therapies. Biologics that span specialties appear under each relevant one."
+            title="Find Your Therapy by Specialty"
+            description="We've organized our therapies by specialty to help patients and providers quickly find the treatments they're looking for. Because some medications are used across multiple conditions, you may see them listed under more than one specialty."
           />
 
           <div className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-grey-200 bg-grey-200 md:grid-cols-2">
@@ -92,8 +92,8 @@ export default function MedicationsPage() {
         <div className="container-prose">
           <SectionHeading
             eyebrow="Complete formulary (A to Z)"
-            title="Every therapy we administer, with its indication"
-            description="The full list of biologic, biosimilar, and immunologic therapies, each administered by licensed clinical staff with a supervising provider present in the suite."
+            title="Explore Our Complete Formulary"
+            description="Browse our full list of infusion therapies, biologics, and specialty medications, including the conditions they are commonly used to treat."
           />
 
           <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -137,8 +137,8 @@ export default function MedicationsPage() {
         <div className="container-prose">
           <SectionHeading
             eyebrow="Cash-pay wellness"
-            title="Cash-pay wellness & supportive services"
-            description="In addition to our insurance-covered specialty infusion services, we offer a small menu of physician-supervised cash-pay supportive therapies."
+            title="Optional Therapies for Additional Support"
+            description="For patients interested in supportive wellness services, we offer a curated selection of physician-supervised cash-pay therapies available outside of traditional insurance coverage."
           />
 
           <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -166,14 +166,15 @@ export default function MedicationsPage() {
             </span>
             <div>
               <p className="font-display text-base text-primary-dark">
-                A note on cash-pay services
+                A Note About Cash-Pay Services
               </p>
               <p className="mt-1 text-sm leading-relaxed text-grey-700 sm:text-base">
-                Cash-pay services are not a substitute for evaluation by your
-                primary care physician or specialist. We recommend discussing
-                supplemental therapies with your physician before booking. If
-                you are unsure whether a service is appropriate for you, call us
-                and we will help you decide.
+                Cash-pay wellness and supportive services are intended to
+                complement, not replace, the care you receive from your primary
+                care physician or specialist. We encourage patients to discuss
+                any supplemental therapies with their healthcare provider before
+                booking. If you have questions about whether a service is right
+                for you, our team is happy to help.
               </p>
             </div>
           </div>

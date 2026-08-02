@@ -17,8 +17,8 @@ export default function SpecialtiesPage() {
     <>
       <PageHero
         eyebrow="Specialties & conditions"
-        title="Find your condition by name, and the therapy you were prescribed"
-        description="We are a multi-specialty infusion center. Whether you were told you have rheumatoid arthritis, Crohn's disease, multiple sclerosis, gout, thyroid eye disease, or another condition below, you can see here exactly which specialty cares for it and which therapies we offer."
+        title="The Conditions We Treat. The Specialists We Support."
+        description="Our infusion center partners with physicians across multiple specialties to provide infusion therapy for a broad range of autoimmune, inflammatory, neurologic, gastrointestinal, dermatologic, and metabolic bone conditions. Explore the specialties we support and the conditions commonly treated at Kirkland Specialty Infusion Center."
       />
 
       <section className="section-y-lg bg-white">
@@ -69,18 +69,18 @@ export default function SpecialtiesPage() {
         <div className="container-prose grid items-center gap-8 py-14 sm:py-20 lg:grid-cols-[1.4fr_1fr]">
           <SectionHeading
             eyebrow="Don't see what you need?"
-            title="Our formulary is broader than this list"
-            description="We routinely add new agents as we receive referrals, provided the medication is appropriate for outpatient infusion in a physician-supervised setting. Call us to discuss a specific therapy, and we will let you know whether we can accommodate the referral."
+            title="We're Always Expanding Our Formulary"
+            description="We regularly add new infusion therapies as patient and provider needs evolve. If you don't see a medication listed, reach out to our team. We'll be happy to discuss your treatment options and whether we can accommodate the referral."
           />
           <div className="space-y-3">
-            <a href={`tel:${SITE.phoneTel}`} className="btn-coral w-full">
+            <Link href="/medications" className="btn-coral w-full">
+              View Full Formulary
+              <ArrowRight className="h-4 w-4" aria-hidden />
+            </Link>
+            <a href={`tel:${SITE.phoneTel}`} className="btn-outline-dark w-full">
               <Phone className="h-4 w-4" aria-hidden />
               Call {SITE.phone} ext. {SITE.phoneExt}
             </a>
-            <Link href="/medications" className="btn-outline-dark w-full">
-              See full formulary
-              <ArrowRight className="h-4 w-4" aria-hidden />
-            </Link>
           </div>
         </div>
       </section>

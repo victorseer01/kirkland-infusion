@@ -23,16 +23,16 @@ export default function PatientsPage() {
     <>
       <PageHero
         eyebrow="For patients"
-        title="Your infusion journey, in three clear stages"
-        description="If your doctor has referred you to us, welcome. We have broken down exactly what happens, before, during, and after your infusion, so there is no black box, no guessing, and nothing to worry about."
+        title="Understanding Your Infusion Experience"
+        description="Starting a new treatment can come with questions. This guide walks through what happens before, during, and after your infusion so you'll know exactly what to expect."
       />
 
       <section className="section-y-lg bg-white">
         <div className="container-prose">
           <SectionHeading
             eyebrow="What to expect"
-            title="Pre-Infusion, Infusion Day, and Post-Infusion Follow-Up"
-            description="Three stages, each with a clear set of things we take care of. It is a managed, repeating cycle, you are guided through every step."
+            title="Three Stages of Care, One Coordinated Experience"
+            description="Every infusion journey includes several important milestones before, during, and after treatment. We've outlined each stage below so you'll know what to expect and how our team supports you every step of the way."
           />
 
           <div className="mt-14 space-y-14">
@@ -97,12 +97,14 @@ export default function PatientsPage() {
             </span>
             <div>
               <p className="font-display text-lg text-primary-dark">
-                A managed cycle, not a one-off
+                A Connected Experience From Start to Finish
               </p>
               <p className="mt-1 text-sm leading-relaxed text-grey-700 sm:text-base">
-                Your post-infusion follow-up flows straight back into preparing
-                for your next visit, coverage re-checked, your appointment
-                booked, reminders sent. You will always know what comes next.
+                Every part of our process is designed to work together, from
+                scheduling and preparation to treatment and follow-up care. By
+                keeping patients informed and providers connected, we help create
+                a more comfortable, coordinated infusion experience from
+                beginning to end.
               </p>
             </div>
           </div>

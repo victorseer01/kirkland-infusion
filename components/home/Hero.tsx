@@ -13,14 +13,15 @@ export function Hero() {
           <div className="max-w-xl">
             <p className="eyebrow text-coral">Kirkland, Washington</p>
             <h1 className="mt-4 text-balance text-[1.9rem] leading-tight text-primary-dark sm:text-5xl lg:text-[3.4rem]">
-              A warmer, calmer kind of specialty infusion care
+              Specialized Infusion Therapy with Compassionate, Physician-Led
+              Care
             </h1>
             <p className="mt-5 text-pretty text-base leading-relaxed text-grey-700 sm:text-lg">
-              If your doctor has referred you for an infusion, you are in caring,
-              capable hands. Physician-supervised infusions, financial advocacy
-              so cost is rarely the barrier, and a free nurse check-in after you
-              go home, with seamless communication back to your physician&apos;s
-              office.
+              Kirkland Specialty Infusion Center provides infusion treatments for
+              rheumatology, neurology, gastroenterology, dermatology,
+              osteoporosis, inflammatory eye disease, and other specialty
+              conditions. Our team supports patients every step of the way, from
+              insurance coordination to treatment and follow-up care.
             </p>
             <div className="mt-8 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
               <Link href="/patients" className="btn-coral">
@@ -42,7 +43,7 @@ export function Hero() {
               </a>
             </p>
             <p className="mt-8 text-xs font-semibold uppercase tracking-[0.18em] text-primary/80">
-              {SITE.tagline}
+              Exceptional specialty care. Every step of the way.
             </p>
           </div>
 
@@ -56,8 +57,8 @@ export function Hero() {
       <div className="border-t border-grey-200 bg-grey-50">
         <div className="container-prose flex flex-col items-start gap-2 py-5 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-sm text-grey-700">
-            Specialty infusions with a provider always on site, and someone in
-            your corner from referral to recovery.
+            Serving patients throughout Kirkland, Bellevue, and the greater
+            Seattle area.
           </p>
           <a
             href={`tel:${SITE.phoneTel}`}
