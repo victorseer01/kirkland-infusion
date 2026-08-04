@@ -69,6 +69,34 @@ export const REFERRAL_URL =
   "https://intakeq.com/new/ibknvo";
 export const REFERRAL_IS_EXTERNAL = /^https?:\/\//i.test(REFERRAL_URL);
 
+// Shared library of medication-specific referral forms for referring providers.
+// All forms live in one Google Drive folder; the list below shows which
+// medications have a form available so providers know what to expect.
+export const REFERRAL_FORMS_URL =
+  "https://drive.google.com/drive/folders/1QPEgizdDhMNnXrv98gKL7mZYp0LUMy05?usp=drive_link";
+
+export const REFERRAL_FORMS = [
+  "Actemra",
+  "Avsola",
+  "Benlysta",
+  "Cimzia",
+  "Entyvio",
+  "Ilumya",
+  "Krystexxa",
+  "Ocrevus",
+  "Orencia",
+  "Remicade",
+  "Renflexis",
+  "Rituxan",
+  "Ruxience",
+  "Saphnelo",
+  "Simponi Aria",
+  "Stelara",
+  "Tepezza",
+  "Truxima",
+  "Tysabri",
+];
+
 export type NavChild = {
   href: string;
   label: string;

@@ -12,11 +12,12 @@ import {
   CalendarCheck,
   ClipboardList,
   Syringe,
+  Download,
 } from "lucide-react";
 import { buildMetadata } from "@/lib/metadata";
 import { PageHero } from "@/components/shared/PageHero";
 import { SectionHeading } from "@/components/shared/SectionHeading";
-import { SITE } from "@/lib/constants";
+import { SITE, REFERRAL_FORMS, REFERRAL_FORMS_URL } from "@/lib/constants";
 import { ReferLink } from "@/components/shared/ReferLink";
 import { StickyCallBar } from "@/components/shared/StickyCallBar";
 
@@ -206,6 +207,38 @@ export default function PhysiciansPage() {
       </section>
 
       <section className="section-y bg-grey-50">
+        <div className="container-prose">
+          <SectionHeading
+            eyebrow="Referral forms"
+            title="Medication-Specific Referral Forms"
+            description="Browse our library of medication-specific referral forms. Select the form that matches your patient's prescribed therapy to view and download it."
+          />
+
+          <div className="mt-10 flex flex-wrap gap-2.5">
+            {REFERRAL_FORMS.map((name) => (
+              <span
+                key={name}
+                className="inline-flex items-center gap-2 rounded-full border border-grey-200 bg-white px-4 py-2 text-sm font-medium text-primary-dark shadow-sm"
+              >
+                <FileText className="h-4 w-4 text-primary" aria-hidden />
+                {name}
+              </span>
+            ))}
+          </div>
+
+          <a
+            href={REFERRAL_FORMS_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-coral mt-8"
+          >
+            <Download className="h-4 w-4" aria-hidden />
+            View &amp; Download Referral Forms
+          </a>
+        </div>
+      </section>
+
+      <section className="section-y bg-white">
         <div className="container-prose">
           <SectionHeading
             eyebrow="The white-glove promise"
