@@ -57,20 +57,23 @@ export const SITE = {
 // medication names below are the EXAMPLE set from the client feedback doc
 // (KSI-UPDATES) and must be confirmed with the client before launch.
 export const FORMULARY_UPDATE = {
-  medications: ["Ocrevus Zunovo", "Ojjaara", "Vyvgart Hytrulo"],
+  medications: ["Ocrevus Zunovo", "Tepezza", "Vyvgart Hytrulo"],
 } as const;
 
-// Destination for every "Refer a Patient" CTA. Set NEXT_PUBLIC_REFERRAL_URL to
-// the hosted referral form/portal URL; when unset it falls back to the on-site
-// referral form section. External (http/https) values open in a new tab.
+// Destination for every "Refer a Patient" CTA. Defaults to the HIPAA-compliant
+// IntakeQ portal where referring providers can upload referrals and supporting
+// documents without an account. Override with NEXT_PUBLIC_REFERRAL_URL if the
+// portal address changes. External (http/https) values open in a new tab.
 export const REFERRAL_URL =
-  process.env.NEXT_PUBLIC_REFERRAL_URL?.trim() || "/physicians";
+  process.env.NEXT_PUBLIC_REFERRAL_URL?.trim() ||
+  "https://intakeq.com/new/ibknvo";
 export const REFERRAL_IS_EXTERNAL = /^https?:\/\//i.test(REFERRAL_URL);
 
 export type NavChild = {
   href: string;
   label: string;
   description?: string;
+  external?: boolean;
 };
 
 export type NavLink = {
@@ -128,6 +131,12 @@ export const NAV_LINKS: NavLink[] = [
         label: "FAQs",
         description: "Quick answers to common questions",
       },
+      {
+        href: "https://mycw191.ecwcloud.com/portal24399/jsp/100mp/login_otp.jsp",
+        label: "Patient Portal",
+        description: "Log in to your patient portal",
+        external: true,
+      },
     ],
   },
   { href: "/physicians", label: "FOR PHYSICIANS" },
@@ -137,9 +146,37 @@ export const NAV_LINKS: NavLink[] = [
 export const ALL_ROUTES: string[] = [
   "/",
   ...NAV_LINKS.flatMap((l) =>
-    l.href ? [l.href] : (l.children?.map((c) => c.href) ?? []),
+    l.href
+      ? [l.href]
+      : (l.children?.filter((c) => !c.external).map((c) => c.href) ?? []),
   ),
 ];
+
+// Affiliated practice locations shown on the Contact page. `url` links the name
+// out to that practice's website when one is known; otherwise the card shows a
+// Get Directions link only.
+export const AFFILIATED_LOCATIONS = [
+  {
+    name: "Overlake Arthritis & Osteoporosis Center",
+    address: "2100 116th Ave NE, Bellevue, WA 98004",
+    url: "https://www.overlakearthritis.com/",
+  },
+  {
+    name: "OAOC Gout Center",
+    address: "1370 116th Ave NE, Suite 100, Bellevue, WA 98004",
+    url: "https://www.overlakearthritis.com/gout-clinic/",
+  },
+  {
+    name: "Lakeside Research Center",
+    address: "2100 116th Ave NE, Bellevue, WA 98004",
+    url: null,
+  },
+  {
+    name: "Evergreen Rheumatology",
+    address: "12911 120th Avenue NE, Suite A-50, Kirkland, WA 98034",
+    url: null,
+  },
+] as const;
 
 export const THREE_PILLARS = [
   {
@@ -186,7 +223,7 @@ export const SPECIALTIES = [
       "Orencia® (abatacept)",
       "Rituxan® / Ruxience® (rituximab)",
       "Simponi Aria® (golimumab)",
-      "Remicade® / Inflectra® (infliximab)",
+      "Remicade® (infliximab)",
       "Actemra® (tocilizumab)",
       "Saphnelo® (anifrolumab)",
       "Krystexxa® (pegloticase)",
@@ -208,7 +245,7 @@ export const SPECIALTIES = [
       "Ulcerative Colitis",
       "Inflammatory Bowel Disease (IBD)",
     ],
-    therapies: ["Entyvio®", "Remicade® / Inflectra®", "Skyrizi®", "Stelara®", "Cimzia®"],
+    therapies: ["Entyvio®", "Remicade®", "Skyrizi®", "Stelara®", "Cimzia®"],
   },
   {
     slug: "dermatology",
@@ -224,7 +261,7 @@ export const SPECIALTIES = [
       "Hidradenitis Suppurativa",
       "Chronic Inflammatory Skin Disorders",
     ],
-    therapies: ["Skyrizi®", "Ilumya®", "Remicade® / Inflectra®"],
+    therapies: ["Ilumya®", "Remicade®", "Stelara®"],
   },
   {
     slug: "neurology",
@@ -295,7 +332,7 @@ export const SPECIALTIES = [
       "Immune-Mediated Ocular Inflammatory Disorders",
     ],
     therapies: [
-      "Remicade® / Inflectra®",
+      "Remicade®",
       "Rituxan® / Ruxience®",
       "Actemra®",
       "Solu-Medrol®",

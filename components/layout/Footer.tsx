@@ -19,7 +19,7 @@ const toStandardCase = (label: string) =>
     ? label.toLowerCase().replace(/\b\w/g, (c) => c.toUpperCase())
     : label;
 
-const FOOTER_LINKS: { href: string; label: string }[] = [
+const FOOTER_LINKS: { href: string; label: string; external?: boolean }[] = [
   { href: "/", label: "Home" },
   ...NAV_LINKS.flatMap((link) =>
     link.href
@@ -27,6 +27,7 @@ const FOOTER_LINKS: { href: string; label: string }[] = [
       : (link.children?.map((c) => ({
           href: c.href,
           label: toStandardCase(c.label),
+          external: c.external,
         })) ?? []),
   ),
 ];
@@ -113,12 +114,23 @@ export function Footer() {
             <ul className="mt-4 grid grid-cols-2 gap-x-4 gap-y-2 text-sm">
               {FOOTER_LINKS.map((link) => (
                 <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-ice/85 transition-colors hover:text-white"
-                  >
-                    {link.label}
-                  </Link>
+                  {link.external ? (
+                    <a
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-ice/85 transition-colors hover:text-white"
+                    >
+                      {link.label}
+                    </a>
+                  ) : (
+                    <Link
+                      href={link.href}
+                      className="text-ice/85 transition-colors hover:text-white"
+                    >
+                      {link.label}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>

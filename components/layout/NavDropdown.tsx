@@ -94,24 +94,45 @@ export function NavDropdown({
           className="absolute left-0 top-full z-50 min-w-[280px] pt-2"
         >
           <div className="overflow-hidden rounded-2xl border border-grey-200 bg-white p-2 shadow-lg ring-1 ring-black/5">
-            {items.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                role="menuitem"
-                onClick={() => setOpen(false)}
-                className="flex flex-col gap-0.5 rounded-xl px-4 py-3 transition-colors hover:bg-primary/5 focus-visible:bg-primary/5"
-              >
-                <span className="text-sm font-semibold text-primary-dark">
-                  {item.label}
-                </span>
-                {item.description && (
-                  <span className="text-xs text-grey-500">
-                    {item.description}
+            {items.map((item) => {
+              const itemClass =
+                "flex flex-col gap-0.5 rounded-xl px-4 py-3 transition-colors hover:bg-primary/5 focus-visible:bg-primary/5";
+              const inner = (
+                <>
+                  <span className="text-sm font-semibold text-primary-dark">
+                    {item.label}
                   </span>
-                )}
-              </Link>
-            ))}
+                  {item.description && (
+                    <span className="text-xs text-grey-500">
+                      {item.description}
+                    </span>
+                  )}
+                </>
+              );
+              return item.external ? (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  role="menuitem"
+                  onClick={() => setOpen(false)}
+                  className={itemClass}
+                >
+                  {inner}
+                </a>
+              ) : (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  role="menuitem"
+                  onClick={() => setOpen(false)}
+                  className={itemClass}
+                >
+                  {inner}
+                </Link>
+              );
+            })}
           </div>
         </div>
       )}

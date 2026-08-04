@@ -2,8 +2,16 @@ import { buildMetadata } from "@/lib/metadata";
 import { PageHero } from "@/components/shared/PageHero";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { ContactForm } from "@/components/forms/ContactForm";
-import { SITE } from "@/lib/constants";
-import { MapPin, Phone, Printer, Mail, Clock } from "lucide-react";
+import { SITE, AFFILIATED_LOCATIONS } from "@/lib/constants";
+import {
+  MapPin,
+  Phone,
+  Printer,
+  Mail,
+  Clock,
+  ArrowRight,
+  ExternalLink,
+} from "lucide-react";
 
 export const metadata = buildMetadata({
   title: "Contact & Directions",
@@ -111,6 +119,64 @@ export default function ContactPage() {
             <div className="mt-8">
               <ContactForm />
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section-y bg-grey-50">
+        <div className="container-prose">
+          <SectionHeading
+            eyebrow="Affiliated locations"
+            title="Our Affiliated Practices"
+            description="We work closely with a network of affiliated specialty practices across the Eastside. Reach out to any of the locations below for their specific services."
+          />
+
+          <div className="mt-10 grid gap-4 sm:grid-cols-2">
+            {AFFILIATED_LOCATIONS.map((loc) => {
+              const mapHref = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+                `${loc.name}, ${loc.address}`,
+              )}`;
+              return (
+                <article
+                  key={loc.name}
+                  className="flex flex-col rounded-2xl border border-grey-200 bg-white p-6 shadow-sm sm:p-7"
+                >
+                  <span className="flex h-11 w-11 items-center justify-center rounded-full bg-primary/10 text-primary">
+                    <MapPin className="h-5 w-5" aria-hidden />
+                  </span>
+                  {loc.url ? (
+                    <a
+                      href={loc.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group mt-4 inline-flex items-center gap-1.5 font-display text-lg text-primary-dark hover:text-coral"
+                    >
+                      {loc.name}
+                      <ExternalLink
+                        className="h-3.5 w-3.5 opacity-60 group-hover:opacity-100"
+                        aria-hidden
+                      />
+                    </a>
+                  ) : (
+                    <h3 className="mt-4 font-display text-lg text-primary-dark">
+                      {loc.name}
+                    </h3>
+                  )}
+                  <p className="mt-2 text-sm leading-relaxed text-grey-700">
+                    {loc.address}
+                  </p>
+                  <a
+                    href={mapHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-primary-dark hover:text-coral"
+                  >
+                    Get directions
+                    <ArrowRight className="h-4 w-4" aria-hidden />
+                  </a>
+                </article>
+              );
+            })}
           </div>
         </div>
       </section>

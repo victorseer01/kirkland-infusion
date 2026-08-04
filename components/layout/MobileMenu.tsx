@@ -76,26 +76,41 @@ export function MobileMenu({
                   <ul className="flex flex-col gap-1">
                     {link.children.map((c) => {
                       const active = pathname === c.href;
+                      const childClass = cn(
+                        "flex flex-col gap-0.5 rounded-xl px-4 py-3 transition-colors",
+                        active
+                          ? "bg-primary/10 text-primary-dark"
+                          : "text-grey-900 hover:bg-grey-100",
+                      );
+                      const childInner = (
+                        <>
+                          <span className="text-base font-medium">
+                            {c.label}
+                          </span>
+                          {c.description && (
+                            <span className="text-xs text-grey-500">
+                              {c.description}
+                            </span>
+                          )}
+                        </>
+                      );
                       return (
                         <li key={c.href}>
-                          <Link
-                            href={c.href}
-                            className={cn(
-                              "flex flex-col gap-0.5 rounded-xl px-4 py-3 transition-colors",
-                              active
-                                ? "bg-primary/10 text-primary-dark"
-                                : "text-grey-900 hover:bg-grey-100",
-                            )}
-                          >
-                            <span className="text-base font-medium">
-                              {c.label}
-                            </span>
-                            {c.description && (
-                              <span className="text-xs text-grey-500">
-                                {c.description}
-                              </span>
-                            )}
-                          </Link>
+                          {c.external ? (
+                            <a
+                              href={c.href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              onClick={onClose}
+                              className={childClass}
+                            >
+                              {childInner}
+                            </a>
+                          ) : (
+                            <Link href={c.href} className={childClass}>
+                              {childInner}
+                            </Link>
+                          )}
                         </li>
                       );
                     })}

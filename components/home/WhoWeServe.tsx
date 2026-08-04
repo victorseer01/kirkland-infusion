@@ -3,7 +3,6 @@ import { ArrowRight } from "lucide-react";
 import { SPECIALTIES, MEDICATIONS } from "@/lib/constants";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { MediaPlaceholder } from "@/components/shared/MediaPlaceholder";
-import { ReferLink } from "@/components/shared/ReferLink";
 
 const FEATURED = MEDICATIONS.slice(0, 16).map((m) => m.name);
 
@@ -82,10 +81,13 @@ export function WhoWeServe() {
               treatment options or a provider seeking infusion services for a
               patient, you&apos;ll find detailed information and resources here.
             </p>
-            <ReferLink className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-primary-dark hover:text-coral">
+            <Link
+              href="/physicians"
+              className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-primary-dark hover:text-coral"
+            >
               Referring a patient? Visit our Physician Resources
               <ArrowRight className="h-4 w-4" aria-hidden />
-            </ReferLink>
+            </Link>
           </div>
           <Link href="/specialties" className="btn-coral shrink-0">
             Explore Conditions &amp; Treatments

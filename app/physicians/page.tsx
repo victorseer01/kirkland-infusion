@@ -113,39 +113,7 @@ export default function PhysiciansPage() {
         description="You focus on making clinical decisions. We focus on helping patients start treatment sooner, stay on therapy, and receive the coordinated support they need throughout their infusion journey. From insurance approvals and patient outreach to clinical communication and follow-up, our team manages the details while keeping your office informed every step of the way."
       />
 
-      <section className="section-y-lg bg-white">
-        <div className="container-prose">
-          <SectionHeading
-            eyebrow="The white-glove promise"
-            title="What we do for your office, on every referral"
-            description="One referral from you sets all of this in motion. You send the referral; we do the rest."
-          />
-
-          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {WHITE_GLOVE.map((item, i) => {
-              const Icon = WHITE_GLOVE_ICONS[i];
-              return (
-                <article
-                  key={item.title}
-                  className="rounded-2xl border border-grey-200 bg-white p-7 shadow-sm transition-shadow hover:shadow-md"
-                >
-                  <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary">
-                    <Icon className="h-5 w-5" aria-hidden />
-                  </span>
-                  <h3 className="mt-4 font-display text-lg text-primary-dark">
-                    {item.title}
-                  </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-grey-700 sm:text-base">
-                    {item.body}
-                  </p>
-                </article>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      <section className="section-y bg-grey-50">
+      <section id="how-to-refer" className="section-y-lg bg-white">
         <div className="container-prose">
           <SectionHeading
             eyebrow="How to refer a patient"
@@ -222,7 +190,7 @@ export default function PhysiciansPage() {
               <SectionHeading
                 eyebrow="Online referral"
                 title="Submit a referral through our portal"
-                description="Our secure referral portal routes directly to the intake team. We acknowledge every referral the same business day."
+                description="Upload referrals and supporting documents through our secure, HIPAA-compliant portal—no account or login required. We acknowledge every referral the same business day."
                 tone="light"
                 className="mt-5 max-w-none"
               />
@@ -233,6 +201,38 @@ export default function PhysiciansPage() {
                 </ReferLink>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section-y bg-grey-50">
+        <div className="container-prose">
+          <SectionHeading
+            eyebrow="The white-glove promise"
+            title="What we do for your office, on every referral"
+            description="One referral from you sets all of this in motion. You send the referral; we do the rest."
+          />
+
+          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {WHITE_GLOVE.map((item, i) => {
+              const Icon = WHITE_GLOVE_ICONS[i];
+              return (
+                <article
+                  key={item.title}
+                  className="rounded-2xl border border-grey-200 bg-white p-7 shadow-sm transition-shadow hover:shadow-md"
+                >
+                  <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                    <Icon className="h-5 w-5" aria-hidden />
+                  </span>
+                  <h3 className="mt-4 font-display text-lg text-primary-dark">
+                    {item.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-grey-700 sm:text-base">
+                    {item.body}
+                  </p>
+                </article>
+              );
+            })}
           </div>
         </div>
       </section>
