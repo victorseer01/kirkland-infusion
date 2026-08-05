@@ -11,9 +11,9 @@ const STATS = [
   },
   {
     icon: ShieldCheck,
-    value: "40+",
+    value: "20+",
     label: "Years of care",
-    body: "More than four decades of experience you can trust.",
+    body: "More than two decades of experience you can trust.",
   },
 ];
 

@@ -247,7 +247,7 @@ export const AFFILIATED_LOCATIONS = [
   {
     name: "Lakeside Research Center",
     address: "2100 116th Ave NE, Bellevue, WA 98004",
-    url: null,
+    url: "https://lakesideresearchcenter.com",
   },
   {
     name: "Evergreen Rheumatology",
@@ -709,7 +709,7 @@ export const FAQ_CATEGORIES: readonly FaqCategory[] = [
     items: [
       {
         q: "What is Kirkland Specialty Infusion Center?",
-        a: "We are a physician-led, outpatient specialty infusion suite located in Kirkland, Washington, affiliated with Evergreen Rheumatology, one of the Pacific Northwest's most respected rheumatology practices, with more than 40 years of specialty care.\n\nA licensed provider is present in the suite for every infusion, not nearby, not on call, but in the room.",
+        a: "We are a physician-led, outpatient specialty infusion suite located in Kirkland, Washington, affiliated with Evergreen Rheumatology, one of the Pacific Northwest's most respected rheumatology practices, with more than two decades of specialty care.\n\nA licensed provider is present in the suite for every infusion, not nearby, not on call, but in the room.",
       },
       {
         q: "What is infusion therapy?",

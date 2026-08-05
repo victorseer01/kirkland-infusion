@@ -4,7 +4,6 @@ import { buildMetadata } from "@/lib/metadata";
 import { PageHero } from "@/components/shared/PageHero";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { AwardsMarquee } from "@/components/shared/AwardsMarquee";
-import { AffiliationList } from "@/components/shared/AffiliationList";
 import { DifferencesScroller } from "@/components/about/DifferencesScroller";
 import { SITE } from "@/lib/constants";
 import { ArrowRight, ExternalLink } from "lucide-react";
@@ -18,24 +17,20 @@ export const metadata = buildMetadata({
 
 const DIFFERENCES = [
   {
-    title: "A Physician Is Always Present",
-    body: "Every infusion administered at our center is supervised in real time by a physician or licensed provider physically present in the suite. This is not the industry standard. In many outpatient infusion centers, a supervising physician is on call from another building, or even another city, available by phone if a reaction occurs. We do not consider that good enough for our patients, and we do not consider it good enough for yours. The physician is here. In the building. Every infusion. Every day.",
+    title: "Physician-Led Care",
+    body: "Every infusion is overseen by a physician or licensed provider who is physically present on site. When questions arise or clinical decisions need to be made, support is available in real time, providing patients with peace of mind and referring providers with confidence that their patients are receiving attentive, coordinated care.",
   },
   {
-    title: "We Close the Loop",
-    body: "After every infusion, your referring office receives a note confirming the medication was administered, how the patient tolerated it, any clinical observations worth flagging, and the date of the next scheduled visit. You will never wonder whether your patient showed up. You will never be surprised at the follow-up appointment.",
+    title: "We Keep Providers Connected",
+    body: "Exceptional care depends on clear communication. After each infusion, referring providers receive timely updates on treatment administration, patient response, and any clinically relevant observations. By keeping everyone informed, we help ensure continuity of care beyond the infusion chair.",
   },
   {
     title: "We Handle Everything Your Office Should Not Have To",
     body: "Prior authorizations. Peer-to-peer reviews. Insurance appeals. Manufacturer copay cards. Patient assistance program applications. Foundation grant applications. Pre-infusion lab and DEXA coordination. Patient education calls. Same-day scheduling adjustments. All of it. Your staff sends the referral. We do the rest.",
   },
   {
-    title: "Patients Arrive Prepared",
-    body: "Before every infusion, our team confirms labs are current, screens the patient for recent illness or vaccination, verifies premedications are in place, and reviews the patient's clinical baseline. Patients arrive ready, infusion chairs stay productive, and treatment plans stay on schedule.",
-  },
-  {
-    title: "We Keep Patients on Schedule",
-    body: "We book the next infusion before the patient leaves the chair. We send reminders. We re-verify insurance well in advance. We anticipate prior authorization renewals before they expire. Adherence is the single biggest determinant of long-term outcomes in chronic immunologic and inflammatory disease, and we treat it that way.",
+    title: "We Help Patients Stay on Track",
+    body: "Consistent treatment is essential to achieving the best possible outcomes. We proactively coordinate scheduling, verify insurance requirements, confirm clinical readiness, and provide reminders to help patients stay engaged in their care and avoid unnecessary delays.",
   },
 ];
 
@@ -81,7 +76,7 @@ export default function AboutPage() {
               {SITE.affiliatedWith} and Overlake Arthritis and Osteoporosis
               Center, a Bellevue-area practice that has cared for thousands of
               patients with arthritis, autoimmune disease, gout, osteoporosis,
-              and other rheumatologic conditions for more than four decades.
+              and other rheumatologic conditions for more than two decades.
             </p>
             <p>
               Over the years, our patients told us the same thing in different
@@ -116,8 +111,8 @@ export default function AboutPage() {
         <div className="container-prose">
           <SectionHeading
             eyebrow="What makes us different"
-            title="Five standards we will not compromise on"
-            description="The promises that shape every infusion, every chart note, and every call back to your office. Scroll to move through the deck."
+            title="The Standards That Guide Every Patient Experience"
+            description="From physician oversight and personalized support to seamless communication and care coordination, these are the principles that shape everything we do."
           />
         </div>
         <div className="mt-4 sm:mt-6">
@@ -129,8 +124,8 @@ export default function AboutPage() {
         <div className="container-prose grid items-center gap-8 lg:grid-cols-[1.4fr_1fr]">
           <SectionHeading
             eyebrow="Our team"
-            title="Experienced infusion nurses, supervised by physicians"
-            description="A licensed provider is present in the suite for every infusion. Meet the providers and infusion nurses who will care for you, the same faces you will see visit after visit."
+            title="Expertise You Can Trust. People Who Truly Care."
+            description="Every member of our team shares a commitment to exceptional clinical care, clear communication, and treating patients with the compassion and respect they deserve."
           />
           <div>
             <Link href="/team" className="btn-coral">
@@ -148,32 +143,53 @@ export default function AboutPage() {
       </section>
 
       <section className="section-y bg-primary-dark text-ice">
-        <div className="container-prose grid gap-8 lg:grid-cols-[1fr_1.4fr] lg:gap-16">
-          <SectionHeading
-            eyebrow="Our affiliated network"
-            title="Same physicians. Same standard of care."
-            tone="light"
-          />
-          <div>
-            <p className="text-pretty text-base leading-relaxed text-ice/90 sm:text-lg">
-              {SITE.name} is part of a trusted network of specialty practices,
-              affiliated with{" "}
-              <AffiliationList linkClassName="font-medium text-white hover:text-coral" />
-              . Patients receive the same physicians, the same clinical culture,
-              and the same standard of care across our locations. Together, we
-              serve patients across rheumatology, gastroenterology, dermatology,
-              neurology, and other specialties referred by physicians throughout
-              the region.
+        <div className="container-prose">
+          <div className="grid gap-8 lg:grid-cols-[1fr_1.4fr] lg:gap-16">
+            <SectionHeading
+              eyebrow="Our affiliated practice"
+              title="Same Physicians. Same Standard of Care."
+              tone="light"
+            />
+            <div>
+              <p className="text-pretty text-base leading-relaxed text-ice/90 sm:text-lg">
+                {SITE.name} is affiliated with Evergreen Rheumatology and
+                Overlake Arthritis and Osteoporosis Center. Patients benefit from
+                the same trusted physicians, shared commitment to clinical
+                excellence, and coordinated approach to care that have served the
+                greater Seattle community for more than two decades.
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-12">
+            <p className="font-display text-lg text-white sm:text-xl">
+              Learn More About Our Clinical Care Partners
             </p>
-            <a
-              href={SITE.oaoc.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-coral mt-6"
-            >
-              Learn more about our clinical care partner, {SITE.oaoc.shortName}
-              <ExternalLink className="h-4 w-4" aria-hidden />
-            </a>
+            <div className="mt-5 grid gap-4 sm:grid-cols-2">
+              <a
+                href={SITE.oaoc.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex flex-col rounded-2xl border border-white/15 bg-white/5 p-6 ring-1 ring-white/10 transition-colors hover:bg-white/10"
+              >
+                <span className="flex items-center gap-1.5 font-display text-lg text-white transition-colors group-hover:text-coral">
+                  Overlake Arthritis &amp; Osteoporosis Center
+                  <ExternalLink className="h-4 w-4 shrink-0" aria-hidden />
+                </span>
+                <span className="mt-2 text-sm text-ice/80">
+                  Leading rheumatology and specialty care in Bellevue.
+                </span>
+              </a>
+
+              <div className="flex flex-col rounded-2xl border border-white/15 bg-white/5 p-6 ring-1 ring-white/10">
+                <span className="font-display text-lg text-white">
+                  Evergreen Rheumatology
+                </span>
+                <span className="mt-2 text-sm text-ice/80">
+                  Leading rheumatology and specialty care in Kirkland.
+                </span>
+              </div>
+            </div>
           </div>
         </div>
       </section>

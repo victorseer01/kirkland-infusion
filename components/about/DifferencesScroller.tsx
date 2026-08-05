@@ -51,24 +51,55 @@ export function DifferencesScroller({ items }: { items: readonly Item[] }) {
 
   useEffect(() => {
     if (mode !== "interactive") return;
+    const el = outerRef.current;
+    if (!el) return;
+
     let raf = 0;
-    const onScroll = () => {
-      cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(() => {
-        const el = outerRef.current;
-        if (!el) return;
-        const distance = el.offsetHeight - window.innerHeight;
-        const scrolled = clamp(-el.getBoundingClientRect().top, 0, distance);
-        setProgress(distance > 0 ? scrolled / distance : 0);
-      });
+    let running = false;
+
+    // Read the true scroll position and map it to progress. Deriving progress
+    // from position (not scroll deltas) means it tracks any direction, speed,
+    // or inertial/momentum scroll — so reversing scroll unwinds the deck just
+    // as smoothly as scrolling forward stacks it.
+    const update = () => {
+      const node = outerRef.current;
+      if (!node) return;
+      const distance = node.offsetHeight - window.innerHeight;
+      const scrolled = clamp(-node.getBoundingClientRect().top, 0, distance);
+      setProgress(distance > 0 ? scrolled / distance : 0);
     };
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
+
+    // While the deck is anywhere near the viewport, sync every animation frame
+    // so momentum scrolling and quick direction changes never leave the cards
+    // in a stale position.
+    const loop = () => {
+      update();
+      raf = running ? requestAnimationFrame(loop) : 0;
+    };
+
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          if (!running) {
+            running = true;
+            raf = requestAnimationFrame(loop);
+          }
+        } else if (running) {
+          running = false;
+          cancelAnimationFrame(raf);
+          update(); // settle on the correct end state
+        }
+      },
+      { rootMargin: "100% 0px" },
+    );
+    io.observe(el);
+
+    update();
+    window.addEventListener("resize", update);
     return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
+      io.disconnect();
       cancelAnimationFrame(raf);
+      window.removeEventListener("resize", update);
     };
   }, [mode]);
 
