@@ -18,16 +18,16 @@ export default function TeamPage() {
     <>
       <PageHero
         eyebrow="Our team"
-        title="The people who will care for you"
-        description="You will see the same faces visit after visit, staff who know your name, your treatment, and the small details that make your visit easier. Select anyone below to read their full profile."
+        title="Meet the Team Behind Your Care"
+        description="From physicians and infusion nurses to clinical support staff, our team is dedicated to providing expert care, personalized support, and a welcoming experience at every visit."
       />
 
       <section className="section-y-lg bg-white">
         <div className="container-prose">
           <SectionHeading
             eyebrow="Providers & infusion nurses"
-            title="Experienced clinicians, supervised by physicians"
-            description="A licensed provider is present in the suite for every infusion. Meet the team behind your care."
+            title="The Faces Behind the Experience"
+            description="One of the things that makes our center different is the people who care for our patients. Get to know the physicians, infusion nurses, and team members dedicated to providing thoughtful, personalized care."
           />
           <div className="mt-12">
             <TeamGallery members={TEAM} />
@@ -39,8 +39,8 @@ export default function TeamPage() {
         <div className="container-prose grid items-center gap-8 py-14 sm:py-20 lg:grid-cols-[1.4fr_1fr]">
           <SectionHeading
             eyebrow="Questions about your care?"
-            title="A real human will pick up the phone"
-            description="Whether you are a patient preparing for your first infusion or a physician considering a referral, our team is here to help."
+            title="We're Here When You Need Us"
+            description="Have questions about infusion therapy, treatment planning, or referrals? Reach out to our team and we'll help guide you through the next steps."
           />
           <div className="space-y-3">
             <a href={`tel:${SITE.phoneTel}`} className="btn-coral w-full">
