@@ -24,11 +24,15 @@ const FOOTER_LINKS: { href: string; label: string; external?: boolean }[] = [
   ...NAV_LINKS.flatMap((link) =>
     link.href
       ? [{ href: link.href, label: toStandardCase(link.label) }]
-      : (link.children?.map((c) => ({
-          href: c.href,
-          label: toStandardCase(c.label),
-          external: c.external,
-        })) ?? []),
+      : (link.children
+          // Skip in-page anchor links (e.g. /physicians#how-to-refer) so the
+          // footer lists real pages only.
+          ?.filter((c) => !c.href.includes("#"))
+          .map((c) => ({
+            href: c.href,
+            label: toStandardCase(c.label),
+            external: c.external,
+          })) ?? []),
   ),
 ];
 

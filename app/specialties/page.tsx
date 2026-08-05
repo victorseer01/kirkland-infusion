@@ -1,8 +1,10 @@
 import Link from "next/link";
+import Image from "next/image";
 import { buildMetadata } from "@/lib/metadata";
 import { PageHero } from "@/components/shared/PageHero";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { SPECIALTIES, SITE } from "@/lib/constants";
+import { resolveSpecialtyImage } from "@/lib/specialtyImages";
 import { Phone, ArrowRight } from "lucide-react";
 
 export const metadata = buildMetadata({
@@ -24,28 +26,41 @@ export default function SpecialtiesPage() {
       <section className="section-y-lg bg-white">
         <div className="container-prose">
           {/* Image-tile format (per client feedback). Each tile links to the
-              specialty's dedicated page. TODO: drop a representative photo at
-              /public/specialties/<slug>.jpg to replace the gradient placeholder. */}
+              specialty's dedicated page. Photos in /public/specialties/<slug>.*
+              are picked up automatically; specialties without one keep the
+              gradient placeholder. */}
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {SPECIALTIES.map((s) => (
+            {SPECIALTIES.map((s) => {
+              const img = resolveSpecialtyImage(s.slug);
+              return (
               <Link
                 key={s.slug}
                 href={`/specialties/${s.slug}`}
                 aria-label={`${s.name} — view specialty`}
                 className="group relative isolate flex aspect-[4/3] items-end overflow-hidden rounded-2xl bg-gradient-to-br from-primary via-primary-dark to-navy shadow-sm transition-transform hover:-translate-y-0.5"
               >
+                {img ? (
+                  <Image
+                    src={img}
+                    alt=""
+                    fill
+                    sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                    className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                  />
+                ) : (
+                  <div
+                    aria-hidden
+                    className="absolute inset-0 opacity-[0.12]"
+                    style={{
+                      backgroundImage:
+                        "radial-gradient(circle, rgba(255,255,255,0.95) 1px, transparent 1px)",
+                      backgroundSize: "20px 20px",
+                    }}
+                  />
+                )}
                 <div
                   aria-hidden
-                  className="absolute inset-0 opacity-[0.12]"
-                  style={{
-                    backgroundImage:
-                      "radial-gradient(circle, rgba(255,255,255,0.95) 1px, transparent 1px)",
-                    backgroundSize: "20px 20px",
-                  }}
-                />
-                <div
-                  aria-hidden
-                  className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/65 via-black/25 to-transparent"
+                  className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/75 via-black/35 to-transparent"
                 />
                 <div className="relative w-full p-5 text-center">
                   <h2 className="font-display text-lg text-white sm:text-xl">
@@ -60,7 +75,8 @@ export default function SpecialtiesPage() {
                   </span>
                 </div>
               </Link>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>

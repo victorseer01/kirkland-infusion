@@ -6,11 +6,12 @@ import { PageHero } from "@/components/shared/PageHero";
 import { MediaPlaceholder } from "@/components/shared/MediaPlaceholder";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { SPECIALTIES, SITE } from "@/lib/constants";
+import { resolveSpecialtyImage } from "@/lib/specialtyImages";
 
 // Per-specialty detail page. Overview / conditions / therapies come from the
-// client-approved copy in `SPECIALTIES` (KSI-UPDATES doc). TODO: drop a
-// representative photo at /public/specialties/<slug>.jpg to replace the
-// gradient placeholder.
+// client-approved copy in `SPECIALTIES` (KSI-UPDATES doc). Drop a representative
+// photo at /public/specialties/<slug>.(jpg|png|webp) to replace the gradient
+// placeholder; it is picked up automatically at build time.
 
 function getSpecialty(slug: string) {
   return SPECIALTIES.find((s) => s.slug === slug);
@@ -62,7 +63,7 @@ export default function SpecialtyDetailPage({
             <MediaPlaceholder
               aspect="wide"
               tone="primary"
-              src={`/specialties/${specialty.slug}.jpg`}
+              src={resolveSpecialtyImage(specialty.slug)}
               alt={`${specialty.name} infusion care at ${SITE.name}`}
             />
 

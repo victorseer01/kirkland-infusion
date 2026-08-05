@@ -13,12 +13,18 @@ import {
   ClipboardList,
   Syringe,
   Download,
+  ExternalLink,
 } from "lucide-react";
 import { buildMetadata } from "@/lib/metadata";
 import { PageHero } from "@/components/shared/PageHero";
 import { SectionHeading } from "@/components/shared/SectionHeading";
-import { SITE, REFERRAL_FORMS, REFERRAL_FORMS_URL } from "@/lib/constants";
-import { ReferLink } from "@/components/shared/ReferLink";
+import {
+  SITE,
+  REFERRAL_FORMS,
+  REFERRAL_FORMS_URL,
+  REFERRAL_PORTALS,
+} from "@/lib/constants";
+import { resolveReferralForm } from "@/lib/referralForms";
 import { StickyCallBar } from "@/components/shared/StickyCallBar";
 
 export const metadata = buildMetadata({
@@ -190,23 +196,40 @@ export default function PhysiciansPage() {
               </span>
               <SectionHeading
                 eyebrow="Online referral"
-                title="Submit a referral through our portal"
-                description="Upload referrals and supporting documents through our secure, HIPAA-compliant portal—no account or login required. We acknowledge every referral the same business day."
+                title="Submit a referral through a secure portal"
+                description="Prefer to refer online? Upload a referral and supporting documents through one of our secure portals. We acknowledge every referral the same business day."
                 tone="light"
                 className="mt-5 max-w-none"
               />
-              <div className="mt-6">
-                <ReferLink className="btn-coral">
-                  Refer a Patient
-                  <ArrowRight className="h-4 w-4" aria-hidden />
-                </ReferLink>
+              <div className="mt-6 space-y-3">
+                {REFERRAL_PORTALS.map((portal) => (
+                  <a
+                    key={portal.url}
+                    href={portal.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex items-start gap-3 rounded-xl bg-white/5 p-4 ring-1 ring-white/10 transition-colors hover:bg-white/10"
+                  >
+                    <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-coral/15 text-coral">
+                      <ExternalLink className="h-4 w-4" aria-hidden />
+                    </span>
+                    <span>
+                      <span className="font-display text-base text-white transition-colors group-hover:text-coral">
+                        {portal.name}
+                      </span>
+                      <span className="mt-1 block text-sm text-ice/80">
+                        {portal.blurb}
+                      </span>
+                    </span>
+                  </a>
+                ))}
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="section-y bg-grey-50">
+      <section id="referral-forms" className="section-y bg-grey-50">
         <div className="container-prose">
           <SectionHeading
             eyebrow="Referral forms"
@@ -214,26 +237,44 @@ export default function PhysiciansPage() {
             description="Browse our library of medication-specific referral forms. Select the form that matches your patient's prescribed therapy to view and download it."
           />
 
-          <div className="mt-10 flex flex-wrap gap-2.5">
-            {REFERRAL_FORMS.map((name) => (
-              <span
-                key={name}
-                className="inline-flex items-center gap-2 rounded-full border border-grey-200 bg-white px-4 py-2 text-sm font-medium text-primary-dark shadow-sm"
-              >
-                <FileText className="h-4 w-4 text-primary" aria-hidden />
-                {name}
-              </span>
-            ))}
+          <div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {REFERRAL_FORMS.map((name) => {
+              const pdf = resolveReferralForm(name);
+              return (
+                <a
+                  key={name}
+                  href={pdf ?? REFERRAL_FORMS_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  {...(pdf ? { download: "" } : {})}
+                  className="group flex items-center justify-between gap-3 rounded-xl border border-grey-200 bg-white px-4 py-3.5 shadow-sm transition-colors hover:border-primary/40 hover:bg-primary/[0.03]"
+                >
+                  <span className="flex items-center gap-3">
+                    <FileText
+                      className="h-4 w-4 shrink-0 text-primary"
+                      aria-hidden
+                    />
+                    <span className="text-sm font-medium text-primary-dark">
+                      {name}
+                    </span>
+                  </span>
+                  <Download
+                    className="h-4 w-4 shrink-0 text-grey-400 transition-colors group-hover:text-coral"
+                    aria-hidden
+                  />
+                </a>
+              );
+            })}
           </div>
 
           <a
             href={REFERRAL_FORMS_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-coral mt-8"
+            className="btn-outline-dark mt-8"
           >
             <Download className="h-4 w-4" aria-hidden />
-            View &amp; Download Referral Forms
+            Browse All Referral Forms
           </a>
         </div>
       </section>

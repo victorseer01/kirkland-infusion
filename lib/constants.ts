@@ -53,21 +53,43 @@ export const SITE = {
   },
 } as const;
 
-// "Formulary Update" announcement shown just below the hero. NOTE: the
-// medication names below are the EXAMPLE set from the client feedback doc
-// (KSI-UPDATES) and must be confirmed with the client before launch.
-export const FORMULARY_UPDATE = {
-  medications: ["Ocrevus Zunovo", "Tepezza", "Vyvgart Hytrulo"],
-} as const;
-
-// Destination for every "Refer a Patient" CTA. Defaults to the HIPAA-compliant
-// IntakeQ portal where referring providers can upload referrals and supporting
-// documents without an account. Override with NEXT_PUBLIC_REFERRAL_URL if the
-// portal address changes. External (http/https) values open in a new tab.
-export const REFERRAL_URL =
-  process.env.NEXT_PUBLIC_REFERRAL_URL?.trim() ||
-  "https://intakeq.com/new/ibknvo";
+// Destination for the site-wide "Refer a Patient" buttons (header, mobile menu,
+// sticky bar). Per Dr. Dada, these always open the "How to Refer a Patient"
+// section that presents ALL referral options rather than forcing a portal.
+export const REFERRAL_URL = "/physicians#how-to-refer";
 export const REFERRAL_IS_EXTERNAL = /^https?:\/\//i.test(REFERRAL_URL);
+
+// eCW patient portal login (existing patients) and the HIPAA-compliant IntakeQ
+// intake form (no account needed) that patients can use to self-refer. Shared
+// by the navbar, the Get Started page, and the referral options.
+export const PATIENT_PORTAL_URL =
+  "https://mycw191.ecwcloud.com/portal24399/jsp/100mp/login_otp.jsp";
+export const SELF_REFERRAL_URL = "https://intakeq.com/new/ibknvo";
+
+// OAOC partner-practice referral portal, configured via env so it can differ
+// per environment. When NEXT_PUBLIC_REFERRAL_URL is set, it appears as an extra
+// portal option in the How-to-Refer section below.
+const OAOC_PORTAL_URL = process.env.NEXT_PUBLIC_REFERRAL_URL?.trim();
+
+// Online referral portals presented as options inside the How-to-Refer section.
+export const REFERRAL_PORTALS: { name: string; blurb: string; url: string }[] = [
+  {
+    name: "IntakeQ secure portal",
+    blurb:
+      "Upload a referral and supporting documents through our HIPAA-compliant portal — no account or login required.",
+    url: SELF_REFERRAL_URL,
+  },
+  ...(OAOC_PORTAL_URL
+    ? [
+        {
+          name: "OAOC referral portal",
+          blurb:
+            "Submit a referral through our partner practice's secure referral portal.",
+          url: OAOC_PORTAL_URL,
+        },
+      ]
+    : []),
+];
 
 // Shared library of medication-specific referral forms for referring providers.
 // All forms live in one Google Drive folder; the list below shows which
@@ -145,6 +167,11 @@ export const NAV_LINKS: NavLink[] = [
     label: "FOR PATIENTS",
     children: [
       {
+        href: "/get-started",
+        label: "How to Get Started",
+        description: "Ask your doctor to refer you, or submit your information",
+      },
+      {
         href: "/patients",
         label: "What to Expect",
         description: "Before, during, and after your infusion",
@@ -160,25 +187,48 @@ export const NAV_LINKS: NavLink[] = [
         description: "Quick answers to common questions",
       },
       {
-        href: "https://mycw191.ecwcloud.com/portal24399/jsp/100mp/login_otp.jsp",
+        href: PATIENT_PORTAL_URL,
         label: "Patient Portal",
         description: "Log in to your patient portal",
         external: true,
       },
     ],
   },
-  { href: "/physicians", label: "FOR PHYSICIANS" },
+  {
+    label: "FOR PHYSICIANS",
+    children: [
+      {
+        href: "/physicians",
+        label: "For Physicians",
+        description: "White-glove referral support",
+      },
+      {
+        href: "/physicians#how-to-refer",
+        label: "How to Refer a Patient",
+        description: "Fax, phone, email, or secure online portal",
+      },
+      {
+        href: "/physicians#referral-forms",
+        label: "Referral Forms",
+        description: "Medication-specific, ready to complete and fax",
+      },
+    ],
+  },
   { href: "/contact", label: "CONTACT" },
 ];
 
-export const ALL_ROUTES: string[] = [
-  "/",
-  ...NAV_LINKS.flatMap((l) =>
-    l.href
-      ? [l.href]
-      : (l.children?.filter((c) => !c.external).map((c) => c.href) ?? []),
-  ),
-];
+export const ALL_ROUTES: string[] = Array.from(
+  new Set([
+    "/",
+    ...NAV_LINKS.flatMap((l) =>
+      l.href
+        ? [l.href]
+        : (l.children
+            ?.filter((c) => !c.external && !c.href.includes("#"))
+            .map((c) => c.href) ?? []),
+    ),
+  ]),
+);
 
 // Affiliated practice locations shown on the Contact page. `url` links the name
 // out to that practice's website when one is known; otherwise the card shows a
