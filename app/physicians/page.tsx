@@ -18,6 +18,7 @@ import {
 import { buildMetadata } from "@/lib/metadata";
 import { PageHero } from "@/components/shared/PageHero";
 import { SectionHeading } from "@/components/shared/SectionHeading";
+import { MediaPlaceholder } from "@/components/shared/MediaPlaceholder";
 import {
   SITE,
   REFERRAL_FORMS,
@@ -271,11 +272,19 @@ export default function PhysiciansPage() {
 
       <section className="section-y bg-white">
         <div className="container-prose">
-          <SectionHeading
-            eyebrow="The white-glove promise"
-            title="What we do for your office, on every referral"
-            description="One referral from you sets all of this in motion. You send the referral; we do the rest."
-          />
+          <div className="grid gap-10 lg:grid-cols-[1.3fr_1fr] lg:items-center lg:gap-16">
+            <SectionHeading
+              eyebrow="The white-glove promise"
+              title="What we do for your office, on every referral"
+              description="One referral from you sets all of this in motion. You send the referral; we do the rest."
+            />
+            <MediaPlaceholder
+              aspect="wide"
+              tone="navy"
+              src="/physicians/support.jpg"
+              alt="A physician-led infusion care team supporting a patient"
+            />
+          </div>
 
           <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {WHITE_GLOVE.map((item, i) => {

@@ -1,6 +1,7 @@
 import { buildMetadata } from "@/lib/metadata";
 import { PageHero } from "@/components/shared/PageHero";
 import { SectionHeading } from "@/components/shared/SectionHeading";
+import { MediaPlaceholder } from "@/components/shared/MediaPlaceholder";
 import { PATIENT_JOURNEY } from "@/lib/constants";
 import {
   ClipboardList,
@@ -29,11 +30,19 @@ export default function PatientsPage() {
 
       <section className="section-y-lg bg-white">
         <div className="container-prose">
-          <SectionHeading
-            eyebrow="What to expect"
-            title="Three Stages of Care, One Coordinated Experience"
-            description="Every infusion journey includes several important milestones before, during, and after treatment. We've outlined each stage below so you'll know what to expect and how our team supports you every step of the way."
-          />
+          <div className="grid gap-10 lg:grid-cols-[1.3fr_1fr] lg:items-center lg:gap-16">
+            <SectionHeading
+              eyebrow="What to expect"
+              title="Three Stages of Care, One Coordinated Experience"
+              description="Every infusion journey includes several important milestones before, during, and after treatment. We've outlined each stage below so you'll know what to expect and how our team supports you every step of the way."
+            />
+            <MediaPlaceholder
+              aspect="wide"
+              tone="navy"
+              src="/patients/care.jpg"
+              alt="An infusion nurse supporting a patient at Kirkland Specialty Infusion Center"
+            />
+          </div>
 
           <div className="mt-14 space-y-14">
             {PATIENT_JOURNEY.map((stage, i) => {

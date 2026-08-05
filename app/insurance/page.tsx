@@ -4,6 +4,7 @@ import Link from "next/link";
 import { buildMetadata } from "@/lib/metadata";
 import { PageHero } from "@/components/shared/PageHero";
 import { SectionHeading } from "@/components/shared/SectionHeading";
+import { MediaPlaceholder } from "@/components/shared/MediaPlaceholder";
 import { SITE } from "@/lib/constants";
 import { CheckCircle2, Phone, ArrowRight } from "lucide-react";
 
@@ -72,10 +73,19 @@ export default function InsurancePage() {
 
       <section className="section-y-lg bg-white">
         <div className="container-prose grid gap-10 lg:grid-cols-[1fr_1.4fr] lg:gap-16">
-          <SectionHeading
-            eyebrow="What we do for every patient"
-            title="Helping You Navigate Insurance With Confidence"
-          />
+          <div>
+            <SectionHeading
+              eyebrow="What we do for every patient"
+              title="Helping You Navigate Insurance With Confidence"
+            />
+            <MediaPlaceholder
+              aspect="wide"
+              tone="navy"
+              src="/insurance/support.jpg"
+              alt="A care coordinator reviewing insurance and benefits with a patient"
+              className="mt-8 hidden lg:block"
+            />
+          </div>
           <ul className="space-y-4">
             {ADVOCACY_LIST.map((item) => (
               <li

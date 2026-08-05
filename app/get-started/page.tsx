@@ -11,6 +11,7 @@ import {
 import { buildMetadata } from "@/lib/metadata";
 import { PageHero } from "@/components/shared/PageHero";
 import { SectionHeading } from "@/components/shared/SectionHeading";
+import { MediaPlaceholder } from "@/components/shared/MediaPlaceholder";
 import { SITE, PATIENT_PORTAL_URL, SELF_REFERRAL_URL } from "@/lib/constants";
 
 export const metadata = buildMetadata({
@@ -121,26 +122,35 @@ export default function GetStartedPage() {
       </section>
 
       <section className="section-y bg-grey-50">
-        <div className="container-prose grid gap-10 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
-          <SectionHeading
-            eyebrow="Before you reach out"
-            title="What to Have Ready"
-            description="You don't need everything to get started, but having these details on hand helps us begin coordinating your care more quickly."
+        <div className="container-prose grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-16">
+          <div>
+            <SectionHeading
+              eyebrow="Before you reach out"
+              title="What to Have Ready"
+              description="You don't need everything to get started, but having these details on hand helps us begin coordinating your care more quickly."
+            />
+            <ul className="mt-8 space-y-4">
+              {READY_ITEMS.map((item) => (
+                <li
+                  key={item}
+                  className="flex items-start gap-3 text-sm leading-relaxed text-grey-700 sm:text-base"
+                >
+                  <CheckCircle2
+                    className="mt-1 h-5 w-5 shrink-0 text-primary"
+                    aria-hidden
+                  />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <MediaPlaceholder
+            aspect="portrait"
+            tone="primary"
+            src="/get-started/welcome.jpg"
+            alt="A patient meeting with a provider at Kirkland Specialty Infusion Center"
+            className="lg:h-full"
           />
-          <ul className="space-y-4">
-            {READY_ITEMS.map((item) => (
-              <li
-                key={item}
-                className="flex items-start gap-3 text-sm leading-relaxed text-grey-700 sm:text-base"
-              >
-                <CheckCircle2
-                  className="mt-1 h-5 w-5 shrink-0 text-primary"
-                  aria-hidden
-                />
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
         </div>
       </section>
 
