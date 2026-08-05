@@ -10,7 +10,7 @@ import { Phone, ArrowRight } from "lucide-react";
 export const metadata = buildMetadata({
   title: "Specialties & Conditions",
   description:
-    "A multi-specialty infusion center. Find your condition by name and the therapy your physician prescribed, across rheumatology, neurology/MS, gastroenterology, dermatology, osteoporosis, allergy and immunology, and endocrinology.",
+    "A multi-specialty infusion center. Find your condition by name and the therapy your physician prescribed, across rheumatology, neurology/MS, gastroenterology, dermatology, osteoporosis, allergy and immunology, and inflammatory eye disease.",
   path: "/specialties",
 });
 

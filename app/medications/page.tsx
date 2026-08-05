@@ -22,7 +22,7 @@ import {
 export const metadata = buildMetadata({
   title: "Medications & Therapies",
   description:
-    "Find your therapy under the specialty that uses it: rheumatology, neurology/MS, gastroenterology, dermatology, osteoporosis, allergy and immunology, and endocrinology, plus our full A-to-Z formulary and cash-pay wellness services.",
+    "Find your therapy under the specialty that uses it: rheumatology, neurology/MS, gastroenterology, dermatology, osteoporosis, allergy and immunology, and inflammatory eye disease, plus our full A-to-Z formulary and cash-pay wellness services.",
   path: "/medications",
 });
 

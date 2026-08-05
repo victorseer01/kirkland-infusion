@@ -81,8 +81,8 @@ const INCLUDE_ITEMS = [
 
 const WHITE_GLOVE = [
   {
-    title: "We Manage the Administrative Burden",
-    body: "Our team handles prior authorizations, peer-to-peer reviews, appeals, benefits verification, copay assistance, and grant enrollment, reducing workload for your staff.",
+    title: "Insurance & Authorization Management",
+    body: "We manage benefits verification, prior authorizations, appeals, and assistance programs to help minimize delays in treatment initiation.",
   },
   {
     title: "We Provide Pre-Infusion Patient Support",
@@ -266,16 +266,6 @@ export default function PhysiciansPage() {
               );
             })}
           </div>
-
-          <a
-            href={REFERRAL_FORMS_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-outline-dark mt-8"
-          >
-            <Download className="h-4 w-4" aria-hidden />
-            Browse All Referral Forms
-          </a>
         </div>
       </section>
 

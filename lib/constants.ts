@@ -274,8 +274,8 @@ export const THREE_PILLARS = [
 // Specialty detail content (overview, conditions, therapies) is client-approved
 // copy from the KSI-UPDATES feedback doc. `body` is a short summary used in the
 // page hero + meta description; `overview` is the long-form detail-page copy.
-// NOTE: "Endocrinology" (Thyroid Eye Disease / Tepezza) has no subtab in the
-// feedback doc but is a live offering, so it is retained pending client confirm.
+// NOTE: Thyroid Eye Disease / Tepezza now lives under Inflammatory Eye Disease;
+// the former standalone "Endocrinology" specialty was merged into it.
 export const SPECIALTIES = [
   {
     slug: "rheumatology",
@@ -408,24 +408,15 @@ export const SPECIALTIES = [
       "Scleritis",
       "Retinal Vasculitis",
       "Immune-Mediated Ocular Inflammatory Disorders",
+      "Thyroid Eye Disease (Graves' ophthalmopathy)",
     ],
     therapies: [
       "Remicade®",
       "Rituxan® / Ruxience®",
       "Actemra®",
       "Solu-Medrol®",
+      "Tepezza® (teprotumumab)",
     ],
-  },
-  {
-    slug: "endocrinology",
-    name: "Endocrinology",
-    body: "Specialty infusions with full prior authorization and financial advocacy support.",
-    overview: [
-      "Thyroid eye disease is an autoimmune condition that causes inflammation of the tissues around the eyes and can lead to eye bulging, double vision, pain, and pressure.",
-      "At Kirkland Specialty Infusion, we provide targeted infusion therapy for thyroid eye disease with full prior authorization support and financial advocacy, coordinating closely with endocrinologists and ophthalmologists.",
-    ],
-    conditions: ["Thyroid Eye Disease (Graves' ophthalmopathy)"],
-    therapies: ["Tepezza® (teprotumumab)"],
   },
 ] as const;
 
@@ -736,7 +727,7 @@ export const FAQ_CATEGORIES: readonly FaqCategory[] = [
           "Neurology & MS",
           "Osteoporosis & Metabolic Bone Disease",
           "Allergy & Immunology (IVIG)",
-          "Endocrinology",
+          "Inflammatory Eye Disease (uveitis, scleritis, thyroid eye disease)",
         ],
       },
       {
