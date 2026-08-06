@@ -2,6 +2,7 @@ import { buildMetadata } from "@/lib/metadata";
 import { PageHero } from "@/components/shared/PageHero";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { ContactForm } from "@/components/forms/ContactForm";
+import { MediaPlaceholder } from "@/components/shared/MediaPlaceholder";
 import { SITE, AFFILIATED_LOCATIONS } from "@/lib/constants";
 import {
   MapPin,
@@ -182,17 +183,25 @@ export default function ContactPage() {
       </section>
 
       <section className="bg-primary-dark text-ice">
-        <div className="container-prose py-14 sm:py-20">
-          <p className="eyebrow text-coral">Final reassurance</p>
-          <h2 className="mt-3 max-w-3xl text-balance text-3xl text-white sm:text-4xl">
-            Expert Care. Personal Attention.
-          </h2>
-          <p className="mt-5 max-w-3xl text-pretty text-base text-ice/90 sm:text-lg">
-            Whether you&apos;re visiting us for treatment, referring a patient,
-            or helping a loved one navigate care, you&apos;ll find a team that
-            values relationships, clear communication, and personalized support
-            every step of the way.
-          </p>
+        <div className="container-prose grid items-center gap-10 py-14 sm:py-20 lg:grid-cols-[1.3fr_1fr] lg:gap-16">
+          <div>
+            <p className="eyebrow text-coral">Final reassurance</p>
+            <h2 className="mt-3 max-w-3xl text-balance text-3xl text-white sm:text-4xl">
+              Expert Care. Personal Attention.
+            </h2>
+            <p className="mt-5 max-w-3xl text-pretty text-base text-ice/90 sm:text-lg">
+              Whether you&apos;re visiting us for treatment, referring a patient,
+              or helping a loved one navigate care, you&apos;ll find a team that
+              values relationships, clear communication, and personalized
+              support every step of the way.
+            </p>
+          </div>
+          <MediaPlaceholder
+            aspect="wide"
+            tone="coral"
+            src="/contact/welcome.jpg"
+            alt="A warm welcome from the Kirkland Specialty Infusion Center team"
+          />
         </div>
       </section>
     </>

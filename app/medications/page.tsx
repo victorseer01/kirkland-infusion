@@ -2,6 +2,7 @@ import Link from "next/link";
 import { buildMetadata } from "@/lib/metadata";
 import { PageHero } from "@/components/shared/PageHero";
 import { SectionHeading } from "@/components/shared/SectionHeading";
+import { MediaPlaceholder } from "@/components/shared/MediaPlaceholder";
 import {
   MEDICATIONS,
   CASH_PAY_SERVICES,
@@ -40,11 +41,19 @@ export default function MedicationsPage() {
 
       <section className="section-y-lg bg-white">
         <div className="container-prose">
-          <SectionHeading
-            eyebrow="Therapies by specialty"
-            title="Find Your Therapy by Specialty"
-            description="We've organized our therapies by specialty to help patients and providers quickly find the treatments they're looking for. Because some medications are used across multiple conditions, you may see them listed under more than one specialty."
-          />
+          <div className="grid gap-10 lg:grid-cols-[1.3fr_1fr] lg:items-center lg:gap-16">
+            <SectionHeading
+              eyebrow="Therapies by specialty"
+              title="Find Your Therapy by Specialty"
+              description="We've organized our therapies by specialty to help patients and providers quickly find the treatments they're looking for. Because some medications are used across multiple conditions, you may see them listed under more than one specialty."
+            />
+            <MediaPlaceholder
+              aspect="wide"
+              tone="navy"
+              src="/medications/care.jpg"
+              alt="A care team member supporting a patient during infusion therapy"
+            />
+          </div>
 
           <div className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-grey-200 bg-grey-200 md:grid-cols-2">
             {SPECIALTIES.map((s) => (

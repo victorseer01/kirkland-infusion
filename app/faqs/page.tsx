@@ -2,6 +2,7 @@ import Link from "next/link";
 import { buildMetadata } from "@/lib/metadata";
 import { PageHero } from "@/components/shared/PageHero";
 import { SectionHeading } from "@/components/shared/SectionHeading";
+import { MediaPlaceholder } from "@/components/shared/MediaPlaceholder";
 import { JsonLd } from "@/components/shared/JsonLd";
 import { FAQ_CATEGORIES, SITE, type FaqItem } from "@/lib/constants";
 import {
@@ -72,7 +73,8 @@ export default function FaqsPage() {
 
       <section className="section-y-lg bg-white">
         <div className="container-prose">
-          <div className="mb-12 flex flex-col items-start justify-between gap-4 rounded-2xl border border-grey-200 bg-grey-50 p-6 sm:flex-row sm:items-center sm:p-7">
+          <div className="mb-12 grid gap-8 lg:grid-cols-[1.5fr_1fr] lg:items-center">
+            <div className="flex flex-col items-start justify-between gap-4 rounded-2xl border border-grey-200 bg-grey-50 p-6 sm:flex-row sm:items-center sm:p-7">
             <div>
               <p className="font-display text-lg text-primary-dark sm:text-xl">
                 Can&apos;t Find What You&apos;re Looking For?
@@ -93,6 +95,14 @@ export default function FaqsPage() {
                 <ArrowRight className="h-4 w-4" aria-hidden />
               </Link>
             </div>
+            </div>
+            <MediaPlaceholder
+              aspect="wide"
+              tone="primary"
+              src="/faqs/help.jpg"
+              alt="An infusion nurse reassuring a patient"
+              className="hidden lg:block"
+            />
           </div>
 
           <div className="space-y-14">
