@@ -65,15 +65,15 @@ export function PatientStories() {
               <MediaPlaceholder
                 aspect="wide"
                 tone="accent"
-                src="/home/patient-1-gardening.jpg"
-                alt="Patient tending to a garden"
+                src="/home/gentle-hands-1.jpg"
+                alt="An infusion nurse comforting a patient"
                 className="w-3/4 rounded-2xl shadow-lg ring-1 ring-grey-200 transition duration-300 ease-out hover:-translate-y-1 hover:shadow-2xl"
               />
               <MediaPlaceholder
                 aspect="wide"
                 tone="primary"
-                src="/home/patient-2-cascades.jpg"
-                alt="Patient hiking in the Cascades"
+                src="/home/gentle-hands-2.jpg"
+                alt="A nurse providing gentle, attentive care"
                 className="ml-auto w-3/4 rounded-2xl shadow-lg ring-1 ring-grey-200 transition duration-300 ease-out hover:-translate-y-1 hover:shadow-2xl"
               />
             </div>

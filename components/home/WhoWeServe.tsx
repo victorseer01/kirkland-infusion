@@ -20,8 +20,8 @@ export function WhoWeServe() {
           <MediaPlaceholder
             aspect="tall"
             tone="navy"
-            src="/home/suite.jpg"
-            alt="Calm, private infusion suite at Kirkland Specialty Infusion Center"
+            src="/home/who-we-serve.jpg"
+            alt="A patient meeting with their care provider at Kirkland Specialty Infusion Center"
             className="lg:h-full"
           />
 

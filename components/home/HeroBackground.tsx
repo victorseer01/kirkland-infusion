@@ -10,12 +10,12 @@ export type HeroSlide = {
   gradient?: string;
 };
 
-// Slides are served from /public/hero/. Replace these placeholder JPGs with
-// real photos (same path, same filename), ideally 1920×1080 or larger.
+// Slides are served from /public/hero/. Swap these for updated photos (same
+// path, same filename), ideally 1920×1080 or larger.
 const PLACEHOLDER_SLIDES: HeroSlide[] = [
-  { src: "/hero/01.jpg", alt: "" },
-  { src: "/hero/02.jpg", alt: "" },
-  { src: "/hero/04.jpg", alt: "" },
+  { src: "/hero/care-1.jpg", alt: "" },
+  { src: "/hero/care-2.jpg", alt: "" },
+  { src: "/hero/care-3.jpg", alt: "" },
 ];
 
 export function HeroBackground({

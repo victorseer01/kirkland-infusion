@@ -8,7 +8,7 @@ const META = [
     icon: Stethoscope,
     tone: "primary" as const,
     src: "/home/pillar-1-physician.jpg",
-    alt: "Physician supervising an infusion",
+    alt: "A physician meeting with a patient",
   },
   {
     icon: HandCoins,
@@ -20,7 +20,7 @@ const META = [
     icon: MessagesSquare,
     tone: "accent" as const,
     src: "/home/pillar-3-communication.jpg",
-    alt: "Care coordinator on a call with a referring office",
+    alt: "A provider discussing a patient's care plan",
   },
 ];
 

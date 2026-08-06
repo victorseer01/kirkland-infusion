@@ -5,13 +5,26 @@ import { HeroBackground } from "./HeroBackground";
 
 export function Hero() {
   return (
-    <section className="relative isolate overflow-hidden bg-white">
+    <section className="relative isolate overflow-hidden bg-gradient-to-b from-ice/50 via-white to-white">
+      {/* Soft decorative background so the hero isn't flat white */}
+      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
+        <div className="absolute -right-24 -top-28 h-[28rem] w-[28rem] rounded-full bg-coral/10 blur-3xl" />
+        <div className="absolute -left-28 top-1/2 h-[26rem] w-[26rem] -translate-y-1/2 rounded-full bg-primary/10 blur-3xl" />
+        <div
+          className="absolute inset-0 opacity-70"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle, rgba(15,60,85,0.05) 1px, transparent 1px)",
+            backgroundSize: "26px 26px",
+          }}
+        />
+      </div>
       <div className="container-prose py-16 sm:py-20 lg:py-24">
         <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
           {/* Text side */}
           <div className="max-w-xl">
             <p className="eyebrow text-coral">Kirkland, Washington</p>
-            <h1 className="mt-4 text-balance text-[1.9rem] leading-tight text-primary-dark sm:text-5xl lg:text-[3.4rem]">
+            <h1 className="mt-4 text-balance text-[1.65rem] leading-[1.12] text-primary-dark sm:text-[2.5rem] lg:text-[3rem]">
               Specialized Infusion Therapy with Compassionate, Physician-Led
               Care
             </h1>
