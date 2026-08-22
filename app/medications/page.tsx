@@ -13,6 +13,7 @@ import {
   Info,
   FileText,
   ArrowRight,
+  ExternalLink,
   Syringe,
   Sun,
   FlaskConical,
@@ -115,9 +116,18 @@ export default function MedicationsPage() {
                 key={m.name}
                 className="rounded-2xl border border-grey-200 bg-white p-6 shadow-sm"
               >
-                <h3 className="font-display text-lg text-primary-dark">
+                <a
+                  href={m.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex items-center gap-1.5 font-display text-lg text-primary-dark hover:text-coral"
+                >
                   {m.name}
-                </h3>
+                  <ExternalLink
+                    className="h-3.5 w-3.5 opacity-60 group-hover:opacity-100"
+                    aria-hidden
+                  />
+                </a>
                 <p className="mt-1 text-sm font-semibold text-primary">
                   {m.generic}
                 </p>

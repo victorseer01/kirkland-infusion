@@ -12,7 +12,7 @@ import { buildMetadata } from "@/lib/metadata";
 import { PageHero } from "@/components/shared/PageHero";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { MediaPlaceholder } from "@/components/shared/MediaPlaceholder";
-import { SITE, PATIENT_PORTAL_URL, SELF_REFERRAL_URL } from "@/lib/constants";
+import { SITE, PATIENT_PORTAL_URL } from "@/lib/constants";
 
 export const metadata = buildMetadata({
   title: "How to Get Started",
@@ -41,11 +41,11 @@ export default function GetStartedPage() {
         <div className="container-prose">
           <SectionHeading
             eyebrow="Getting started"
-            title="Three Ways to Begin Your Care"
+            title="Two Ways to Begin Your Care"
             description="Choose whichever option is easiest for you. However you reach us, a member of our team will follow up to walk you through what comes next."
           />
 
-          <div className="mt-12 grid gap-6 lg:grid-cols-3">
+          <div className="mt-12 grid gap-6 md:grid-cols-2">
             {/* 1. Ask your doctor */}
             <article className="flex flex-col rounded-2xl border border-grey-200 bg-white p-7 shadow-sm">
               <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary">
@@ -78,50 +78,52 @@ export default function GetStartedPage() {
                 Submit your own information
               </h3>
               <p className="mt-3 flex-1 text-sm leading-relaxed text-grey-700 sm:text-base">
-                Don&apos;t have a referral yet? Share your details with us
-                through our secure, HIPAA-compliant form, no account or login
-                required. Our team will follow up to guide you through the next
-                steps.
+                Don&apos;t have a referral yet? Send us a message with your
+                information and our team will follow up to guide you through the
+                next steps.
               </p>
-              <a
-                href={SELF_REFERRAL_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-coral mt-6"
-              >
-                Start a Self-Referral
-                <ExternalLink className="h-4 w-4" aria-hidden />
-              </a>
+              <Link href="/contact" className="btn-coral mt-6">
+                Send Us a Message
+                <ArrowRight className="h-4 w-4" aria-hidden />
+              </Link>
             </article>
 
-            {/* 3. Patient portal */}
-            <article className="flex flex-col rounded-2xl border border-grey-200 bg-white p-7 shadow-sm">
-              <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary">
-                <LogIn className="h-6 w-6" aria-hidden />
-              </span>
-              <h3 className="mt-5 font-display text-xl text-primary-dark">
-                Log in to the Patient Portal
-              </h3>
-              <p className="mt-3 flex-1 text-sm leading-relaxed text-grey-700 sm:text-base">
-                Already a patient? Sign in to your Patient Portal to view
-                upcoming appointments, message your care team, and access your
-                health information.
-              </p>
-              <a
-                href={PATIENT_PORTAL_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-outline-dark mt-6"
-              >
-                Open Patient Portal
-                <ExternalLink className="h-4 w-4" aria-hidden />
-              </a>
-            </article>
           </div>
         </div>
       </section>
 
       <section className="section-y bg-grey-50">
+        <div className="container-prose">
+          <SectionHeading
+            eyebrow="Patient portal"
+            title="For Existing Patients"
+          />
+          <div className="mt-8 flex flex-col items-start justify-between gap-6 rounded-2xl border border-grey-200 bg-white p-7 shadow-sm sm:flex-row sm:items-center sm:p-9">
+            <div className="flex items-start gap-4">
+              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                <LogIn className="h-6 w-6" aria-hidden />
+              </span>
+              <p className="max-w-2xl text-sm leading-relaxed text-grey-700 sm:text-base">
+                Access your Patient Portal to manage your care online. You can
+                securely communicate with your care team, review your health
+                information, and complete any required forms before your visit,
+                when available.
+              </p>
+            </div>
+            <a
+              href={PATIENT_PORTAL_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-coral shrink-0"
+            >
+              Open Patient Portal
+              <ExternalLink className="h-4 w-4" aria-hidden />
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section className="section-y bg-white">
         <div className="container-prose grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-16">
           <div>
             <SectionHeading

@@ -66,29 +66,15 @@ export const PATIENT_PORTAL_URL =
   "https://mycw191.ecwcloud.com/portal24399/jsp/100mp/login_otp.jsp";
 export const SELF_REFERRAL_URL = "https://intakeq.com/new/ibknvo";
 
-// OAOC partner-practice referral portal, configured via env so it can differ
-// per environment. When NEXT_PUBLIC_REFERRAL_URL is set, it appears as an extra
-// portal option in the How-to-Refer section below.
-const OAOC_PORTAL_URL = process.env.NEXT_PUBLIC_REFERRAL_URL?.trim();
-
-// Online referral portals presented as options inside the How-to-Refer section.
+// Online referral portal shown in the How-to-Refer section. Per client, only
+// the single IntakeQ portal is used, to keep the referral path unambiguous.
 export const REFERRAL_PORTALS: { name: string; blurb: string; url: string }[] = [
   {
-    name: "IntakeQ secure portal",
+    name: "Secure Referral Portal",
     blurb:
       "Upload a referral and supporting documents through our HIPAA-compliant portal — no account or login required.",
     url: SELF_REFERRAL_URL,
   },
-  ...(OAOC_PORTAL_URL
-    ? [
-        {
-          name: "OAOC referral portal",
-          blurb:
-            "Submit a referral through our partner practice's secure referral portal.",
-          url: OAOC_PORTAL_URL,
-        },
-      ]
-    : []),
 ];
 
 // Shared library of medication-specific referral forms for referring providers.
@@ -499,6 +485,13 @@ export const MEDICATIONS = [
     indication:
       "COVID-19 pre-exposure prophylaxis for immunocompromised patients",
     url: "https://pemgarda.com/",
+  },
+  {
+    name: "Prolia",
+    generic: "Denosumab",
+    indication:
+      "Postmenopausal and glucocorticoid-induced osteoporosis, bone loss",
+    url: "https://www.prolia.com/",
   },
   {
     name: "Remicade",

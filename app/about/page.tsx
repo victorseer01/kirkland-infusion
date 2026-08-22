@@ -50,24 +50,16 @@ export default function AboutPage() {
               eyebrow="Our story"
               title="The infusion suite we wished existed for our own patients"
             />
-            <figure className="mt-8 flex items-center gap-4 overflow-hidden rounded-2xl border border-grey-200 bg-white p-4 shadow-sm sm:gap-5 sm:p-5 lg:flex-col lg:items-stretch lg:p-0">
-              <div className="group/media relative aspect-square w-28 shrink-0 overflow-hidden rounded-xl bg-grey-100 sm:w-32 lg:aspect-[4/3] lg:w-full lg:rounded-none">
+            <figure className="mt-8 overflow-hidden rounded-2xl border border-grey-200 bg-white shadow-sm">
+              <div className="group/media relative aspect-[3/2] w-full overflow-hidden">
                 <Image
-                  src="/staff/arinola-dada.jpg"
-                  alt="Dr. Arinola Dada, MD, FACR"
+                  src="/about/team-group.jpg"
+                  alt="The Kirkland Specialty Infusion Center and Overlake Arthritis & Osteoporosis Center team"
                   fill
-                  sizes="(min-width: 1024px) 360px, 128px"
-                  className="object-cover object-top transition-transform duration-500 ease-out group-hover/media:scale-105"
+                  sizes="(min-width: 1024px) 420px, 100vw"
+                  className="object-cover transition-transform duration-500 ease-out group-hover/media:scale-105"
                 />
               </div>
-              <figcaption className="lg:px-5 lg:py-4">
-                <p className="font-display text-lg text-primary-dark">
-                  Dr. Arinola Dada, MD, FACR
-                </p>
-                <p className="mt-1 text-sm text-grey-600">
-                  Board Certified Rheumatologist
-                </p>
-              </figcaption>
             </figure>
           </div>
           <div className="space-y-5 text-base leading-relaxed text-grey-700 sm:text-lg">
