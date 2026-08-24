@@ -9,7 +9,7 @@ const clamp = (v: number, min = 0, max = 1) => Math.min(Math.max(v, min), max);
 
 function Card({ item, index }: { item: Item; index: number }) {
   return (
-    <article className="flex h-full flex-col rounded-3xl border border-grey-200 bg-white p-9 shadow-xl sm:p-12">
+    <article className="flex h-full flex-col justify-center rounded-3xl border border-grey-200 bg-white p-9 shadow-xl sm:p-12">
       <span className="font-display text-6xl leading-none text-primary/15">
         {String(index + 1).padStart(2, "0")}
       </span>
@@ -150,7 +150,7 @@ export function DifferencesScroller({ items }: { items: readonly Item[] }) {
               return (
                 <div
                   key={item.title}
-                  className="absolute left-0 top-1/2 h-[min(74vh,620px)] w-[min(86vw,900px)] will-change-transform"
+                  className="absolute left-0 top-1/2 h-[min(64vh,540px)] w-[min(86vw,900px)] will-change-transform"
                   style={{
                     transform: `translate(${x}, -50%)`,
                     zIndex: i,
